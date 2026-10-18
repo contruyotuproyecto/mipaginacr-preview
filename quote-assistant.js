@@ -186,9 +186,9 @@
       '',
       `${steps[2].summaryLabel}: ${answers[2]}`
     ];
-    const extra = details.value.trim();
+    const extra = details.value.trim().replace(/\r?\n/g, '\r\n');
     if (extra) lines.push('', `Detalle: ${extra}`);
-    return lines.join('\n');
+    return lines.join('\r\n');
   }
 
   function updateWhatsAppLink() {
