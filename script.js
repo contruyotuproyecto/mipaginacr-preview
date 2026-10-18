@@ -82,13 +82,37 @@ if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: re
 }
 
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+const motionToggle = document.querySelector('#motion-toggle');
 const depthSections = [...document.querySelectorAll('.depth-section')];
 const hero = document.querySelector('.hero');
 let depthFrame = 0;
+let motionPaused = false;
+
+const depthProperties = [
+  '--depth-x', '--depth-y', '--depth-x-small', '--depth-y-small',
+  '--pointer-x', '--pointer-y', '--pointer-x-small', '--pointer-y-small'
+];
+
+function clearDepthMotion() {
+  depthSections.forEach(section => depthProperties.forEach(property => section.style.removeProperty(property)));
+}
+
+function setMotionPaused(paused) {
+  motionPaused = paused;
+  document.documentElement.classList.toggle('motion-paused', paused);
+  motionToggle.setAttribute('aria-pressed', String(paused));
+  motionToggle.querySelector('.motion-toggle-label').textContent = paused ? 'Reanudar movimiento' : 'Pausar movimiento';
+
+  if (paused) clearDepthMotion();
+  else scheduleDepth();
+}
+
+motionToggle.hidden = reducedMotion.matches;
+motionToggle.addEventListener('click', () => setMotionPaused(!motionPaused));
 
 function updateDepth() {
   depthFrame = 0;
-  if (reducedMotion.matches) return;
+  if (reducedMotion.matches || motionPaused) return;
 
   const viewportHeight = window.innerHeight;
   depthSections.forEach((section, index) => {
@@ -124,7 +148,7 @@ if (matchMedia('(hover: hover) and (pointer: fine)').matches) {
   let pointerY = 0;
 
   hero.addEventListener('pointermove', event => {
-    if (reducedMotion.matches) return;
+    if (reducedMotion.matches || motionPaused) return;
     const rect = hero.getBoundingClientRect();
     pointerX = ((event.clientX - rect.left) / rect.width - .5) * 12;
     pointerY = ((event.clientY - rect.top) / rect.height - .5) * 10;
@@ -145,10 +169,7 @@ if (matchMedia('(hover: hover) and (pointer: fine)').matches) {
 }
 
 reducedMotion.addEventListener('change', () => {
-  depthSections.forEach(section => {
-    ['--depth-x', '--depth-y', '--depth-x-small', '--depth-y-small',
-      '--pointer-x', '--pointer-y', '--pointer-x-small', '--pointer-y-small']
-      .forEach(property => section.style.removeProperty(property));
-  });
+  motionToggle.hidden = reducedMotion.matches;
+  clearDepthMotion();
   scheduleDepth();
 });

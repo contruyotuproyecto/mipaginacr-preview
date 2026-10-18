@@ -1,0 +1,228 @@
+:root {
+  --font-head: "Plus Jakarta Sans", "DM Sans", Arial, sans-serif;
+}
+
+.menu-toggle {
+  width: 48px;
+  height: 48px;
+}
+
+.service-tag,
+.quote-index,
+.quote-specs > span,
+.project-domain {
+  font-size: 11px;
+}
+
+.service-photo-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 44px;
+  margin-top: 12px;
+  color: #9edaff;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: color .2s ease;
+}
+
+.service-photo-link:hover,
+.service-photo-link:focus-visible {
+  color: #fff;
+}
+
+.photo-showcase {
+  padding-block: clamp(90px, 11vw, 145px);
+}
+
+.photo-showcase .section-heading {
+  margin-bottom: 24px;
+}
+
+.photo-disclosure {
+  max-width: 68ch;
+  margin: 0;
+  padding: 13px 16px;
+  border-left: 2px solid #45bbff;
+  border-radius: 0 9px 9px 0;
+  background: rgba(49, 132, 195, .1);
+  color: #c5d9eb;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 30px;
+}
+
+.photo-card {
+  min-width: 0;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid rgba(166, 207, 246, .2);
+  border-radius: 20px;
+  background: linear-gradient(155deg, rgba(21, 45, 70, .88), rgba(9, 24, 41, .96));
+  box-shadow: 0 20px 55px rgba(1, 8, 17, .18);
+}
+
+.photo-media {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  background: #102238;
+}
+
+.photo-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .45s ease;
+}
+
+.photo-card:hover .photo-media img {
+  transform: scale(1.035);
+}
+
+.photo-demo-tag {
+  position: absolute;
+  top: 13px;
+  left: 13px;
+  max-width: calc(100% - 26px);
+  padding: 7px 10px;
+  border: 1px solid rgba(255, 255, 255, .25);
+  border-radius: 999px;
+  background: rgba(5, 17, 29, .78);
+  color: #f1f8ff;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.3;
+  backdrop-filter: blur(10px);
+}
+
+.photo-card figcaption {
+  padding: 19px 20px 22px;
+}
+
+.photo-card figcaption > span {
+  color: #7fcaff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .12em;
+}
+
+.photo-card h3 {
+  margin: 8px 0 5px;
+  font-family: var(--font-head);
+  font-size: clamp(21px, 2.1vw, 27px);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -.035em;
+}
+
+.photo-card figcaption p {
+  margin: 0;
+  color: #b6c9dc;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.photo-showcase-cta {
+  display: flex;
+  width: fit-content;
+  min-height: 48px;
+  margin: 30px auto 0;
+}
+
+.motion-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 44px;
+  min-height: 44px;
+  margin-top: 14px;
+  padding: 0 14px;
+  border: 1px solid rgba(164, 205, 245, .22);
+  border-radius: 999px;
+  background: rgba(12, 31, 52, .76);
+  color: #c3d7eb;
+  font: 600 13px/1.25 "DM Sans", Arial, sans-serif;
+  cursor: pointer;
+  transition: color .2s ease, border-color .2s ease, background-color .2s ease;
+}
+
+.motion-toggle:hover {
+  border-color: rgba(119, 205, 255, .6);
+  background: rgba(18, 50, 79, .9);
+  color: #fff;
+}
+
+.motion-toggle-indicator {
+  width: 8px;
+  height: 8px;
+  flex: 0 0 8px;
+  border-radius: 50%;
+  background: #61cbff;
+  box-shadow: 0 0 0 4px rgba(67, 180, 255, .13);
+}
+
+.motion-toggle[aria-pressed="true"] .motion-toggle-indicator {
+  background: #90a3b7;
+  box-shadow: 0 0 0 4px rgba(144, 163, 183, .12);
+}
+
+.motion-toggle[hidden] {
+  display: none;
+}
+
+:root.motion-paused .hero-glow,
+:root.motion-paused .hero-grid,
+:root.motion-paused .services::after,
+:root.motion-paused .work::after,
+:root.motion-paused .photo-showcase::after,
+:root.motion-paused .ideas-section::after,
+:root.motion-paused .process::after,
+:root.motion-paused .quotes-section::after,
+:root.motion-paused .contact-glow,
+:root.motion-paused .scroll-cue span,
+:root.motion-paused .status-pulse {
+  animation-play-state: paused !important;
+}
+
+@media (max-width: 760px) {
+  .photo-showcase {
+    padding-block: 88px;
+  }
+
+  .photo-grid {
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 520px;
+    margin-inline: auto;
+  }
+
+  .photo-showcase-cta {
+    width: 100%;
+    max-width: 520px;
+  }
+
+  .menu-toggle {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .service-photo-link,
+  .photo-media img,
+  .motion-toggle {
+    transition: none;
+  }
+
+  .photo-card:hover .photo-media img {
+    transform: none;
+  }
+}

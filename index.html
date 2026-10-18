@@ -5,16 +5,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#081322">
   <meta name="description" content="Diseño web, tiendas online y fotografía de producto para negocios en Costa Rica. Creamos imágenes para catálogos, redes sociales y espacios comerciales.">
+  <meta name="robots" content="noindex, nofollow">
   <title>Diseño web y fotografía de producto en Costa Rica | MiPaginaCR.com</title>
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="MiPaginaCR.com">
+  <meta property="og:title" content="Diseño web y fotografía para negocios | MiPaginaCR.com">
+  <meta property="og:description" content="Sitios web, tiendas online y contenido visual para negocios en Costa Rica.">
+  <meta property="og:url" content="https://contruyotuproyecto.github.io/mipaginacr-preview/">
+  <meta property="og:image" content="https://contruyotuproyecto.github.io/mipaginacr-preview/assets/preview-social-v2.webp">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Diseño web y fotografía para negocios, con muestras visuales de joyería, gastronomía y espacios">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Diseño web y fotografía para negocios | MiPaginaCR.com">
+  <meta name="twitter:description" content="Sitios web, tiendas online y contenido visual para negocios en Costa Rica.">
+  <meta name="twitter:image" content="https://contruyotuproyecto.github.io/mipaginacr-preview/assets/preview-social-v2.webp">
   <link rel="icon" href="assets/mi-pagina-cr-logo.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="responsive.css">
   <link rel="stylesheet" href="depth.css">
   <link rel="stylesheet" href="quotes.css">
   <link rel="stylesheet" href="brand.css">
+  <link rel="stylesheet" href="portfolio.css">
   <script src="script.js" defer></script>
 </head>
 <body>
@@ -29,6 +44,7 @@
       <div class="nav-links" id="nav-links">
         <a href="#servicios">Servicios</a>
         <a href="#trabajos">Proyectos</a>
+        <a href="#fotografia">Fotografía</a>
         <a href="#proceso">Proceso</a>
         <a href="#cotizar">Cotizar</a>
         <a href="#contacto">Contacto</a>
@@ -50,6 +66,10 @@
           <a class="button button-primary" href="https://wa.me/50660072890?text=Hola%2C%20quiero%20cotizar%20un%20sitio%20web%20con%20MiPaginaCR.com." target="_blank" rel="noopener noreferrer">Cuéntanos tu proyecto <span aria-hidden="true">→</span></a>
           <a class="button button-secondary" href="#trabajos">Ver nuestros trabajos <span aria-hidden="true">↓</span></a>
         </div>
+        <button class="motion-toggle" id="motion-toggle" type="button" aria-pressed="false" aria-label="Pausar o reanudar el movimiento del fondo">
+          <span class="motion-toggle-indicator" aria-hidden="true"></span>
+          <span class="motion-toggle-label">Pausar movimiento</span>
+        </button>
         <div class="hero-meta"><span class="line"></span><span>Diseño que conecta.<br>Experiencias que funcionan.</span></div>
       </div>
 
@@ -73,7 +93,7 @@
         <article class="service-card service-card-featured"><span class="service-num">01 /</span><span class="service-symbol" aria-hidden="true">↗</span><div><h3>Sitios web</h3><p>Para profesionales, emprendedores y negocios que desean mostrar sus servicios, presentar una oferta o recibir consultas.</p><span class="service-tag">SITIOS Y LANDING PAGES</span></div></article>
         <article class="service-card"><span class="service-num">02 /</span><span class="service-symbol" aria-hidden="true">▤</span><div><h3>Tiendas online</h3><p>Para exhibir productos, recibir pedidos y facilitar las ventas de tu negocio.</p><span class="service-tag">CATÁLOGOS Y PEDIDOS</span></div></article>
         <article class="service-card"><span class="service-num">03 /</span><span class="service-symbol" aria-hidden="true">⌘</span><div><h3>Soluciones a medida</h3><p>Para proyectos que requieren funciones personalizadas, integraciones, automatizaciones o sistemas administrativos, según su alcance.</p><span class="service-tag">PROYECTOS PERSONALIZADOS</span></div></article>
-        <article class="service-card service-card-photo"><span class="service-num">04 /</span><span class="service-symbol" aria-hidden="true"><svg viewBox="0 0 64 64" fill="none" focusable="false"><path d="M9 22a4 4 0 0 1 4-4h9l4-7h12l4 7h9a4 4 0 0 1 4 4v28a4 4 0 0 1-4 4H13a4 4 0 0 1-4-4V22Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/><circle cx="32" cy="35" r="10" stroke="currentColor" stroke-width="2.5"/><circle cx="48" cy="24" r="2" fill="currentColor"/></svg></span><div><h3>Fotografía de producto</h3><p>Imágenes para catálogos y tiendas online, contenido para redes, espacios y equipos. Podemos sumar tomas aéreas con dron según la ubicación y las condiciones del proyecto.</p><span class="service-tag">PRODUCTO · NEGOCIO · DRON</span></div></article>
+        <article class="service-card service-card-photo"><span class="service-num">04 /</span><span class="service-symbol" aria-hidden="true"><svg viewBox="0 0 64 64" fill="none" focusable="false"><path d="M9 22a4 4 0 0 1 4-4h9l4-7h12l4 7h9a4 4 0 0 1 4 4v28a4 4 0 0 1-4 4H13a4 4 0 0 1-4-4V22Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/><circle cx="32" cy="35" r="10" stroke="currentColor" stroke-width="2.5"/><circle cx="48" cy="24" r="2" fill="currentColor"/></svg></span><div><h3>Fotografía de producto</h3><p>Imágenes para catálogos y tiendas online, contenido para redes, espacios y equipos. Podemos sumar tomas aéreas con dron según la ubicación y las condiciones del proyecto.</p><span class="service-tag">PRODUCTO · NEGOCIO · DRON</span><a class="service-photo-link" href="#fotografia">Ver muestras fotográficas <span aria-hidden="true">↓</span></a></div></article>
       </div>
     </section>
 
@@ -95,8 +115,31 @@
       </div>
     </section>
 
+    <section class="section-shell photo-showcase reveal depth-section" id="fotografia" aria-labelledby="photo-title">
+      <div class="section-heading">
+        <div><p class="eyebrow">03 / FOTOGRAFÍA PARA NEGOCIOS</p><h2 id="photo-title">Imágenes que<br><span>cuentan tu historia.</span></h2></div>
+        <p>Fotografía de producto, gastronomía y espacios para presentar mejor lo que ofrece tu negocio, en tu web, catálogo y redes.</p>
+      </div>
+      <p class="photo-disclosure">Estas muestras fotorrealistas se generaron con IA para ilustrar estilos posibles. No representan trabajos realizados para clientes.</p>
+      <div class="photo-grid">
+        <figure class="photo-card">
+          <div class="photo-media"><img src="assets/foto-muestra-joyeria.webp" alt="Muestra generada con IA: collar y aretes de piedra verde sobre una superficie clara" width="1024" height="1536" loading="lazy" decoding="async"><span class="photo-demo-tag">Demostración generada con IA</span></div>
+          <figcaption><span>PRODUCTO</span><h3>Joyería</h3><p>Texturas, luz y detalle para cada pieza.</p></figcaption>
+        </figure>
+        <figure class="photo-card">
+          <div class="photo-media"><img src="assets/foto-muestra-cafeteria.webp" alt="Muestra generada con IA: café de especialidad y repostería en una cafetería" width="1024" height="1536" loading="lazy" decoding="async"><span class="photo-demo-tag">Demostración generada con IA</span></div>
+          <figcaption><span>GASTRONOMÍA</span><h3>Café y repostería</h3><p>Imágenes cálidas para abrir el apetito.</p></figcaption>
+        </figure>
+        <figure class="photo-card">
+          <div class="photo-media"><img src="assets/foto-muestra-aerea.webp" alt="Muestra generada con IA: vista aérea de una propiedad rodeada de vegetación tropical" width="1024" height="1536" loading="lazy" decoding="async"><span class="photo-demo-tag">Demostración generada con IA</span></div>
+          <figcaption><span>ESPACIOS Y DRON</span><h3>Vistas aéreas</h3><p>Una perspectiva amplia de espacios y propiedades.</p></figcaption>
+        </figure>
+      </div>
+      <a class="button button-primary photo-showcase-cta" href="https://wa.me/50660072890?text=Hola%2C%20quiero%20cotizar%20fotograf%C3%ADa%20de%20producto%20y%20contenido%20visual%20para%20mi%20negocio." target="_blank" rel="noopener noreferrer">Cotizar fotografía <span aria-hidden="true">→</span></a>
+    </section>
+
     <section class="ideas-section depth-section" id="ideas" aria-labelledby="ideas-title"><div class="section-shell ideas-inner reveal">
-      <div class="section-heading"><div><p class="eyebrow">03 / POSIBILIDADES</p><h2 id="ideas-title">Tu sector.<br><span>tu estilo.</span></h2></div><p>Estas son ideas visuales, no proyectos entregados. Muestran cómo puede cambiar una misma experiencia según la personalidad de cada negocio.</p></div>
+      <div class="section-heading"><div><p class="eyebrow">04 / POSIBILIDADES</p><h2 id="ideas-title">Tu sector.<br><span>tu estilo.</span></h2></div><p>Estas son ideas visuales, no proyectos entregados. Muestran cómo puede cambiar una misma experiencia según la personalidad de cada negocio.</p></div>
       <div class="ideas-stage">
         <div class="ideas-list" role="tablist" aria-label="Ejemplos de sitios por sector">
           <button class="idea-tab is-active" id="tab-law" role="tab" aria-selected="true" aria-controls="idea-preview" data-idea="law"><span>01</span><strong>Abogados</strong><b aria-hidden="true">→</b></button>
@@ -108,11 +151,11 @@
       </div>
     </div></section>
 
-    <section class="section-shell process reveal depth-section" id="proceso" aria-labelledby="process-title"><div class="section-heading"><div><p class="eyebrow">04 / CÓMO TRABAJAMOS</p><h2 id="process-title">De la idea<br><span>a la pantalla.</span></h2></div><p>Un proceso claro para convertir lo que necesitas en una página que puedas mostrar con orgullo.</p></div><div class="process-line"><article><span>01</span><h3>Escuchamos</h3><p>Nos cuentas tu negocio, tu público y lo que quieres lograr.</p></article><article><span>02</span><h3>Diseñamos</h3><p>Definimos contenido y estilo para que la página se sienta tuya.</p></article><article><span>03</span><h3>Construimos</h3><p>Desarrollamos, revisamos contigo y preparamos la publicación.</p></article></div></section>
+    <section class="section-shell process reveal depth-section" id="proceso" aria-labelledby="process-title"><div class="section-heading"><div><p class="eyebrow">05 / CÓMO TRABAJAMOS</p><h2 id="process-title">De la idea<br><span>a la pantalla.</span></h2></div><p>Un proceso claro para convertir lo que necesitas en una página que puedas mostrar con orgullo.</p></div><div class="process-line"><article><span>01</span><h3>Escuchamos</h3><p>Nos cuentas tu negocio, tu público y lo que quieres lograr.</p></article><article><span>02</span><h3>Diseñamos</h3><p>Definimos contenido y estilo para que la página se sienta tuya.</p></article><article><span>03</span><h3>Construimos</h3><p>Desarrollamos, revisamos contigo y preparamos la publicación.</p></article></div></section>
 
     <section class="quotes-section depth-section" id="cotizar" aria-labelledby="quotes-title">
       <div class="section-shell quotes-inner reveal">
-        <div class="section-heading"><div><p class="eyebrow">05 / COTIZA TU PROYECTO</p><h2 id="quotes-title">Elige tu<br><span>punto de partida.</span></h2></div><p>Cuéntanos qué necesitas y preparamos una propuesta según el alcance de tu proyecto.</p></div>
+        <div class="section-heading"><div><p class="eyebrow">06 / COTIZA TU PROYECTO</p><h2 id="quotes-title">Elige tu<br><span>punto de partida.</span></h2></div><p>Cuéntanos qué necesitas y preparamos una propuesta según el alcance de tu proyecto.</p></div>
         <div class="quotes-grid">
           <article class="quote-card quote-landing">
             <div class="quote-card-top"><span class="quote-index">01 / PRESENCIA Y CAMPAÑAS</span><span class="quote-icon" aria-hidden="true">↗</span></div>
@@ -143,9 +186,9 @@
       </div>
     </section>
 
-    <section class="contact-section depth-section" id="contacto" aria-labelledby="contact-title"><div class="contact-glow" aria-hidden="true"></div><div class="section-shell contact-inner reveal"><p class="eyebrow">06 / EMPECEMOS</p><h2 id="contact-title">¿Listo para<br><em>destacar?</em></h2><p>Cuéntanos qué tienes en mente: una página, una tienda o contenido visual para tu negocio.</p><a class="button button-light" href="https://wa.me/50660072890?text=Hola%2C%20vi%20mipaginacr.com%20y%20quiero%20contarte%20sobre%20mi%20proyecto." target="_blank" rel="noopener noreferrer">Escribir por WhatsApp <span aria-hidden="true">→</span></a><span class="contact-number">+506 6007-2890</span></div></section>
+    <section class="contact-section depth-section" id="contacto" aria-labelledby="contact-title"><div class="contact-glow" aria-hidden="true"></div><div class="section-shell contact-inner reveal"><p class="eyebrow">07 / EMPECEMOS</p><h2 id="contact-title">¿Listo para<br><em>destacar?</em></h2><p>Cuéntanos qué tienes en mente: una página, una tienda o contenido visual para tu negocio.</p><a class="button button-light" href="https://wa.me/50660072890?text=Hola%2C%20vi%20mipaginacr.com%20y%20quiero%20contarte%20sobre%20mi%20proyecto." target="_blank" rel="noopener noreferrer">Escribir por WhatsApp <span aria-hidden="true">→</span></a><span class="contact-number">+506 6007-2890</span></div></section>
   </main>
 
-  <footer class="footer section-shell"><div class="footer-brand"><span class="brand-mark" aria-hidden="true"></span><strong>MiPaginaCR.com</strong><p>Diseño web y contenido visual para negocios.</p></div><div class="footer-links"><a href="#inicio">Volver arriba ↑</a><a href="#servicios">Servicios</a><a href="#trabajos">Trabajos</a><a href="#cotizar">Cotizar</a><a href="https://wa.me/50660072890" target="_blank" rel="noopener noreferrer">WhatsApp →</a></div><div class="footer-bottom"><span>© 2026 MiPaginaCR.com</span><span>Hecho en Costa Rica.</span></div></footer>
+  <footer class="footer section-shell"><div class="footer-brand"><span class="brand-mark" aria-hidden="true"></span><strong>MiPaginaCR.com</strong><p>Diseño web y contenido visual para negocios.</p></div><div class="footer-links"><a href="#inicio">Volver arriba ↑</a><a href="#servicios">Servicios</a><a href="#trabajos">Trabajos</a><a href="#fotografia">Fotografía</a><a href="#cotizar">Cotizar</a><a href="https://wa.me/50660072890" target="_blank" rel="noopener noreferrer">WhatsApp →</a></div><div class="footer-bottom"><span>© 2026 MiPaginaCR.com</span><span>Hecho en Costa Rica.</span></div></footer>
 </body>
 </html>

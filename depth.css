@@ -19,6 +19,7 @@
 
 .services,
 .work,
+.photo-showcase,
 .ideas-section,
 .process,
 .quotes-section {
@@ -28,6 +29,7 @@
 
 .services::after,
 .work::after,
+.photo-showcase::after,
 .ideas-section::after,
 .process::after,
 .quotes-section::after {
@@ -44,6 +46,7 @@
 
 .services > *,
 .work > *,
+.photo-showcase > *,
 .ideas-section > *,
 .process > *,
 .quotes-section > * {
@@ -57,6 +60,10 @@
 
 .work {
   --depth-light: radial-gradient(ellipse 52% 50% at 85% 43%, rgba(45, 184, 219, .10), transparent 78%);
+}
+
+.photo-showcase {
+  --depth-light: radial-gradient(ellipse 52% 48% at 82% 38%, rgba(25, 145, 225, .14), transparent 78%);
 }
 
 .ideas-section {
@@ -79,6 +86,7 @@
 /* Gentle idle drift makes the depth visible even when the page is still. */
 .hero-glow,
 .services::after,
+.photo-showcase::after,
 .ideas-section::after,
 .quotes-section::after,
 .contact-glow {
@@ -106,6 +114,7 @@
   .hero-grid,
   .services::after,
   .work::after,
+  .photo-showcase::after,
   .ideas-section::after,
   .process::after,
   .quotes-section::after,
