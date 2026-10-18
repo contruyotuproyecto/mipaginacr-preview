@@ -12,9 +12,9 @@
   position: fixed;
   z-index: 119;
   inset: 0;
-  background: rgba(4, 14, 25, .64);
+  background: rgba(4, 14, 25, .56);
   opacity: 0;
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(3px);
   transition: opacity .26s ease;
 }
 
