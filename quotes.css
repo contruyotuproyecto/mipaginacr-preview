@@ -121,3 +121,43 @@
   .quote-card:hover,
   .quote-card:focus-within { transform: none; }
 }
+
+/* Four quote options form a clear grid on desktop and stack on phones. */
+.quotes-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.quote-card {
+  min-height: 500px;
+}
+
+.quote-card-copy {
+  margin-top: 44px;
+}
+
+.quote-card h3 {
+  font-weight: 600;
+  letter-spacing: -.035em;
+}
+
+.quote-photo { --quote-glow: rgba(35, 193, 226, .22); }
+
+@media (max-width: 900px) {
+  .quotes-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .quote-card {
+    min-height: 0;
+  }
+}
+
+@media (max-width: 760px) {
+  .quotes-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .quote-specs ul {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

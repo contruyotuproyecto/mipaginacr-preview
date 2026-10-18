@@ -539,3 +539,66 @@
     height: 250px;
   }
 }
+
+/* A calmer display style keeps headlines expressive without the compressed block look. */
+.hero h1,
+.section-heading h2,
+.contact-inner h2,
+.service-card h3,
+.quote-card h3,
+.process-line h3 {
+  font-weight: 600;
+}
+
+.hero h1 {
+  line-height: .98;
+  letter-spacing: -.045em;
+  text-transform: none;
+}
+
+.section-heading h2 {
+  line-height: 1.02;
+  letter-spacing: -.055em;
+}
+
+.contact-inner h2 {
+  letter-spacing: -.05em;
+}
+
+.quote-card h3 {
+  letter-spacing: -.035em;
+}
+
+/* Four main service categories sit in a balanced two-by-two layout. */
+.services-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.service-card-featured {
+  grid-row: auto;
+  min-height: 320px;
+}
+
+.service-card-featured .service-symbol {
+  font-size: 78px;
+}
+
+.service-card-photo .service-symbol svg {
+  display: block;
+  width: 1em;
+  height: 1em;
+}
+
+.service-card:last-child {
+  grid-column: auto;
+}
+
+@media (max-width: 760px) {
+  .services-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .service-card-featured {
+    min-height: 300px;
+  }
+}
