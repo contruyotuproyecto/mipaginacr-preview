@@ -345,11 +345,14 @@
 
           <div class="quote-assistant-review" data-assistant-review hidden>
             <h3 tabindex="-1" data-assistant-review-heading>Revisa tu consulta</h3>
-            <p>Si quieres, cambia una respuesta o agrega un detalle antes de abrir WhatsApp.</p>
             <dl class="quote-assistant-summary" data-assistant-summary></dl>
-            <label for="quote-assistant-details">Un detalle más (opcional)</label>
-            <textarea id="quote-assistant-details" name="details" rows="2" maxlength="240" data-assistant-details></textarea>
-            <span class="quote-assistant-count"><span data-assistant-count>0</span>/240</span>
+            <div class="quote-assistant-detail">
+              <div class="quote-assistant-detail-heading">
+                <label for="quote-assistant-details">Un detalle más (opcional)</label>
+                <span class="quote-assistant-count"><span data-assistant-count>0</span>/240</span>
+              </div>
+              <textarea id="quote-assistant-details" name="details" rows="2" maxlength="240" data-assistant-details></textarea>
+            </div>
           </div>
 
           <div class="quote-assistant-actions" data-assistant-step-actions>
@@ -362,7 +365,7 @@
               Abrir WhatsApp con mi consulta
               <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg>
             </a>
-            <p>WhatsApp abrirá el mensaje para que lo revises y lo envíes.</p>
+            <p>Revisa el mensaje y envíalo desde WhatsApp.</p>
             <button class="quote-assistant-reset" type="button" data-assistant-reset>Empezar otra consulta</button>
           </div>
         </form>

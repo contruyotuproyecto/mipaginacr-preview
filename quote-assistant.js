@@ -134,6 +134,7 @@
 
   function renderQuestion(shouldFocus = false) {
     isReviewing = false;
+    assistant.classList.remove('is-reviewing');
     fieldset.hidden = false;
     review.hidden = true;
     stepActions.hidden = false;
@@ -178,12 +179,15 @@
   function buildMessage() {
     const lines = [
       'Hola, vi mipaginacr.com y quiero hacer una consulta sobre mi proyecto.',
+      '',
       `${steps[0].summaryLabel}: ${answers[0]}`,
+      '',
       `${steps[1].summaryLabel}: ${answers[1]}`,
+      '',
       `${steps[2].summaryLabel}: ${answers[2]}`
     ];
     const extra = details.value.trim();
-    if (extra) lines.push(`Detalle: ${extra}`);
+    if (extra) lines.push('', `Detalle: ${extra}`);
     return lines.join('\n');
   }
 
@@ -193,6 +197,7 @@
 
   function renderReview(shouldFocus = false) {
     isReviewing = true;
+    assistant.classList.add('is-reviewing');
     fieldset.hidden = true;
     review.hidden = false;
     stepActions.hidden = true;
