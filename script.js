@@ -175,34 +175,83 @@ const photoCarousels = [...document.querySelectorAll('[data-carousel]')].map(med
 
   let index = 0;
   let timer = 0;
-  let animationTimer = 0;
-  let isHovered = false;
+  let transitionTimer = 0;
+  let isTransitioning = false;
   let isFocused = false;
   let inView = !('IntersectionObserver' in window);
   const loadedSlides = new Map();
+  const transitionImage = document.createElement('img');
+  transitionImage.className = 'photo-transition-layer';
+  transitionImage.alt = '';
+  transitionImage.setAttribute('aria-hidden', 'true');
+  transitionImage.width = image.width;
+  transitionImage.height = image.height;
+  transitionImage.decoding = 'async';
+  media.append(transitionImage);
 
   function shouldRun() {
-    return inView && !document.hidden && !isHovered && !isFocused && !reducedMotion.matches;
+    return inView && !document.hidden && !isFocused && !reducedMotion.matches;
   }
 
   function preload(slideIndex) {
-    if (loadedSlides.has(slideIndex)) return;
+    if (loadedSlides.has(slideIndex)) return loadedSlides.get(slideIndex);
     const request = new Image();
+    request.decoding = 'async';
     request.src = slides[slideIndex].src;
     loadedSlides.set(slideIndex, request);
+    return request;
   }
 
-  function showSlide(nextIndex) {
-    index = (nextIndex + slides.length) % slides.length;
-    const slide = slides[index];
-    image.classList.remove('is-changing');
-    image.src = slide.src;
-    image.alt = slide.alt;
-    void image.offsetWidth;
-    image.classList.add('is-changing');
-    window.clearTimeout(animationTimer);
-    animationTimer = window.setTimeout(() => image.classList.remove('is-changing'), 700);
-    preload((index + 1) % slides.length);
+  async function showSlide(nextIndex) {
+    if (isTransitioning) return;
+    isTransitioning = true;
+
+    const nextSlideIndex = (nextIndex + slides.length) % slides.length;
+    const slide = slides[nextSlideIndex];
+    const request = preload(nextSlideIndex);
+
+    if (!request.complete) {
+      await new Promise(resolve => {
+        request.addEventListener('load', resolve, { once: true });
+        request.addEventListener('error', resolve, { once: true });
+      });
+    }
+
+    if (!request.naturalWidth || !shouldRun()) {
+      isTransitioning = false;
+      return;
+    }
+
+    transitionImage.src = slide.src;
+    if (typeof transitionImage.decode === 'function') {
+      try {
+        await transitionImage.decode();
+      } catch {
+        isTransitioning = false;
+        return;
+      }
+    }
+
+    if (!shouldRun()) {
+      isTransitioning = false;
+      return;
+    }
+
+    requestAnimationFrame(() => {
+      transitionImage.classList.add('is-visible');
+      image.classList.add('is-fading-out');
+    });
+
+    window.clearTimeout(transitionTimer);
+    transitionTimer = window.setTimeout(() => {
+      index = nextSlideIndex;
+      image.src = slide.src;
+      image.alt = slide.alt;
+      transitionImage.classList.remove('is-visible');
+      image.classList.remove('is-fading-out');
+      isTransitioning = false;
+      preload((index + 1) % slides.length);
+    }, 1150);
   }
 
   function stopTimer() {
@@ -213,23 +262,11 @@ const photoCarousels = [...document.querySelectorAll('[data-carousel]')].map(med
 
   function syncTimer() {
     const running = shouldRun();
-    if (running && !timer) timer = window.setInterval(() => showSlide(index + 1), 2000);
+    if (running && !timer) timer = window.setInterval(() => showSlide(index + 1), 3000);
     else if (!running) stopTimer();
   }
 
   if (inView) preload((index + 1) % slides.length);
-  media.addEventListener('pointerenter', event => {
-    if (event.pointerType === 'mouse') {
-      isHovered = true;
-      syncTimer();
-    }
-  });
-  media.addEventListener('pointerleave', event => {
-    if (event.pointerType === 'mouse') {
-      isHovered = false;
-      syncTimer();
-    }
-  });
   media.addEventListener('focusin', () => {
     isFocused = true;
     syncTimer();

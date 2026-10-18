@@ -46,17 +46,6 @@
 
 .photo-showcase .section-heading { margin-bottom: 22px; }
 
-.photo-disclosure {
-  max-width: 68ch;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  border-radius: 0;
-  background: transparent;
-  color: #a8bbcf;
-  font-size: 13px;
-}
-
 .photo-grid {
   gap: 14px;
   margin-top: 22px;
