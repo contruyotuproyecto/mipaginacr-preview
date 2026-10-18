@@ -1,4 +1,5 @@
 .quote-assistant[hidden],
+.quote-assistant-backdrop[hidden],
 .quote-assistant-panel[hidden],
 .quote-assistant-review[hidden],
 .quote-assistant-actions[hidden],
@@ -6,6 +7,18 @@
 .quote-assistant-back[hidden] {
   display: none !important;
 }
+
+.quote-assistant-backdrop {
+  position: fixed;
+  z-index: 119;
+  inset: 0;
+  background: rgba(4, 14, 25, .64);
+  opacity: 0;
+  backdrop-filter: blur(4px);
+  transition: opacity .26s ease;
+}
+
+.quote-assistant-backdrop.is-visible { opacity: 1; }
 
 .quote-assistant {
   position: fixed;
@@ -16,9 +29,26 @@
   font-family: var(--font-body, "DM Sans", Arial, sans-serif);
 }
 
+.quote-assistant.is-open,
+.quote-assistant.is-closing {
+  inset: 0;
+  display: grid;
+  width: 100%;
+  height: 100%;
+  place-items: center;
+  padding: max(14px, env(safe-area-inset-top)) max(14px, env(safe-area-inset-right)) max(14px, env(safe-area-inset-bottom)) max(14px, env(safe-area-inset-left));
+  pointer-events: none;
+}
+
 .quote-assistant-toggle,
 .quote-assistant-panel {
   pointer-events: auto;
+}
+
+.quote-assistant.is-open .quote-assistant-toggle,
+.quote-assistant.is-closing .quote-assistant-toggle {
+  visibility: hidden;
+  pointer-events: none;
 }
 
 .quote-assistant-toggle {
@@ -80,6 +110,14 @@
   box-shadow: 0 24px 70px rgba(0, 0, 0, .48), 0 0 36px rgba(8, 123, 255, .12);
   backdrop-filter: blur(18px);
   transform-origin: right bottom;
+}
+
+.quote-assistant.is-open .quote-assistant-panel {
+  position: relative;
+  inset: auto;
+  width: min(430px, calc(100vw - 28px));
+  max-height: min(680px, calc(100dvh - 28px));
+  transform-origin: center;
 }
 
 .quote-assistant-panel:not([hidden]) {
@@ -462,6 +500,11 @@
     border-radius: 18px;
   }
 
+  .quote-assistant.is-open .quote-assistant-panel {
+    width: min(390px, calc(100vw - 24px));
+    max-height: min(84dvh, 620px);
+  }
+
   .quote-assistant-header {
     min-height: 64px;
     padding: 10px 11px 10px 15px;
@@ -477,6 +520,10 @@
     max-height: min(58vh, 390px);
     max-height: min(58dvh, 390px);
   }
+
+  .quote-assistant.is-open .quote-assistant-panel {
+    max-height: calc(100dvh - 20px);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -490,4 +537,6 @@
   .quote-assistant-close {
     transition: none;
   }
+
+  .quote-assistant-backdrop { transition: none; }
 }

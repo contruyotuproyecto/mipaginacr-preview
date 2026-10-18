@@ -2,6 +2,7 @@
   const assistant = document.querySelector('[data-quote-assistant]');
   if (!assistant) return;
 
+  const backdrop = document.querySelector('[data-assistant-backdrop]');
   const toggle = assistant.querySelector('[data-assistant-toggle]');
   const panel = assistant.querySelector('[data-assistant-panel]');
   const closeButton = assistant.querySelector('[data-assistant-close]');
@@ -26,7 +27,59 @@
   const whatsappLink = assistant.querySelector('[data-assistant-whatsapp]');
   const resetButton = assistant.querySelector('[data-assistant-reset]');
 
-  if ([toggle, panel, closeButton, status, progressContext, progress, progressFill, form, fieldset, question, hint, options, review, reviewHeading, summary, stepActions, backButton, nextButton, reviewActions, details, characterCount, whatsappLink, resetButton].some(element => !element)) return;
+  if ([backdrop, toggle, panel, closeButton, status, progressContext, progress, progressFill, form, fieldset, question, hint, options, review, reviewHeading, summary, stepActions, backButton, nextButton, reviewActions, details, characterCount, whatsappLink, resetButton].some(element => !element)) return;
+
+  const pageRegions = [...document.body.children]
+    .filter(region => region !== assistant && region !== backdrop);
+  const styleProperties = {
+    html: ['overflow', 'scroll-behavior'],
+    body: ['position', 'top', 'left', 'right', 'width', 'overflow']
+  };
+  let pageLock = null;
+  let closeTimer = 0;
+
+  function snapshotStyles(element, properties) {
+    return Object.fromEntries(properties.map(property => [property, element.style.getPropertyValue(property)]));
+  }
+
+  function restoreStyles(element, values, except = []) {
+    Object.entries(values).forEach(([property, value]) => {
+      if (except.includes(property)) return;
+      if (value) element.style.setProperty(property, value);
+      else element.style.removeProperty(property);
+    });
+  }
+
+  function lockPage() {
+    if (pageLock) return;
+    pageLock = {
+      scrollY: window.scrollY,
+      htmlStyles: snapshotStyles(document.documentElement, styleProperties.html),
+      bodyStyles: snapshotStyles(document.body, styleProperties.body),
+      inertStates: pageRegions.map(region => [region, region.inert])
+    };
+    pageRegions.forEach(region => { region.inert = true; });
+    document.documentElement.style.setProperty('overflow', 'hidden');
+    document.documentElement.style.setProperty('scroll-behavior', 'auto');
+    document.body.style.setProperty('position', 'fixed');
+    document.body.style.setProperty('top', `${-pageLock.scrollY}px`);
+    document.body.style.setProperty('left', '0');
+    document.body.style.setProperty('right', '0');
+    document.body.style.setProperty('width', '100%');
+    document.body.style.setProperty('overflow', 'hidden');
+  }
+
+  function unlockPage() {
+    if (!pageLock) return;
+    const lock = pageLock;
+    pageLock = null;
+    lock.inertStates.forEach(([region, wasInert]) => { region.inert = wasInert; });
+    restoreStyles(document.body, lock.bodyStyles);
+    restoreStyles(document.documentElement, lock.htmlStyles, ['scroll-behavior']);
+    document.documentElement.style.setProperty('scroll-behavior', 'auto');
+    window.scrollTo(0, lock.scrollY);
+    requestAnimationFrame(() => restoreStyles(document.documentElement, lock.htmlStyles));
+  }
 
   const steps = [
     {
@@ -181,8 +234,14 @@
   }
 
   function openAssistant() {
+    window.clearTimeout(closeTimer);
+    assistant.classList.remove('is-closing');
+    lockPage();
+    backdrop.hidden = false;
     panel.hidden = false;
+    assistant.classList.add('is-open');
     toggle.setAttribute('aria-expanded', 'true');
+    requestAnimationFrame(() => backdrop.classList.add('is-visible'));
     requestAnimationFrame(() => {
       if (isReviewing) reviewHeading.focus({ preventScroll: true });
       else question.focus({ preventScroll: true });
@@ -190,9 +249,19 @@
   }
 
   function closeAssistant(restoreFocus = true) {
+    if (panel.hidden) return;
     panel.hidden = true;
+    assistant.classList.remove('is-open');
+    assistant.classList.add('is-closing');
     toggle.setAttribute('aria-expanded', 'false');
-    if (restoreFocus) toggle.focus({ preventScroll: true });
+    backdrop.classList.remove('is-visible');
+    window.clearTimeout(closeTimer);
+    closeTimer = window.setTimeout(() => {
+      backdrop.hidden = true;
+      assistant.classList.remove('is-closing');
+      unlockPage();
+      if (restoreFocus) toggle.focus({ preventScroll: true });
+    }, 260);
   }
 
   toggle.addEventListener('click', () => {
@@ -200,6 +269,7 @@
     else closeAssistant();
   });
   closeButton.addEventListener('click', () => closeAssistant());
+  whatsappLink.addEventListener('click', () => closeAssistant());
   backButton.addEventListener('click', () => {
     if (currentStep === 0) return;
     currentStep -= 1;
@@ -230,6 +300,25 @@
     if (event.key === 'Escape' && !panel.hidden) {
       event.preventDefault();
       closeAssistant();
+    }
+  });
+  panel.addEventListener('keydown', event => {
+    if (event.key !== 'Tab') return;
+    const focusable = [...panel.querySelectorAll('a[href], button:not([disabled]), input:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])')]
+      .filter(element => !element.closest('[hidden]'));
+    if (!focusable.length) {
+      event.preventDefault();
+      closeButton.focus();
+      return;
+    }
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (event.shiftKey && (document.activeElement === first || !panel.contains(document.activeElement))) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && (document.activeElement === last || !panel.contains(document.activeElement))) {
+      event.preventDefault();
+      first.focus();
     }
   });
 

@@ -82,11 +82,9 @@ if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: re
 }
 
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
-const motionToggle = document.querySelector('#motion-toggle');
 const depthSections = [...document.querySelectorAll('.depth-section')];
 const hero = document.querySelector('.hero');
 let depthFrame = 0;
-let motionPaused = false;
 
 const depthProperties = [
   '--depth-x', '--depth-y', '--depth-x-small', '--depth-y-small',
@@ -97,22 +95,9 @@ function clearDepthMotion() {
   depthSections.forEach(section => depthProperties.forEach(property => section.style.removeProperty(property)));
 }
 
-function setMotionPaused(paused) {
-  motionPaused = paused;
-  document.documentElement.classList.toggle('motion-paused', paused);
-  motionToggle.setAttribute('aria-pressed', String(paused));
-  motionToggle.querySelector('.motion-toggle-label').textContent = paused ? 'Reanudar movimiento' : 'Pausar movimiento';
-
-  if (paused) clearDepthMotion();
-  else scheduleDepth();
-}
-
-motionToggle.hidden = reducedMotion.matches;
-motionToggle.addEventListener('click', () => setMotionPaused(!motionPaused));
-
 function updateDepth() {
   depthFrame = 0;
-  if (reducedMotion.matches || motionPaused) return;
+  if (reducedMotion.matches) return;
 
   const viewportHeight = window.innerHeight;
   depthSections.forEach((section, index) => {
@@ -148,7 +133,7 @@ if (matchMedia('(hover: hover) and (pointer: fine)').matches) {
   let pointerY = 0;
 
   hero.addEventListener('pointermove', event => {
-    if (reducedMotion.matches || motionPaused) return;
+    if (reducedMotion.matches) return;
     const rect = hero.getBoundingClientRect();
     pointerX = ((event.clientX - rect.left) / rect.width - .5) * 12;
     pointerY = ((event.clientY - rect.top) / rect.height - .5) * 10;
@@ -169,7 +154,6 @@ if (matchMedia('(hover: hover) and (pointer: fine)').matches) {
 }
 
 reducedMotion.addEventListener('change', () => {
-  motionToggle.hidden = reducedMotion.matches;
   clearDepthMotion();
   scheduleDepth();
 });
@@ -177,15 +161,7 @@ reducedMotion.addEventListener('change', () => {
 const photoCarousels = [...document.querySelectorAll('[data-carousel]')].map(media => {
   const image = media.querySelector('[data-carousel-image]');
   const template = media.parentElement.querySelector('template[data-carousel-slides]');
-  const controls = media.querySelector('.carousel-controls');
-  const previousButton = media.querySelector('[data-carousel-previous]');
-  const nextButton = media.querySelector('[data-carousel-next]');
-  const toggleButton = media.querySelector('[data-carousel-toggle]');
-  const icon = media.querySelector('[data-carousel-icon]');
-  const counter = media.querySelector('[data-carousel-count]');
-  const label = media.dataset.carouselLabel || 'fotografía';
-
-  if (!image || !template || !controls || !previousButton || !nextButton || !toggleButton || !icon || !counter) return null;
+  if (!image || !template) return null;
 
   const slides = [
     { src: image.getAttribute('src'), alt: image.alt },
@@ -200,12 +176,13 @@ const photoCarousels = [...document.querySelectorAll('[data-carousel]')].map(med
   let index = 0;
   let timer = 0;
   let animationTimer = 0;
+  let isHovered = false;
+  let isFocused = false;
   let inView = !('IntersectionObserver' in window);
-  let manualMode = reducedMotion.matches ? 'paused' : 'auto';
   const loadedSlides = new Map();
 
   function shouldRun() {
-    return inView && !document.hidden && (manualMode === 'play' || (manualMode === 'auto' && !reducedMotion.matches));
+    return inView && !document.hidden && !isHovered && !isFocused && !reducedMotion.matches;
   }
 
   function preload(slideIndex) {
@@ -224,8 +201,7 @@ const photoCarousels = [...document.querySelectorAll('[data-carousel]')].map(med
     void image.offsetWidth;
     image.classList.add('is-changing');
     window.clearTimeout(animationTimer);
-    animationTimer = window.setTimeout(() => image.classList.remove('is-changing'), 450);
-    counter.textContent = `${String(index + 1).padStart(2, '0')} / ${String(slides.length).padStart(2, '0')}`;
+    animationTimer = window.setTimeout(() => image.classList.remove('is-changing'), 700);
     preload((index + 1) % slides.length);
   }
 
@@ -237,34 +213,32 @@ const photoCarousels = [...document.querySelectorAll('[data-carousel]')].map(med
 
   function syncTimer() {
     const running = shouldRun();
-    toggleButton.setAttribute('aria-pressed', String(running));
-    toggleButton.setAttribute('aria-label', `${running ? 'Pausar' : 'Iniciar'} reproducción automática de ${label}`);
-    icon.textContent = running ? 'Ⅱ' : '▶';
-
-    if (running && !timer) timer = window.setInterval(() => showSlide(index + 1), 3000);
+    if (running && !timer) timer = window.setInterval(() => showSlide(index + 1), 2000);
     else if (!running) stopTimer();
   }
 
-  function restartTimer() {
-    stopTimer();
-    syncTimer();
-  }
-
   if (inView) preload((index + 1) % slides.length);
-  controls.hidden = false;
-  counter.textContent = `01 / ${String(slides.length).padStart(2, '0')}`;
-
-  previousButton.addEventListener('click', () => {
-    showSlide(index - 1);
-    restartTimer();
+  media.addEventListener('pointerenter', event => {
+    if (event.pointerType === 'mouse') {
+      isHovered = true;
+      syncTimer();
+    }
   });
-  nextButton.addEventListener('click', () => {
-    showSlide(index + 1);
-    restartTimer();
+  media.addEventListener('pointerleave', event => {
+    if (event.pointerType === 'mouse') {
+      isHovered = false;
+      syncTimer();
+    }
   });
-  toggleButton.addEventListener('click', () => {
-    manualMode = shouldRun() ? 'paused' : 'play';
+  media.addEventListener('focusin', () => {
+    isFocused = true;
     syncTimer();
+  });
+  media.addEventListener('focusout', event => {
+    if (!media.contains(event.relatedTarget)) {
+      isFocused = false;
+      syncTimer();
+    }
   });
 
   syncTimer();
@@ -276,12 +250,7 @@ const photoCarousels = [...document.querySelectorAll('[data-carousel]')].map(med
       if (value) preload((index + 1) % slides.length);
       syncTimer();
     },
-    syncTimer,
-    stopTimer,
-    resetForMotionPreference() {
-      if (reducedMotion.matches) manualMode = 'paused';
-      syncTimer();
-    }
+    syncTimer
   };
 }).filter(Boolean);
 
@@ -294,4 +263,4 @@ if ('IntersectionObserver' in window && photoCarousels.length) {
 }
 
 document.addEventListener('visibilitychange', () => photoCarousels.forEach(carousel => carousel.syncTimer()));
-reducedMotion.addEventListener('change', () => photoCarousels.forEach(carousel => carousel.resetForMotionPreference()));
+reducedMotion.addEventListener('change', () => photoCarousels.forEach(carousel => carousel.syncTimer()));
