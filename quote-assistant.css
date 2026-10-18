@@ -1,0 +1,493 @@
+.quote-assistant[hidden],
+.quote-assistant-panel[hidden],
+.quote-assistant-review[hidden],
+.quote-assistant-actions[hidden],
+.quote-assistant-review-actions[hidden],
+.quote-assistant-back[hidden] {
+  display: none !important;
+}
+
+.quote-assistant {
+  position: fixed;
+  z-index: 120;
+  right: max(18px, env(safe-area-inset-right));
+  bottom: max(18px, env(safe-area-inset-bottom));
+  pointer-events: none;
+  font-family: var(--font-body, "DM Sans", Arial, sans-serif);
+}
+
+.quote-assistant-toggle,
+.quote-assistant-panel {
+  pointer-events: auto;
+}
+
+.quote-assistant-toggle {
+  display: inline-flex;
+  min-width: 128px;
+  min-height: 54px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 0 18px;
+  border: 1px solid rgba(215, 238, 255, .48);
+  border-radius: 17px;
+  color: #fff;
+  background: linear-gradient(135deg, #21baff, #0868fb);
+  box-shadow: 0 12px 32px rgba(0, 76, 190, .38), inset 0 1px 0 rgba(255, 255, 255, .38);
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+  touch-action: manipulation;
+}
+
+.quote-assistant-toggle:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 36px rgba(0, 76, 190, .48), inset 0 1px 0 rgba(255, 255, 255, .42);
+}
+
+.quote-assistant-toggle[aria-expanded="true"] {
+  background: #12304d;
+}
+
+.quote-assistant-toggle svg,
+.quote-assistant-close svg,
+.quote-assistant-whatsapp svg {
+  width: 21px;
+  height: 21px;
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.quote-assistant-panel {
+  position: absolute;
+  right: 0;
+  bottom: calc(100% + 12px);
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  width: min(390px, calc(100vw - 32px));
+  max-height: min(620px, calc(100vh - 120px));
+  max-height: min(620px, calc(100dvh - 120px));
+  overflow: hidden;
+  border: 1px solid rgba(196, 223, 255, .2);
+  border-radius: 20px;
+  color: var(--text, #edf5ff);
+  background: rgba(11, 25, 43, .98);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, .48), 0 0 36px rgba(8, 123, 255, .12);
+  backdrop-filter: blur(18px);
+  transform-origin: right bottom;
+}
+
+.quote-assistant-panel:not([hidden]) {
+  animation: quote-assistant-enter .18s ease-out both;
+}
+
+@keyframes quote-assistant-enter {
+  from { opacity: 0; transform: translateY(8px) scale(.985); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.quote-assistant-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 70px;
+  padding: 13px 14px 13px 18px;
+  border-bottom: 1px solid rgba(196, 223, 255, .12);
+  background: linear-gradient(110deg, rgba(9, 43, 78, .72), rgba(12, 31, 52, .62));
+}
+
+.quote-assistant-header h2 {
+  margin: 0 0 3px;
+  font-family: var(--font-head, "DM Sans", Arial, sans-serif);
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -.025em;
+}
+
+.quote-assistant-header p {
+  margin: 0;
+  color: #b7cadf;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.quote-assistant-close {
+  display: grid;
+  width: 44px;
+  height: 44px;
+  flex: none;
+  place-items: center;
+  border: 1px solid rgba(196, 223, 255, .14);
+  border-radius: 13px;
+  color: #dbeaff;
+  background: rgba(255, 255, 255, .045);
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: background .18s ease, color .18s ease;
+}
+
+.quote-assistant-close:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, .12);
+}
+
+.quote-assistant-content {
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 15px 17px 17px;
+  scrollbar-color: rgba(135, 177, 220, .45) transparent;
+  scrollbar-width: thin;
+}
+
+.quote-assistant-progress {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 9px;
+  color: #dcecff;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.quote-assistant-progress-context {
+  color: #91a9c4;
+  font-size: 12px;
+  font-weight: 500;
+  text-align: right;
+}
+
+.quote-assistant-progress-track {
+  height: 4px;
+  margin-bottom: 17px;
+  overflow: hidden;
+  border-radius: 9px;
+  background: rgba(189, 218, 248, .13);
+}
+
+.quote-assistant-progress-track span {
+  display: block;
+  width: 33.333%;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #21baff, #087bff);
+  transition: width .2s ease;
+}
+
+.quote-assistant-form {
+  display: grid;
+  gap: 13px;
+}
+
+.quote-assistant-form fieldset {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.quote-assistant-form legend,
+.quote-assistant-review h3 {
+  display: block;
+  width: 100%;
+  margin: 0 0 5px;
+  padding: 0;
+  color: #f1f7ff;
+  font-family: var(--font-head, "DM Sans", Arial, sans-serif);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -.025em;
+}
+
+.quote-assistant-hint,
+.quote-assistant-review > p {
+  margin: 0 0 12px;
+  color: #aebfd3;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.quote-assistant-options {
+  display: grid;
+  gap: 7px;
+}
+
+.quote-assistant-choice {
+  display: flex;
+  min-height: 44px;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 11px;
+  border: 1px solid rgba(196, 223, 255, .14);
+  border-radius: 12px;
+  color: #e3efff;
+  background: rgba(255, 255, 255, .035);
+  font-size: 13px;
+  line-height: 1.35;
+  cursor: pointer;
+  transition: border-color .16s ease, background .16s ease;
+}
+
+.quote-assistant-choice:hover {
+  border-color: rgba(87, 184, 255, .5);
+  background: rgba(49, 143, 224, .1);
+}
+
+.quote-assistant-choice.is-selected {
+  border-color: rgba(73, 183, 255, .82);
+  background: rgba(18, 116, 207, .2);
+  color: #fff;
+}
+
+.quote-assistant-choice input {
+  width: 17px;
+  height: 17px;
+  flex: none;
+  margin: 0;
+  accent-color: #28aeff;
+}
+
+.quote-assistant-review h3 {
+  margin-bottom: 6px;
+}
+
+.quote-assistant-summary {
+  display: grid;
+  gap: 7px;
+  margin: 0 0 14px;
+}
+
+.quote-assistant-summary-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 8px 12px;
+  padding: 9px 11px;
+  border: 1px solid rgba(196, 223, 255, .12);
+  border-radius: 11px;
+  background: rgba(255, 255, 255, .035);
+}
+
+.quote-assistant-summary-row div {
+  min-width: 0;
+}
+
+.quote-assistant-summary-row dt {
+  margin-bottom: 2px;
+  color: #92aac4;
+  font-size: 12px;
+}
+
+.quote-assistant-summary-row dd {
+  margin: 0;
+  color: #f0f6ff;
+  font-size: 13px;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+
+.quote-assistant-edit,
+.quote-assistant-reset {
+  min-height: 44px;
+  padding: 0 8px;
+  border: 0;
+  border-radius: 8px;
+  color: #79caff;
+  background: transparent;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.quote-assistant-edit:hover,
+.quote-assistant-reset:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, .07);
+}
+
+.quote-assistant-review label {
+  display: block;
+  margin-bottom: 6px;
+  color: #dcecff;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.quote-assistant-review textarea {
+  display: block;
+  width: 100%;
+  min-height: 64px;
+  resize: vertical;
+  padding: 9px 10px;
+  border: 1px solid rgba(196, 223, 255, .2);
+  border-radius: 10px;
+  outline: none;
+  color: #f0f6ff;
+  background: rgba(4, 15, 28, .62);
+  font: inherit;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.quote-assistant-review textarea:focus-visible {
+  border-color: #47bdff;
+  outline: 2px solid #47bdff;
+  outline-offset: 2px;
+}
+
+.quote-assistant-count {
+  display: block;
+  margin-top: 4px;
+  color: #8fa7c0;
+  font-size: 12px;
+  text-align: right;
+}
+
+.quote-assistant-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 9px;
+}
+
+.quote-assistant-back,
+.quote-assistant-next,
+.quote-assistant-whatsapp {
+  display: inline-flex;
+  min-height: 46px;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 0 15px;
+  border-radius: 11px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.quote-assistant-back {
+  border: 1px solid rgba(196, 223, 255, .18);
+  color: #c4d8ef;
+  background: rgba(255, 255, 255, .04);
+}
+
+.quote-assistant-back:hover {
+  background: rgba(255, 255, 255, .09);
+}
+
+.quote-assistant-next {
+  min-width: 126px;
+  margin-left: auto;
+  border: 1px solid rgba(255, 255, 255, .22);
+  color: #fff;
+  background: linear-gradient(135deg, #1aa9ff, #0868fb);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .25);
+}
+
+.quote-assistant-next:disabled {
+  border-color: rgba(196, 223, 255, .1);
+  color: #849bb4;
+  background: #18314b;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+.quote-assistant-review-actions {
+  display: grid;
+  justify-items: stretch;
+  gap: 7px;
+}
+
+.quote-assistant-whatsapp {
+  min-height: 48px;
+  border: 1px solid rgba(255, 255, 255, .3);
+  color: #fff;
+  background: linear-gradient(135deg, #1aa9ff, #0868fb);
+  text-align: center;
+}
+
+.quote-assistant-whatsapp:hover {
+  background: linear-gradient(135deg, #39baff, #1177ff);
+}
+
+.quote-assistant-whatsapp svg {
+  width: 18px;
+  height: 18px;
+}
+
+.quote-assistant-review-actions > p {
+  margin: 0;
+  color: #9db2c9;
+  font-size: 12px;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.quote-assistant-reset {
+  justify-self: center;
+}
+
+.quote-assistant :where(button, a, input, textarea):focus-visible {
+  outline: 2px solid #8cdaff;
+  outline-offset: 3px;
+}
+
+@media (max-width: 600px) {
+  .quote-assistant {
+    right: max(12px, env(safe-area-inset-right));
+    bottom: max(14px, env(safe-area-inset-bottom));
+  }
+
+  .quote-assistant-toggle {
+    min-width: 108px;
+    min-height: 50px;
+    padding-inline: 14px;
+    border-radius: 15px;
+    font-size: 13px;
+  }
+
+  .quote-assistant-panel {
+    width: min(390px, calc(100vw - 24px));
+    max-height: min(64vh, 460px);
+    max-height: min(64dvh, 460px);
+    bottom: calc(100% + 10px);
+    border-radius: 18px;
+  }
+
+  .quote-assistant-header {
+    min-height: 64px;
+    padding: 10px 11px 10px 15px;
+  }
+
+  .quote-assistant-content {
+    padding: 13px 14px 14px;
+  }
+}
+
+@media (max-height: 560px) {
+  .quote-assistant-panel {
+    max-height: min(58vh, 390px);
+    max-height: min(58dvh, 390px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .quote-assistant-panel:not([hidden]) {
+    animation: none;
+  }
+
+  .quote-assistant-toggle,
+  .quote-assistant-progress-track span,
+  .quote-assistant-choice,
+  .quote-assistant-close {
+    transition: none;
+  }
+}
