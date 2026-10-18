@@ -2,6 +2,14 @@
   background: #091a2d url('assets/mi-pagina-cr-logo.svg') center / cover no-repeat;
 }
 
+.page-top-anchor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
+}
+
 .art-logo-card { background: #091a2d; }
 .art-logo-card img { object-fit: contain; }
 
