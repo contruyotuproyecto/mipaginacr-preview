@@ -1,0 +1,18 @@
+.brand-mark {
+  background: #091a2d url('assets/mi-pagina-cr-logo.svg') center / cover no-repeat;
+}
+
+.art-logo-card { background: #091a2d; }
+.art-logo-card img { object-fit: contain; }
+
+@media (min-width: 761px) and (max-width: 950px) {
+  .nav-shell { gap: 13px; }
+  .nav-links { gap: 9px; }
+  .nav-links a { font-size: 11px; }
+  .nav-cta { min-width: 110px; gap: 10px; }
+}
+
+@media (max-width: 600px) {
+  .brand { font-size: 14px; letter-spacing: -.06em; }
+  .brand-mark { width: 36px; height: 36px; }
+}

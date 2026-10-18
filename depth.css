@@ -1,0 +1,91 @@
+/* Decorative layers move independently of the readable content. */
+.hero-glow {
+  transform: translate3d(
+    calc(var(--depth-x, 0px) + var(--pointer-x, 0px)),
+    calc(var(--depth-y, 0px) + var(--pointer-y, 0px)),
+    0
+  ) scale(1.045);
+  transition: transform 650ms ease-out;
+}
+
+.hero-grid {
+  transform: translate3d(
+    calc(var(--depth-x-small, 0px) + var(--pointer-x-small, 0px)),
+    calc(var(--depth-y-small, 0px) + var(--pointer-y-small, 0px)),
+    0
+  ) scale(1.035);
+  transition: transform 850ms ease-out;
+}
+
+.services,
+.work,
+.ideas-section,
+.process,
+.quotes-section {
+  position: relative;
+  isolation: isolate;
+}
+
+.services::after,
+.work::after,
+.ideas-section::after,
+.process::after,
+.quotes-section::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: var(--depth-light);
+  opacity: .8;
+  transform: translate3d(var(--depth-x, 0px), var(--depth-y, 0px), 0);
+  transition: transform 250ms ease-out;
+}
+
+.services > *,
+.work > *,
+.ideas-section > *,
+.process > *,
+.quotes-section > * {
+  position: relative;
+  z-index: 1;
+}
+
+.services {
+  --depth-light: radial-gradient(ellipse 55% 42% at 12% 24%, rgba(22, 133, 240, .13), transparent 78%);
+}
+
+.work {
+  --depth-light: radial-gradient(ellipse 52% 50% at 85% 43%, rgba(45, 184, 219, .10), transparent 78%);
+}
+
+.ideas-section {
+  --depth-light: radial-gradient(ellipse 45% 48% at 13% 65%, rgba(32, 130, 237, .15), transparent 78%);
+}
+
+.process {
+  --depth-light: radial-gradient(ellipse 53% 55% at 84% 40%, rgba(39, 158, 255, .13), transparent 78%);
+}
+
+.quotes-section {
+  --depth-light: radial-gradient(ellipse 47% 44% at 18% 52%, rgba(35, 145, 244, .13), transparent 78%);
+}
+
+.contact-glow {
+  transform: translate3d(var(--depth-x, 0px), var(--depth-y, 0px), 0);
+  transition: transform 250ms ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-glow,
+  .hero-grid,
+  .services::after,
+  .work::after,
+  .ideas-section::after,
+  .process::after,
+  .quotes-section::after,
+  .contact-glow {
+    transform: none;
+    transition: none;
+  }
+}

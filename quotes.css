@@ -1,0 +1,123 @@
+.quotes-section {
+  position: relative;
+  isolation: isolate;
+  padding-block: 125px 105px;
+  border-block: 1px solid var(--line);
+  background: #0a1a2b;
+}
+
+.quotes-inner { position: relative; z-index: 1; }
+.quotes-section .section-heading h2 span { color: #6bccff; }
+
+.quotes-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.quote-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 565px;
+  padding: 28px;
+  overflow: hidden;
+  border: 1px solid rgba(148, 194, 239, .22);
+  border-radius: 24px;
+  background: linear-gradient(150deg, rgba(27, 58, 89, .9), rgba(11, 29, 49, .96) 58%);
+  box-shadow: 0 24px 65px rgba(1, 9, 20, .16);
+  transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+}
+
+.quote-card::before {
+  content: '';
+  position: absolute;
+  top: -120px;
+  right: -140px;
+  width: 390px;
+  height: 390px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--quote-glow), transparent 68%);
+  pointer-events: none;
+}
+
+.quote-card:hover,
+.quote-card:focus-within {
+  transform: translateY(-5px);
+  border-color: rgba(110, 199, 255, .53);
+  box-shadow: 0 30px 75px rgba(1, 9, 20, .28);
+}
+
+.quote-landing { --quote-glow: rgba(37, 155, 255, .27); }
+.quote-shop { --quote-glow: rgba(33, 203, 215, .2); }
+.quote-custom { --quote-glow: rgba(133, 126, 255, .22); }
+
+.quote-card-top,
+.quote-card-copy,
+.quote-specs,
+.quote-button { position: relative; z-index: 1; }
+
+.quote-card-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; }
+.quote-index { color: #8fc9f2; font-size: 10px; font-weight: 700; letter-spacing: .16em; }
+.quote-icon { color: #8cdcff; font-size: 35px; line-height: .75; }
+.quote-card-copy { margin-top: 72px; }
+.quote-card h3 { margin: 0 0 15px; font-family: var(--font-head); font-size: clamp(30px, 2.8vw, 40px); line-height: 1.04; letter-spacing: -.055em; }
+.quote-card-copy p { max-width: 35ch; margin: 0; color: #b6c9dc; font-size: 14px; line-height: 1.65; }
+.quote-specs { margin-top: 34px; padding-top: 22px; border-top: 1px solid rgba(178, 214, 250, .18); }
+.quote-specs > span { color: #7fcaff; font-size: 10px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; }
+.quote-specs ul { display: grid; gap: 11px; margin: 17px 0 30px; padding: 0; list-style: none; }
+.quote-specs li { position: relative; padding-left: 19px; color: #d5e3f1; font-size: 13px; line-height: 1.42; }
+.quote-specs li::before { content: ''; position: absolute; top: .5em; left: 0; width: 6px; height: 6px; border-radius: 50%; background: #56c5ff; box-shadow: 0 0 0 4px rgba(67, 180, 255, .12); }
+
+.quote-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  min-height: 53px;
+  margin-top: auto;
+  padding: 0 17px;
+  border: 1px solid rgba(154, 218, 255, .38);
+  border-radius: 12px;
+  background: rgba(41, 144, 244, .14);
+  color: #f1f9ff;
+  font-size: 13px;
+  font-weight: 700;
+  transition: background .2s ease, border-color .2s ease;
+}
+
+.quote-button:hover,
+.quote-button:focus-visible { border-color: #7fd0ff; background: #0d72dc; }
+.quote-button:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+.quote-button span { font-size: 20px; font-weight: 400; }
+.quotes-note { margin: 24px 0 0; color: #8fa9c2; font-size: 12px; line-height: 1.6; }
+
+@media (min-width: 761px) and (max-width: 1050px) {
+  .nav-links { gap: 12px; }
+  .quote-card { padding: 22px; }
+  .quote-card h3 { font-size: 30px; }
+}
+
+@media (max-width: 900px) {
+  .quotes-grid { grid-template-columns: 1fr; }
+  .quote-card { min-height: 0; }
+  .quote-card-copy { margin-top: 36px; }
+  .quote-specs ul { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 600px) {
+  .quotes-section { padding-block: 90px 75px; }
+  .quote-card { padding: 23px; border-radius: 21px; }
+  .quote-card-copy { margin-top: 43px; }
+  .quote-card h3 { font-size: 34px; }
+  .quote-specs ul { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .quote-card,
+  .quote-button { transition: none; }
+  .quote-card:hover,
+  .quote-card:focus-within { transform: none; }
+}
