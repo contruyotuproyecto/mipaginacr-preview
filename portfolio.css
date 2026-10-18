@@ -54,7 +54,7 @@
 
 .photo-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 18px;
   margin-top: 30px;
 }
@@ -76,12 +76,87 @@
   background: #102238;
 }
 
+.photo-media::after {
+  position: absolute;
+  inset: 38% 0 0;
+  z-index: 1;
+  background: linear-gradient(180deg, transparent, rgba(4, 14, 25, .56));
+  content: "";
+  pointer-events: none;
+}
+
 .photo-media img {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform .45s ease;
+}
+
+.photo-media img.is-changing {
+  animation: photo-slide-enter .38s ease both;
+}
+
+@keyframes photo-slide-enter {
+  from { opacity: .72; transform: scale(1.018); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.carousel-controls {
+  position: absolute;
+  inset-inline: 12px;
+  bottom: 12px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.carousel-controls[hidden] {
+  display: none;
+}
+
+.carousel-control {
+  display: inline-grid;
+  width: 44px;
+  height: 44px;
+  flex: 0 0 44px;
+  place-items: center;
+  border: 1px solid rgba(228, 243, 255, .52);
+  border-radius: 50%;
+  background: rgba(6, 20, 35, .82);
+  color: #f4f9ff;
+  font: 600 19px/1 "DM Sans", Arial, sans-serif;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  transition: background-color .18s ease, border-color .18s ease, transform .18s ease;
+}
+
+.carousel-control:hover {
+  transform: translateY(-2px);
+  border-color: #fff;
+  background: rgba(20, 84, 130, .95);
+}
+
+.carousel-control:focus-visible {
+  outline: 3px solid #91dcff;
+  outline-offset: 3px;
+}
+
+.carousel-count {
+  min-width: 66px;
+  padding: 8px 9px;
+  border: 1px solid rgba(228, 243, 255, .34);
+  border-radius: 999px;
+  background: rgba(6, 20, 35, .72);
+  color: #f4f9ff;
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-align: center;
+  backdrop-filter: blur(8px);
 }
 
 .photo-card:hover .photo-media img {
@@ -224,14 +299,29 @@
   }
 }
 
+@media (min-width: 761px) and (max-width: 1080px) {
+  .photo-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .service-photo-link,
   .photo-media img,
-  .motion-toggle {
+  .motion-toggle,
+  .carousel-control {
     transition: none;
   }
 
+  .photo-media img.is-changing {
+    animation: none;
+  }
+
   .photo-card:hover .photo-media img {
+    transform: none;
+  }
+
+  .carousel-control:hover {
     transform: none;
   }
 }

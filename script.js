@@ -173,3 +173,125 @@ reducedMotion.addEventListener('change', () => {
   clearDepthMotion();
   scheduleDepth();
 });
+
+const photoCarousels = [...document.querySelectorAll('[data-carousel]')].map(media => {
+  const image = media.querySelector('[data-carousel-image]');
+  const template = media.parentElement.querySelector('template[data-carousel-slides]');
+  const controls = media.querySelector('.carousel-controls');
+  const previousButton = media.querySelector('[data-carousel-previous]');
+  const nextButton = media.querySelector('[data-carousel-next]');
+  const toggleButton = media.querySelector('[data-carousel-toggle]');
+  const icon = media.querySelector('[data-carousel-icon]');
+  const counter = media.querySelector('[data-carousel-count]');
+  const label = media.dataset.carouselLabel || 'fotografía';
+
+  if (!image || !template || !controls || !previousButton || !nextButton || !toggleButton || !icon || !counter) return null;
+
+  const slides = [
+    { src: image.getAttribute('src'), alt: image.alt },
+    ...[...template.content.querySelectorAll('img')].map(slide => ({
+      src: slide.getAttribute('src'),
+      alt: slide.alt
+    }))
+  ].filter(slide => slide.src);
+
+  if (slides.length < 2) return null;
+
+  let index = 0;
+  let timer = 0;
+  let animationTimer = 0;
+  let inView = !('IntersectionObserver' in window);
+  let manualMode = reducedMotion.matches ? 'paused' : 'auto';
+  const loadedSlides = new Map();
+
+  function shouldRun() {
+    return inView && !document.hidden && (manualMode === 'play' || (manualMode === 'auto' && !reducedMotion.matches));
+  }
+
+  function preload(slideIndex) {
+    if (loadedSlides.has(slideIndex)) return;
+    const request = new Image();
+    request.src = slides[slideIndex].src;
+    loadedSlides.set(slideIndex, request);
+  }
+
+  function showSlide(nextIndex) {
+    index = (nextIndex + slides.length) % slides.length;
+    const slide = slides[index];
+    image.classList.remove('is-changing');
+    image.src = slide.src;
+    image.alt = slide.alt;
+    void image.offsetWidth;
+    image.classList.add('is-changing');
+    window.clearTimeout(animationTimer);
+    animationTimer = window.setTimeout(() => image.classList.remove('is-changing'), 450);
+    counter.textContent = `${String(index + 1).padStart(2, '0')} / ${String(slides.length).padStart(2, '0')}`;
+    preload((index + 1) % slides.length);
+  }
+
+  function stopTimer() {
+    if (!timer) return;
+    window.clearInterval(timer);
+    timer = 0;
+  }
+
+  function syncTimer() {
+    const running = shouldRun();
+    toggleButton.setAttribute('aria-pressed', String(running));
+    toggleButton.setAttribute('aria-label', `${running ? 'Pausar' : 'Iniciar'} reproducción automática de ${label}`);
+    icon.textContent = running ? 'Ⅱ' : '▶';
+
+    if (running && !timer) timer = window.setInterval(() => showSlide(index + 1), 3000);
+    else if (!running) stopTimer();
+  }
+
+  function restartTimer() {
+    stopTimer();
+    syncTimer();
+  }
+
+  if (inView) preload((index + 1) % slides.length);
+  controls.hidden = false;
+  counter.textContent = `01 / ${String(slides.length).padStart(2, '0')}`;
+
+  previousButton.addEventListener('click', () => {
+    showSlide(index - 1);
+    restartTimer();
+  });
+  nextButton.addEventListener('click', () => {
+    showSlide(index + 1);
+    restartTimer();
+  });
+  toggleButton.addEventListener('click', () => {
+    manualMode = shouldRun() ? 'paused' : 'play';
+    syncTimer();
+  });
+
+  syncTimer();
+
+  return {
+    media,
+    setInView(value) {
+      inView = value;
+      if (value) preload((index + 1) % slides.length);
+      syncTimer();
+    },
+    syncTimer,
+    stopTimer,
+    resetForMotionPreference() {
+      if (reducedMotion.matches) manualMode = 'paused';
+      syncTimer();
+    }
+  };
+}).filter(Boolean);
+
+if ('IntersectionObserver' in window && photoCarousels.length) {
+  const carouselByElement = new Map(photoCarousels.map(carousel => [carousel.media, carousel]));
+  const carouselObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => carouselByElement.get(entry.target)?.setInView(entry.isIntersecting));
+  }, { threshold: 0.15 });
+  photoCarousels.forEach(carousel => carouselObserver.observe(carousel.media));
+}
+
+document.addEventListener('visibilitychange', () => photoCarousels.forEach(carousel => carousel.syncTimer()));
+reducedMotion.addEventListener('change', () => photoCarousels.forEach(carousel => carousel.resetForMotionPreference()));
