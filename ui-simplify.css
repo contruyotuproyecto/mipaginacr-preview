@@ -96,12 +96,6 @@
   font-weight: 700;
 }
 
-.ideas-disclosure-copy small {
-  color: #9fb4c9;
-  font-size: 12px;
-  line-height: 1.4;
-}
-
 .ideas-disclosure-action {
   display: inline-flex;
   min-height: 44px;
