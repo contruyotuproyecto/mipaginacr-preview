@@ -203,7 +203,7 @@
   height: 42px;
   flex: none;
   border-radius: 13px;
-  background: #fff url("assets/mi-pagina-cr-logo.svg") center 37% / 285% no-repeat;
+  background: #091a2d url("assets/mi-pagina-cr-logo.svg") center / 100% 100% no-repeat;
   box-shadow: 0 4px 18px rgba(2, 136, 255, .2);
 }
 
