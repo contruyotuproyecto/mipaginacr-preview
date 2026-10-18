@@ -88,20 +88,29 @@
   transform: scale(1.035);
 }
 
-.photo-demo-tag {
+.section-anchor {
   position: absolute;
-  top: 13px;
-  left: 13px;
-  max-width: calc(100% - 26px);
-  padding: 7px 10px;
-  border: 1px solid rgba(255, 255, 255, .25);
-  border-radius: 999px;
-  background: rgba(5, 17, 29, .78);
-  color: #f1f8ff;
-  font-size: 11px;
-  font-weight: 600;
-  line-height: 1.3;
-  backdrop-filter: blur(10px);
+  top: 0;
+  left: 0;
+  scroll-margin-top: 110px;
+}
+
+.quote-gallery-link {
+  display: inline-block;
+  min-height: 44px;
+  margin-top: 7px;
+  color: #9edaff;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: rgba(158, 218, 255, .55);
+  text-underline-offset: 4px;
+}
+
+.quote-gallery-link:hover,
+.quote-gallery-link:focus-visible {
+  color: #fff;
+  text-decoration-color: currentColor;
 }
 
 .photo-card figcaption {
