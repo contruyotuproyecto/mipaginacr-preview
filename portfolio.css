@@ -302,6 +302,7 @@
 
 .perfume-feature-label {
   position: absolute;
+  z-index: 2;
   right: 3cqw;
   bottom: 3cqw;
   display: flex;
