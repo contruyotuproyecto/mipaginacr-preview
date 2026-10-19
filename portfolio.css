@@ -98,6 +98,15 @@
   object-fit: contain;
 }
 
+.project-anime .project-visual {
+  background: #1b1420;
+}
+
+.project-anime .project-shot {
+  object-fit: cover;
+  object-position: center 40%;
+}
+
 .perfume-visual {
   display: flex;
   padding: 1.4%;
