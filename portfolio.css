@@ -48,7 +48,7 @@
 }
 
 .work-grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   grid-auto-rows: 1fr;
   align-items: stretch;
 }
@@ -88,6 +88,14 @@
 
 .work-grid .project-info {
   flex: 1;
+}
+
+.project-therian .project-visual {
+  background: #d7d9df;
+}
+
+.project-therian .project-shot {
+  object-fit: contain;
 }
 
 .photo-card {
