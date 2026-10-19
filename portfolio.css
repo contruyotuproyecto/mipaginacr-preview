@@ -104,7 +104,7 @@
 
 .project-anime .project-shot {
   object-fit: cover;
-  object-position: center 18%;
+  object-position: center top;
 }
 
 .perfume-visual {
