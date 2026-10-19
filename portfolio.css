@@ -98,6 +98,183 @@
   object-fit: contain;
 }
 
+.work-grid > .project-card:nth-child(odd):last-child {
+  grid-column: 1 / -1;
+  width: calc((100% - 24px) / 2);
+  justify-self: center;
+}
+
+.clima-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  container-type: inline-size;
+  background: radial-gradient(ellipse at 85% 8%, rgba(35, 157, 255, .25), transparent 36%), radial-gradient(ellipse at 12% 100%, rgba(16, 108, 204, .22), transparent 44%), linear-gradient(130deg, #071322, #0b1a30 58%, #0d2440);
+}
+
+.clima-preview {
+  position: relative;
+  display: flex;
+  width: 91%;
+  height: 88%;
+  flex-direction: column;
+  gap: 2.2cqw;
+  padding: 3.2cqw;
+  overflow: hidden;
+  border: 1px solid rgba(174, 211, 255, .14);
+  border-radius: clamp(12px, 2.4cqw, 22px);
+  background: linear-gradient(145deg, rgba(18, 34, 57, .96), rgba(10, 22, 40, .98));
+  box-shadow: 0 20px 45px rgba(0, 0, 0, .3), inset 0 1px rgba(255, 255, 255, .04);
+}
+
+.clima-header {
+  display: flex;
+  align-items: center;
+  gap: 1.3cqw;
+  min-height: 7cqw;
+}
+
+.clima-logo-icon,
+.clima-weather-icon {
+  display: grid;
+  flex: none;
+  place-items: center;
+  border: 1px solid rgba(114, 197, 255, .2);
+  background: linear-gradient(145deg, rgba(48, 160, 255, .32), rgba(31, 86, 145, .22));
+  box-shadow: 0 6px 20px rgba(14, 133, 255, .14);
+}
+
+.clima-logo-icon {
+  width: 7cqw;
+  aspect-ratio: 1;
+  border-radius: 1.8cqw;
+}
+
+.clima-logo-icon svg,
+.clima-weather-icon svg { width: 66%; }
+.clima-header > strong {
+  color: #f3f8ff;
+  font-size: clamp(14px, 3.6cqw, 23px);
+  letter-spacing: -.05em;
+}
+
+.clima-units,
+.clima-location {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 6.5cqw;
+  border: 1px solid rgba(184, 207, 239, .12);
+  border-radius: 1.5cqw;
+  background: rgba(8, 18, 34, .55);
+  color: #d9e7f8;
+  font-size: clamp(8px, 1.7cqw, 11px);
+}
+
+.clima-units {
+  gap: 1.1cqw;
+  margin-left: auto;
+  padding-inline: 2.1cqw;
+}
+
+.clima-units b { color: #a6bdd6; font-size: 1.4em; font-weight: 500; }
+.clima-location {
+  width: 6.5cqw;
+  color: #9edcff;
+  font-size: clamp(12px, 2.5cqw, 17px);
+}
+
+.clima-search-row {
+  display: flex;
+  align-items: stretch;
+  gap: 1.3cqw;
+  min-height: 8cqw;
+}
+
+.clima-search-field,
+.clima-search-button {
+  display: flex;
+  align-items: center;
+  border: 1px solid rgba(174, 211, 255, .12);
+  border-radius: 1.6cqw;
+  background: rgba(20, 34, 55, .78);
+  color: #aebfd4;
+  font-size: clamp(8px, 1.8cqw, 12px);
+}
+
+.clima-search-field {
+  flex: 1;
+  gap: 1.2cqw;
+  min-width: 0;
+  padding-inline: 2cqw;
+}
+
+.clima-search-field b { color: #b7d6f7; font-size: 1.5em; font-weight: 500; }
+.clima-search-button {
+  gap: .8cqw;
+  padding-inline: 2.2cqw;
+  border-color: rgba(117, 195, 255, .5);
+  background: linear-gradient(120deg, #29b5ff, #3475f4);
+  box-shadow: 0 6px 20px rgba(25, 132, 255, .2);
+  color: #fff;
+  font-weight: 700;
+}
+
+.clima-welcome {
+  position: relative;
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.1cqw;
+  padding: 1.5cqw 3cqw;
+  overflow: hidden;
+  border: 1px solid rgba(174, 211, 255, .12);
+  border-radius: clamp(12px, 2cqw, 19px);
+  background: radial-gradient(ellipse at 50% 0%, rgba(34, 98, 159, .16), transparent 62%), rgba(8, 19, 35, .34);
+  color: #aebfd4;
+  text-align: center;
+}
+
+.clima-weather-icon {
+  width: 8cqw;
+  aspect-ratio: 1;
+  margin-bottom: .5cqw;
+  border-radius: 2cqw;
+}
+
+.clima-welcome > strong {
+  color: #edf5ff;
+  font-size: clamp(14px, 3.9cqw, 26px);
+  line-height: 1.15;
+  letter-spacing: -.04em;
+}
+
+.clima-welcome > span:not(.clima-weather-icon) {
+  font-size: clamp(8px, 1.7cqw, 11px);
+}
+
+.clima-cities {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: .8cqw;
+  margin-top: .7cqw;
+}
+
+.clima-cities i {
+  padding: .9cqw 1.5cqw;
+  border: 1px solid rgba(176, 204, 239, .13);
+  border-radius: 999px;
+  background: rgba(189, 211, 244, .055);
+  color: #dbe8f8;
+  font-size: clamp(7px, 1.4cqw, 9px);
+  font-style: normal;
+  white-space: nowrap;
+}
+
 .photo-card {
   min-width: 0;
   margin: 0;
@@ -171,6 +348,11 @@
 @media (max-width: 760px) {
   .work-grid {
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  .work-grid > .project-card:nth-child(odd):last-child {
+    grid-column: auto;
+    width: auto;
   }
 }
 
