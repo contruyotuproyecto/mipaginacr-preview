@@ -4,8 +4,10 @@
     calc(var(--depth-x, 0px) + var(--pointer-x, 0px)),
     calc(var(--depth-y, 0px) + var(--pointer-y, 0px)),
     0
-  ) scale(1.045);
+  ) scale(1.12);
   transition: transform 650ms ease-out;
+  animation: hero-glow-drift 18s ease-in-out infinite alternate;
+  will-change: transform, translate;
 }
 
 .hero-grid {
@@ -13,8 +15,10 @@
     calc(var(--depth-x-small, 0px) + var(--pointer-x-small, 0px)),
     calc(var(--depth-y-small, 0px) + var(--pointer-y-small, 0px)),
     0
-  ) scale(1.035);
+  ) scale(1.05);
   transition: transform 850ms ease-out;
+  animation: depth-drift-reverse 26s ease-in-out infinite alternate;
+  will-change: transform, translate;
 }
 
 .services,
@@ -83,30 +87,50 @@
   transition: transform 250ms ease-out;
 }
 
-/* Gentle idle drift makes the depth visible even when the page is still. */
-.hero-glow,
+/* Idle drift keeps the decorative light moving when the page is still. */
 .services::after,
 .photo-showcase::after,
 .ideas-section::after,
 .quotes-section::after,
 .contact-glow {
-  animation: depth-drift 26s ease-in-out infinite alternate;
+  animation: depth-drift 24s ease-in-out infinite alternate;
 }
 
-.hero-grid,
 .work::after,
 .process::after {
-  animation: depth-drift-reverse 30s ease-in-out infinite alternate;
+  animation: depth-drift-reverse 28s ease-in-out infinite alternate;
+}
+
+@keyframes hero-glow-drift {
+  from { translate: -42px -24px; }
+  to { translate: 42px 24px; }
 }
 
 @keyframes depth-drift {
-  from { translate: -12px -7px; }
-  to { translate: 12px 7px; }
+  from { translate: -16px -9px; }
+  to { translate: 16px 9px; }
 }
 
 @keyframes depth-drift-reverse {
-  from { translate: 10px -6px; }
-  to { translate: -10px 6px; }
+  from { translate: 14px -8px; }
+  to { translate: -14px 8px; }
+}
+
+@media (max-width: 600px) {
+  .hero-glow {
+    transform: translate3d(
+      calc(var(--depth-x, 0px) + var(--pointer-x, 0px)),
+      calc(var(--depth-y, 0px) + var(--pointer-y, 0px)),
+      0
+    ) scale(1.22);
+    animation-name: hero-glow-drift-mobile;
+    animation-duration: 20s;
+  }
+
+  @keyframes hero-glow-drift-mobile {
+    from { translate: -24px -16px; }
+    to { translate: 24px 16px; }
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
