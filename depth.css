@@ -1,13 +1,39 @@
 /* Decorative layers move independently of the readable content. */
 .hero-glow {
+  overflow: hidden;
   transform: translate3d(
     calc(var(--depth-x, 0px) + var(--pointer-x, 0px)),
     calc(var(--depth-y, 0px) + var(--pointer-y, 0px)),
     0
   ) scale(1.12);
   transition: transform 650ms ease-out;
-  animation: hero-glow-drift 18s ease-in-out infinite alternate;
-  will-change: transform, translate;
+  will-change: transform;
+}
+
+.hero-glow::before,
+.hero-glow::after {
+  content: '';
+  position: absolute;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+.hero-glow::before {
+  top: -7%;
+  left: 38%;
+  width: min(66vw, 900px);
+  height: min(76vh, 760px);
+  background: radial-gradient(ellipse at center, rgba(0, 128, 255, .30) 0%, rgba(0, 128, 255, .16) 38%, transparent 73%);
+  animation: ambient-blue-glow 14s ease-in-out infinite alternate;
+}
+
+.hero-glow::after {
+  top: 24%;
+  left: 24%;
+  width: min(56vw, 760px);
+  height: min(64vh, 640px);
+  background: radial-gradient(ellipse at center, rgba(18, 202, 255, .22) 0%, rgba(18, 202, 255, .11) 40%, transparent 74%);
+  animation: ambient-cyan-glow 18s ease-in-out infinite alternate;
 }
 
 .hero-grid {
@@ -101,9 +127,14 @@
   animation: depth-drift-reverse 28s ease-in-out infinite alternate;
 }
 
-@keyframes hero-glow-drift {
-  from { translate: -42px -24px; }
-  to { translate: 42px 24px; }
+@keyframes ambient-blue-glow {
+  from { transform: translate3d(-8vw, -2vh, 0) scale(.92); opacity: .62; }
+  to { transform: translate3d(5vw, 5vh, 0) scale(1.08); opacity: .96; }
+}
+
+@keyframes ambient-cyan-glow {
+  from { transform: translate3d(6vw, 4vh, 0) scale(.9); opacity: .48; }
+  to { transform: translate3d(-5vw, -4vh, 0) scale(1.08); opacity: .84; }
 }
 
 @keyframes depth-drift {
@@ -123,18 +154,29 @@
       calc(var(--depth-y, 0px) + var(--pointer-y, 0px)),
       0
     ) scale(1.22);
-    animation-name: hero-glow-drift-mobile;
-    animation-duration: 20s;
   }
 
-  @keyframes hero-glow-drift-mobile {
-    from { translate: -24px -16px; }
-    to { translate: 24px 16px; }
+  .hero-glow::before {
+    top: 2%;
+    left: 16%;
+    width: 94vw;
+    height: 48vh;
+    animation-duration: 16s;
+  }
+
+  .hero-glow::after {
+    top: 31%;
+    left: -8%;
+    width: 92vw;
+    height: 43vh;
+    animation-duration: 20s;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .hero-glow,
+  .hero-glow::before,
+  .hero-glow::after,
   .hero-grid,
   .services::after,
   .work::after,
