@@ -98,6 +98,224 @@
   object-fit: contain;
 }
 
+.perfume-visual {
+  display: flex;
+  padding: 1.4%;
+  background: linear-gradient(135deg, #30242c, #49323c);
+}
+
+.perfume-preview {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  flex-direction: column;
+  overflow: hidden;
+  container-type: inline-size;
+  border: 1px solid rgba(255, 248, 243, .24);
+  border-radius: clamp(10px, 1.7cqw, 16px);
+  background: #f5eee8;
+  box-shadow: 0 16px 38px rgba(0, 0, 0, .2);
+  color: #342730;
+}
+
+.perfume-navigation {
+  display: flex;
+  min-height: 15%;
+  align-items: center;
+  gap: 1.5cqw;
+  padding: 1.5cqw 3cqw;
+  border-bottom: 1px solid rgba(68, 45, 55, .1);
+  background: #fbf8f5;
+}
+
+.perfume-mark {
+  display: grid;
+  width: 6.4cqw;
+  aspect-ratio: 1;
+  flex: none;
+  place-items: center;
+  border-radius: 50%;
+  background: #792f49;
+  color: #fff8f4;
+}
+
+.perfume-mark svg { width: 61%; height: 61%; }
+
+.perfume-brand {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: .45cqw;
+}
+
+.perfume-brand strong {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 3cqw;
+  line-height: 1;
+}
+
+.perfume-brand small {
+  color: #7b6a72;
+  font-size: 1.25cqw;
+  letter-spacing: .12em;
+}
+
+.perfume-navigation-links {
+  margin-left: auto;
+  color: #66545e;
+  font-size: 1.65cqw;
+  white-space: nowrap;
+}
+
+.perfume-hero {
+  display: grid;
+  min-height: 0;
+  flex: 1;
+  grid-template-columns: 1fr .92fr;
+  background: #30252e;
+  color: #fbf4f0;
+}
+
+.perfume-hero-copy {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 2.2cqw;
+  padding: 5cqw;
+}
+
+.perfume-hero-copy > small {
+  color: #e3cdbf;
+  font-size: 1.55cqw;
+  font-weight: 700;
+  letter-spacing: .16em;
+}
+
+.perfume-hero-copy > strong {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(24px, 7.2cqw, 44px);
+  font-weight: 500;
+  letter-spacing: -.055em;
+  line-height: .96;
+}
+
+.perfume-hero-copy > strong em {
+  color: #e8bfd0;
+  font-weight: 500;
+}
+
+.perfume-hero-copy > span {
+  max-width: 88%;
+  color: #e3d8d9;
+  font-size: 2.05cqw;
+  line-height: 1.35;
+}
+
+.perfume-hero-copy > b {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.6cqw;
+  padding: 1.8cqw 2.8cqw;
+  background: #f8f0ec;
+  color: #593444;
+  font-size: 1.7cqw;
+}
+
+.perfume-hero-copy > b i { font-size: 1.9em; font-style: normal; }
+
+.perfume-stage {
+  position: relative;
+  display: grid;
+  min-width: 0;
+  min-height: 0;
+  margin: 1.2cqw;
+  overflow: hidden;
+  place-items: center;
+  border-radius: clamp(8px, 1.5cqw, 14px);
+  background: radial-gradient(ellipse at 50% 42%, rgba(229, 199, 209, .82), transparent 50%), #f0e7df;
+}
+
+.perfume-stage::before {
+  position: absolute;
+  width: 63%;
+  aspect-ratio: 1;
+  border: 1px solid rgba(133, 79, 98, .14);
+  border-radius: 50%;
+  content: "";
+}
+
+.perfume-flacon {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  width: 31%;
+  height: 62%;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, .8);
+  border-radius: 18% 18% 14% 14% / 12% 12% 8% 8%;
+  background: linear-gradient(105deg, rgba(244, 253, 255, .88), rgba(171, 213, 222, .96) 37%, rgba(117, 178, 197, .94) 72%, rgba(221, 240, 240, .96));
+  box-shadow: 9px 13px 24px rgba(55, 46, 58, .2), inset 5px 0 9px rgba(255, 255, 255, .5), inset -5px 0 9px rgba(49, 92, 109, .12);
+  transform: perspective(500px) rotateY(-8deg);
+}
+
+.perfume-flacon-neck {
+  position: absolute;
+  top: -7%;
+  left: 38%;
+  width: 24%;
+  height: 12%;
+  border: 1px solid rgba(255, 255, 255, .7);
+  background: linear-gradient(90deg, #b9dce0, #edf5ef 50%, #9ec8d0);
+}
+
+.perfume-flacon-cap {
+  position: absolute;
+  top: -19%;
+  left: 34%;
+  width: 32%;
+  height: 15%;
+  border: 1px solid rgba(255, 255, 255, .68);
+  border-radius: 18% 18% 6% 6%;
+  background: linear-gradient(90deg, #b9d5d9, #fbf8f0 46%, #a6c8ce);
+  box-shadow: 0 3px 7px rgba(53, 71, 82, .16);
+}
+
+.perfume-flacon-label {
+  display: flex;
+  width: 86%;
+  min-height: 39%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: .6cqw;
+  border: 1px solid rgba(255, 255, 255, .7);
+  background: rgba(242, 250, 247, .62);
+  color: #465f68;
+  text-align: center;
+}
+
+.perfume-flacon-label small { font-size: 1.2cqw; letter-spacing: .14em; }
+.perfume-flacon-label strong { font-size: 2.15cqw; letter-spacing: .08em; }
+
+.perfume-feature-label {
+  position: absolute;
+  right: 3cqw;
+  bottom: 3cqw;
+  display: flex;
+  flex-direction: column;
+  gap: .6cqw;
+  padding: 1.5cqw 2.2cqw;
+  background: rgba(255, 253, 250, .94);
+  box-shadow: 0 5px 18px rgba(46, 34, 42, .12);
+  color: #54444b;
+}
+
+.perfume-feature-label small { font-size: 1.45cqw; }
+.perfume-feature-label strong { font-family: Georgia, 'Times New Roman', serif; font-size: 2.4cqw; }
+
 .work-grid > .project-card:nth-child(odd):last-child {
   grid-column: 1;
 }
