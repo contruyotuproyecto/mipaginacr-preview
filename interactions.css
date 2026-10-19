@@ -16,7 +16,7 @@ a.blog-contact-button {
     color 180ms ease;
 }
 
-.idea-tab {
+button.idea-tab {
   transition:
     color 180ms ease,
     padding-left 180ms ease,
