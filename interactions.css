@@ -1,0 +1,105 @@
+/* Shared hover and keyboard feedback for controls across the site. */
+button:not(:disabled),
+a.button,
+a.nav-cta,
+a.quote-button,
+a.quote-assistant-whatsapp,
+a.blog-topbar-cta,
+a.blog-topbar-link,
+a.blog-contact-button {
+  transition:
+    transform 180ms cubic-bezier(.2, .7, .2, 1),
+    filter 180ms ease,
+    box-shadow 180ms ease,
+    border-color 180ms ease,
+    background-color 180ms ease,
+    color 180ms ease;
+}
+
+.idea-tab {
+  transition:
+    color 180ms ease,
+    padding-left 180ms ease,
+    transform 180ms cubic-bezier(.2, .7, .2, 1),
+    filter 180ms ease;
+}
+
+:where(
+  button:not(:disabled),
+  a.button,
+  a.nav-cta,
+  a.quote-button,
+  a.quote-assistant-whatsapp,
+  a.blog-topbar-cta,
+  a.blog-topbar-link,
+  a.blog-contact-button
+):focus-visible {
+  outline: 2px solid #78d5ff;
+  outline-offset: 3px;
+}
+
+:is(a.button, a.nav-cta, a.quote-button, a.quote-assistant-whatsapp,
+  a.blog-topbar-cta, a.blog-contact-button, .quote-assistant-toggle)
+  > :is(span[aria-hidden="true"], svg[aria-hidden="true"]),
+.idea-tab > b[aria-hidden="true"] {
+  transition: transform 180ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  button:not(:disabled):not([aria-disabled="true"]):hover,
+  a.button:hover,
+  a.nav-cta:hover,
+  a.quote-button:hover,
+  a.quote-assistant-whatsapp:hover,
+  a.blog-topbar-cta:hover,
+  a.blog-topbar-link:hover,
+  a.blog-contact-button:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.06);
+  }
+
+  :is(a.button, a.nav-cta, a.quote-button, a.quote-assistant-whatsapp,
+    a.blog-topbar-cta, a.blog-contact-button, .quote-assistant-toggle):hover
+    > :is(span[aria-hidden="true"], svg[aria-hidden="true"]),
+  .idea-tab:hover > b[aria-hidden="true"] {
+    transform: translateX(3px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  button:not(:disabled),
+  a.button,
+  a.nav-cta,
+  a.quote-button,
+  a.quote-assistant-whatsapp,
+  a.blog-topbar-cta,
+  a.blog-topbar-link,
+  a.blog-contact-button,
+  .idea-tab,
+  :is(a.button, a.nav-cta, a.quote-button, a.quote-assistant-whatsapp,
+    a.blog-topbar-cta, a.blog-contact-button, .quote-assistant-toggle)
+    > :is(span[aria-hidden="true"], svg[aria-hidden="true"]),
+  .idea-tab > b[aria-hidden="true"] {
+    transition: none !important;
+  }
+
+  button:not(:disabled):hover,
+  a.button:hover,
+  a.nav-cta:hover,
+  a.quote-button:hover,
+  a.quote-assistant-whatsapp:hover,
+  a.blog-topbar-cta:hover,
+  a.blog-topbar-link:hover,
+  a.blog-contact-button:hover,
+  .idea-tab:hover {
+    transform: none !important;
+    filter: brightness(1.04);
+  }
+
+  :is(a.button, a.nav-cta, a.quote-button, a.quote-assistant-whatsapp,
+    a.blog-topbar-cta, a.blog-contact-button, .quote-assistant-toggle):hover
+    > :is(span[aria-hidden="true"], svg[aria-hidden="true"]),
+  .idea-tab:hover > b[aria-hidden="true"] {
+    transform: none;
+  }
+}
