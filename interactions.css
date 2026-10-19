@@ -1,5 +1,6 @@
 /* Shared hover and keyboard feedback for controls across the site. */
 button:not(:disabled),
+.nav-links a,
 a.button,
 a.nav-cta,
 a.quote-button,
@@ -26,6 +27,7 @@ button.idea-tab {
 
 :where(
   button:not(:disabled),
+  .nav-links a,
   a.button,
   a.nav-cta,
   a.quote-button,
@@ -47,6 +49,7 @@ button.idea-tab {
 
 @media (hover: hover) and (pointer: fine) {
   button:not(:disabled):not([aria-disabled="true"]):hover,
+  .nav-links a:hover,
   a.button:hover,
   a.nav-cta:hover,
   a.quote-button:hover,
@@ -54,8 +57,12 @@ button.idea-tab {
   a.blog-topbar-cta:hover,
   a.blog-topbar-link:hover,
   a.blog-contact-button:hover {
-    transform: translateY(-2px);
+    transform: translateY(-2px) scale(1.035);
     filter: brightness(1.06);
+  }
+
+  .nav-links a:hover {
+    transform: translateY(-1px) scale(1.055);
   }
 
   :is(a.button, a.nav-cta, a.quote-button, a.quote-assistant-whatsapp,
@@ -68,6 +75,7 @@ button.idea-tab {
 
 @media (prefers-reduced-motion: reduce) {
   button:not(:disabled),
+  .nav-links a,
   a.button,
   a.nav-cta,
   a.quote-button,
@@ -84,6 +92,7 @@ button.idea-tab {
   }
 
   button:not(:disabled):hover,
+  .nav-links a:hover,
   a.button:hover,
   a.nav-cta:hover,
   a.quote-button:hover,
