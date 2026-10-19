@@ -1,0 +1,6 @@
+/* Keep the desktop composition slightly more compact without changing browser zoom. */
+@media screen and (min-width: 1051px) {
+  html {
+    zoom: 0.9;
+  }
+}
