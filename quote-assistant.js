@@ -253,6 +253,15 @@
     });
   }
 
+  function startQuote(project = '') {
+    answers.fill('');
+    details.value = '';
+    currentStep = 0;
+    if (steps[0].options.includes(project)) answers[0] = project;
+    renderQuestion();
+    openAssistant();
+  }
+
   function closeAssistant(restoreFocus = true) {
     if (panel.hidden) return;
     panel.hidden = true;
@@ -272,6 +281,12 @@
   toggle.addEventListener('click', () => {
     if (panel.hidden) openAssistant();
     else closeAssistant();
+  });
+  document.addEventListener('click', event => {
+    const opener = event.target.closest('[data-quote-assistant-open]');
+    if (!opener) return;
+    event.preventDefault();
+    startQuote(opener.dataset.quoteProject || '');
   });
   closeButton.addEventListener('click', () => closeAssistant());
   whatsappLink.addEventListener('click', () => closeAssistant());
