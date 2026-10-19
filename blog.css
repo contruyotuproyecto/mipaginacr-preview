@@ -73,6 +73,13 @@
   letter-spacing: .13em;
 }
 
+.blog-teaser-date {
+  margin-top: 7px;
+  color: #91a9c2;
+  font-size: 11px;
+  line-height: 1.4;
+}
+
 .blog-teaser h3 {
   margin: 21px 0 9px;
   color: #f0f6ff;
@@ -348,6 +355,13 @@
   text-transform: uppercase;
 }
 
+.blog-card-date {
+  margin-top: 7px;
+  color: #91a9c2;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
 .blog-card h2 {
   margin: 19px 0 8px;
   color: #f0f6ff;
@@ -389,6 +403,13 @@
   margin: 52px 0 40px;
   padding-bottom: 30px;
   border-bottom: 1px solid rgba(166, 207, 246, .17);
+}
+
+.blog-post-date {
+  margin: 14px 0 0;
+  color: #91a9c2;
+  font-size: 13px;
+  line-height: 1.5;
 }
 
 .blog-post-heading h1 { max-width: 14ch; font-size: clamp(40px, 6vw, 68px); }
