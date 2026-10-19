@@ -15,25 +15,29 @@
   content: '';
   position: absolute;
   pointer-events: none;
+  opacity: .8;
+  mix-blend-mode: screen;
+  transform-origin: center;
+  backface-visibility: hidden;
   will-change: transform, opacity;
 }
 
 .hero-glow::before {
-  top: -7%;
-  left: 38%;
-  width: min(66vw, 900px);
-  height: min(76vh, 760px);
-  background: radial-gradient(ellipse at center, rgba(0, 128, 255, .30) 0%, rgba(0, 128, 255, .16) 38%, transparent 73%);
-  animation: ambient-blue-glow 14s ease-in-out infinite alternate;
+  top: -10%;
+  left: 28%;
+  width: min(68vw, 950px);
+  height: min(84vh, 850px);
+  background: radial-gradient(ellipse at center, rgba(0, 157, 255, .54) 0%, rgba(0, 137, 255, .34) 30%, rgba(16, 112, 255, .13) 54%, transparent 74%);
+  animation: ambient-blue-glow 12s ease-in-out infinite alternate;
 }
 
 .hero-glow::after {
-  top: 24%;
-  left: 24%;
-  width: min(56vw, 760px);
-  height: min(64vh, 640px);
-  background: radial-gradient(ellipse at center, rgba(18, 202, 255, .22) 0%, rgba(18, 202, 255, .11) 40%, transparent 74%);
-  animation: ambient-cyan-glow 18s ease-in-out infinite alternate;
+  top: 18%;
+  left: -2%;
+  width: min(62vw, 820px);
+  height: min(72vh, 720px);
+  background: radial-gradient(ellipse at center, rgba(18, 210, 255, .46) 0%, rgba(18, 202, 255, .27) 34%, rgba(18, 170, 255, .10) 56%, transparent 75%);
+  animation: ambient-cyan-glow 16s ease-in-out infinite alternate;
 }
 
 .hero-grid {
@@ -128,13 +132,13 @@
 }
 
 @keyframes ambient-blue-glow {
-  from { transform: translate3d(-8vw, -2vh, 0) scale(.92); opacity: .62; }
-  to { transform: translate3d(5vw, 5vh, 0) scale(1.08); opacity: .96; }
+  from { transform: translate3d(-18vw, -6vh, 0) scale(.86); opacity: .7; }
+  to { transform: translate3d(15vw, 7vh, 0) scale(1.12); opacity: 1; }
 }
 
 @keyframes ambient-cyan-glow {
-  from { transform: translate3d(6vw, 4vh, 0) scale(.9); opacity: .48; }
-  to { transform: translate3d(-5vw, -4vh, 0) scale(1.08); opacity: .84; }
+  from { transform: translate3d(16vw, 6vh, 0) scale(.9); opacity: .5; }
+  to { transform: translate3d(-14vw, -7vh, 0) scale(1.12); opacity: .96; }
 }
 
 @keyframes depth-drift {
@@ -157,19 +161,19 @@
   }
 
   .hero-glow::before {
-    top: 2%;
-    left: 16%;
-    width: 94vw;
-    height: 48vh;
-    animation-duration: 16s;
+    top: -2%;
+    left: -4%;
+    width: 116vw;
+    height: 60vh;
+    animation-duration: 12s;
   }
 
   .hero-glow::after {
-    top: 31%;
-    left: -8%;
-    width: 92vw;
-    height: 43vh;
-    animation-duration: 20s;
+    top: 27%;
+    left: -24%;
+    width: 118vw;
+    height: 54vh;
+    animation-duration: 16s;
   }
 }
 
