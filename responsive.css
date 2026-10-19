@@ -281,6 +281,7 @@
 .exams-visual {
   display: flex;
   align-items: center;
+  container-type: inline-size;
   background:
     radial-gradient(ellipse at 83% 12%, rgba(104, 224, 232, .23), transparent 34%),
     radial-gradient(ellipse at 94% 93%, rgba(29, 117, 178, .47), transparent 46%),
@@ -304,10 +305,12 @@
   z-index: 1;
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  width: min(75%, 560px);
-  margin: auto 0 auto 8%;
-  padding: 32px 0;
+  gap: clamp(8px, 1vw, 16px);
+  gap: clamp(8px, 2.6cqw, 16px);
+  width: min(88%, 560px);
+  margin: auto 0 auto 6%;
+  padding: clamp(12px, 1.7vw, 32px) 0;
+  padding: clamp(12px, 5cqw, 32px) 0;
   color: #f2fbff;
 }
 
@@ -320,7 +323,8 @@
 
 .exam-visual-copy strong {
   font-family: var(--font-head);
-  font-size: clamp(29px, 4vw, 54px);
+  font-size: clamp(24px, 3vw, 44px);
+  font-size: clamp(24px, 7.5cqw, 44px);
   line-height: 1.04;
   letter-spacing: -.065em;
 }
@@ -412,13 +416,15 @@
   }
 
   .exam-visual-copy {
-    width: 82%;
-    gap: 12px;
-    margin-left: 7%;
+    width: 88%;
+    gap: clamp(8px, 1.2vw, 12px);
+    gap: clamp(8px, 2.6cqw, 12px);
+    margin-left: 6%;
   }
 
   .exam-visual-copy strong {
-    font-size: clamp(29px, 7vw, 42px);
+    font-size: clamp(24px, 5vw, 42px);
+    font-size: clamp(24px, 7.5cqw, 42px);
   }
 }
 
@@ -503,7 +509,8 @@
   }
 
   .exam-visual-copy strong {
-    font-size: clamp(25px, 7.2vw, 34px);
+    font-size: clamp(24px, 8vw, 42px);
+    font-size: clamp(24px, 7.5cqw, 42px);
   }
 
   .exams-pills {
