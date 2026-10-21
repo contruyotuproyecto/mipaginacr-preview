@@ -40,7 +40,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../../blog.css?v=editorial-standard-1">
+  <link rel="stylesheet" href="../../blog.css?v=editorial-magazine-1">
   <link rel="stylesheet" href="../../interactions.css?v=button-hover-3">
   <link rel="stylesheet" href="../../desktop-scale.css?v=desktop-90-1">
   <link rel="stylesheet" href="../../quote-assistant.css?v=quote-assistant-ctas-1">
@@ -52,7 +52,7 @@
     <nav class="blog-breadcrumb" aria-label="Ruta de navegación"><a href="../../#inicio">Inicio</a><span aria-hidden="true">/</span><a href="../">Blog</a><span aria-hidden="true">/</span><span aria-current="page">Tecnología y agentes</span></nav>
     <article>
       <header class="blog-post-heading">
-        <p class="blog-eyebrow">TECNOLOGÍA Y AGENTES</p>
+        <p class="blog-eyebrow">Tecnología y agentes</p>
         <p class="blog-post-date"><time datetime="2026-10-18">18 de octubre de 2026</time></p>
         <h1>Agentes de IA: empieza con una tarea pequeña</h1>
         <p class="blog-post-lead">Antes de pensar en un asistente que haga de todo, identifica un proceso repetitivo, acotado y fácil de revisar.</p>
@@ -61,30 +61,11 @@
       <figure class="blog-post-image"><img src="../../assets/blog/agentes-digitales.webp" alt="Dueña de negocio revisa un flujo de tareas automatizadas en la pantalla de una computadora portátil." width="1200" height="800" decoding="async" fetchpriority="high"></figure>
 
 <div class="blog-article-body">
-<aside class="blog-summary" aria-labelledby="ideas-clave">
-  <h2 id="ideas-clave">Ideas clave</h2>
-  <ul>
-    <li>Empieza con una tarea pequeña, repetida y fácil de revisar.</li>
-    <li>Limita qué información puede consultar y qué acciones puede realizar el agente.</li>
-    <li>Una persona debe revisar resultados y atender los casos que el agente no resuelva.</li>
-  </ul>
-</aside>
 <p>En el uso actual del término, un agente de inteligencia artificial combina un modelo con instrucciones y, según la aplicación, herramientas que puede utilizar para completar pasos de una tarea. Eso puede permitirle buscar información, clasificar una consulta o preparar una respuesta dentro de un flujo definido. El alcance real depende del sistema que se construya y de los accesos que reciba.</p>
 <p>Un negocio puede empezar por ordenar preguntas frecuentes, recopilar los datos necesarios para preparar una cotización o resumir solicitudes que llegan por distintos canales. Son ejemplos para explorar, no garantías de que una automatización sea adecuada para cada empresa.</p>
-<aside class="blog-note blog-note--example"><p><strong>Ejemplo práctico:</strong> reunir tipo de servicio, ubicación y fecha solicitada para que una persona responda es un primer objetivo acotado.</p></aside>
 <h2>Busca un problema repetido y concreto</h2>
 <p>Describe la tarea como un resultado observable: reunir tipo de servicio, ubicación y fecha solicitada en un resumen para que una persona responda. Eso es más fácil de diseñar y probar que atender a todos los clientes automáticamente.</p>
-<div class="blog-table-wrap" role="region" aria-label="Ejemplos de tareas iniciales y sus límites" tabindex="0">
-  <table class="blog-comparison">
-    <caption>Ejemplos para elegir una primera tarea</caption>
-    <thead><tr><th scope="col">Tarea</th><th scope="col">Resultado esperado y límite</th></tr></thead>
-    <tbody>
-      <tr><th scope="row">Ordenar preguntas frecuentes</th><td>Preparar una respuesta basada en información aprobada; pasar las dudas nuevas a una persona.</td></tr>
-      <tr><th scope="row">Preparar una cotización</th><td>Reunir los datos necesarios; dejar el precio y el compromiso final bajo revisión humana.</td></tr>
-      <tr><th scope="row">Resumir solicitudes</th><td>Organizar lo que ya compartió la persona; no pedir información que no hace falta.</td></tr>
-    </tbody>
-  </table>
-</div>
+<p>Si el agente ordena preguntas frecuentes, debería basarse en información aprobada y pasar las dudas nuevas a una persona. Si prepara una cotización, puede reunir los datos iniciales, pero el precio y el compromiso final necesitan revisión humana. Si resume solicitudes, debe trabajar con lo que la persona ya compartió, sin pedir información innecesaria.</p>
 <h2>Define instrucciones, herramientas y límites</h2>
 <p>La documentación de agentes de OpenAI describe componentes como instrucciones, herramientas y controles; por eso el diseño debe especificar qué puede consultar el agente, qué puede hacer y qué información debe devolver. Un agente con acceso a una herramienta tiene capacidades diferentes de uno que solo redacta una propuesta.</p>
 <ul>
@@ -94,20 +75,10 @@
   <li>Solicita revisión antes de enviar mensajes, cambiar registros o confirmar compromisos.</li>
   <li>Prueba situaciones incompletas, ambiguas y fuera del alcance.</li>
 </ul>
-<section class="blog-flow-section" aria-labelledby="flujo-agente">
-  <h2 id="flujo-agente">Un inicio que se puede revisar</h2>
-  <ol class="blog-flow">
-    <li><strong>Elige una tarea</strong><span>Un paso repetido y de bajo impacto.</span></li>
-    <li><strong>Define los límites</strong><span>Solo los datos y herramientas necesarios.</span></li>
-    <li><strong>Revisa el resultado</strong><span>Una persona confirma antes de actuar.</span></li>
-    <li><strong>Ajusta el proceso</strong><span>Amplía el alcance solo si las pruebas ayudan.</span></li>
-  </ol>
-</section>
 <h2>Mantén una persona responsable del resultado</h2>
-<p>La automatización no elimina la responsabilidad de la empresa sobre la respuesta que recibe su cliente. Al inicio, revisa una muestra de resultados, corrige instrucciones y registra los casos que el sistema no puede resolver. Si aparecen errores importantes o datos insuficientes, pausa ese paso y cambia el proceso.</p>
+<p>La automatización no elimina la responsabilidad de la empresa sobre la respuesta que recibe su cliente. Antes de conectar el agente con tareas que afecten a clientes o registros, acuerda quién revisará los resultados y qué casos pasarán a una persona. Al inicio, revisa una muestra, corrige instrucciones y registra lo que el sistema no puede resolver. Si aparecen errores importantes o datos insuficientes, pausa ese paso y cambia el proceso.</p>
 <p>Evalúa si la herramienta realmente reduce trabajo sin empeorar la experiencia: ¿recopila la información correcta?, ¿el equipo entiende el resumen?, ¿las personas saben cuándo hablarán con alguien? Si no hay una mejora práctica, mantener la atención humana puede ser la solución adecuada.</p>
-<aside class="blog-note blog-note--tip"><p><strong>Consejo:</strong> acuerda quién revisa los resultados y qué casos deben pasar a una persona antes de conectar el agente con tareas que afecten a clientes o registros.</p></aside>
-<p class="blog-takeaway"><strong>En resumen:</strong> empieza con una tarea pequeña, permisos mínimos, resultados revisables y una ruta clara hacia una persona. Amplía el alcance solo cuando las pruebas indiquen que el flujo es confiable.</p>
+<p>Empieza con una tarea pequeña y de bajo impacto, permisos mínimos, resultados revisables y una ruta clara hacia una persona. Amplía el alcance solo cuando las pruebas indiquen que el flujo es confiable.</p>
 <nav class="blog-related" aria-label="Artículos relacionados"><h2>Lecturas relacionadas</h2><ul>
   <li><a href="../una-pagina-web-util/">Cómo planear una página web útil para tu negocio</a></li>
   <li><a href="../whatsapp-para-negocios/">Cómo organizar la atención por WhatsApp</a></li>
@@ -189,3 +160,4 @@
   </aside>
 </body>
 </html>
+
