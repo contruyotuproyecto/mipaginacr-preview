@@ -620,6 +620,19 @@
   .blog-footer-inner { width: calc(100% - 36px); align-items: flex-start; flex-direction: column; justify-content: center; padding-block: 18px; }
 }
 
+@media (max-width: 420px) {
+  .blog-topbar-inner {
+    flex-wrap: wrap;
+    min-height: 0;
+    row-gap: 0;
+    padding-block: 6px;
+  }
+  .blog-topbar-actions { flex: none; margin-left: auto; }
+  .blog-topbar-link,
+  .blog-topbar-cta { flex: none; }
+  .blog-topbar-link { white-space: nowrap; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .blog-teaser,
   .blog-teaser h3,
