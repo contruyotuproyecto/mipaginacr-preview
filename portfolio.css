@@ -509,6 +509,13 @@
   border-radius: 20px;
   background: linear-gradient(155deg, rgba(21, 45, 70, .88), rgba(9, 24, 41, .96));
   box-shadow: 0 20px 55px rgba(1, 8, 17, .18);
+  transition: transform .3s cubic-bezier(.2, .7, .2, 1), border-color .3s ease, box-shadow .3s ease;
+}
+
+.photo-card:focus-within { border-color: rgba(129,213,255,.68); box-shadow: 0 25px 60px rgba(1,8,17,.28); }
+@media (hover: hover) and (pointer: fine) {
+  .photo-card:hover { transform: translateY(-5px); border-color: rgba(129,213,255,.58); box-shadow: 0 25px 60px rgba(1,8,17,.28); }
+  .photo-card:hover .photo-media img[data-carousel-image]:not(.is-fading-out) { transform: scale(1.035); }
 }
 
 .photo-media {
@@ -670,6 +677,8 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .photo-card { transition: none; }
+  .photo-card:hover { transform: none; }
   .service-photo-link,
   .photo-media img[data-carousel-image],
   .photo-media img.photo-transition-layer {

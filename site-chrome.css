@@ -1,0 +1,11 @@
+/* The same navigation and footer frame is used on the home page and inner pages. */
+.blog-page .blog-main { padding-top: 146px; }
+.blog-page .footer { min-height: 0; }
+.blog-page .footer-links a { min-height: 32px; }
+@media (min-width: 761px) and (max-width: 900px) {
+  .nav-shell { gap: 12px; }
+  .nav-links { gap: 8px; }
+}
+@media (max-width: 760px) {
+  .blog-page .blog-main { padding-top: 118px; }
+}
