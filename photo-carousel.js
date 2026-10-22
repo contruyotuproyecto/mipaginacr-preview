@@ -110,8 +110,9 @@ const photoCarousels = [...document.querySelectorAll('[data-carousel]')].map(med
   }
 
   if (inView) preload((index + 1) % slides.length);
-  media.addEventListener('focusin', () => {
-    isFocused = true;
+  media.addEventListener('focusin', event => {
+    // A tap can focus a tabindex element on mobile. Pause only for keyboard focus.
+    isFocused = event.target.matches(':focus-visible');
     syncTimer();
   });
   media.addEventListener('focusout', event => {
@@ -120,7 +121,8 @@ const photoCarousels = [...document.querySelectorAll('[data-carousel]')].map(med
       syncTimer();
     }
   });
-  media.addEventListener('pointerenter', () => {
+  media.addEventListener('pointerenter', event => {
+    if (event.pointerType !== 'mouse') return;
     isHovered = true;
     syncTimer();
   });
