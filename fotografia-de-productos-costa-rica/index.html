@@ -140,6 +140,70 @@
   </nav>
   <div class="footer-bottom"><span>© 2026 MiPaginaCR.com</span><span>Hecho en Costa Rica.</span></div>
 </footer>
+<div class="quote-assistant-backdrop" data-assistant-backdrop aria-hidden="true" hidden></div>
+  <aside class="quote-assistant" id="cotizar" data-quote-assistant hidden>
+    <button class="quote-assistant-toggle" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="quote-assistant-panel" data-assistant-toggle>
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 11.5a7.5 7.5 0 0 1-7.5 7.5H5l1.8-3.1A7.5 7.5 0 1 1 20 11.5Z"/><path d="M8.5 11.5h7M8.5 14.5h4"/></svg>
+      <span>Cotizar</span>
+    </button>
+
+    <section class="quote-assistant-panel" id="quote-assistant-panel" role="dialog" aria-modal="true" aria-labelledby="quote-assistant-title" aria-describedby="quote-assistant-description" data-assistant-panel hidden>
+      <header class="quote-assistant-header">
+        <div>
+          <h2 id="quote-assistant-title">Asistente de cotización</h2>
+          <p id="quote-assistant-description">Preparamos tu consulta con tres respuestas.</p>
+        </div>
+        <button class="quote-assistant-close" type="button" aria-label="Cerrar asistente" data-assistant-close>
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 6 12 12M18 6 6 18"/></svg>
+        </button>
+      </header>
+
+      <div class="quote-assistant-content">
+        <div class="quote-assistant-progress">
+          <span data-assistant-status aria-live="polite">Pregunta 1 de 3</span>
+          <span class="quote-assistant-progress-context" data-assistant-progress-context>Elige una opción para continuar</span>
+        </div>
+        <div class="quote-assistant-progress-track" role="progressbar" aria-label="Progreso de la consulta" aria-valuemin="1" aria-valuemax="3" aria-valuenow="1" data-assistant-progress>
+          <span data-assistant-progress-fill></span>
+        </div>
+
+        <form class="quote-assistant-form" data-assistant-form>
+          <fieldset data-assistant-fieldset>
+            <legend id="quote-assistant-question" tabindex="-1" data-assistant-question></legend>
+            <p class="quote-assistant-hint" id="quote-assistant-hint" data-assistant-hint></p>
+            <div class="quote-assistant-options" data-assistant-options></div>
+          </fieldset>
+
+          <div class="quote-assistant-review" data-assistant-review hidden>
+            <h3 tabindex="-1" data-assistant-review-heading>Revisa tu consulta</h3>
+            <dl class="quote-assistant-summary" data-assistant-summary></dl>
+            <div class="quote-assistant-detail">
+              <div class="quote-assistant-detail-heading">
+                <label for="quote-assistant-details">Un detalle más (opcional)</label>
+                <span class="quote-assistant-count"><span data-assistant-count>0</span>/240</span>
+              </div>
+              <textarea id="quote-assistant-details" name="details" rows="2" maxlength="240" data-assistant-details></textarea>
+            </div>
+          </div>
+
+          <div class="quote-assistant-actions" data-assistant-step-actions>
+            <button class="quote-assistant-back" type="button" data-assistant-back hidden>Volver</button>
+            <button class="quote-assistant-next" type="button" data-assistant-next disabled>Continuar</button>
+          </div>
+
+          <div class="quote-assistant-review-actions" data-assistant-review-actions hidden>
+            <a class="quote-assistant-whatsapp" href="https://wa.me/50660072890" target="_blank" rel="noopener noreferrer" data-assistant-whatsapp>
+              Abrir WhatsApp con mi consulta
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg>
+            </a>
+            <p>Revisa el mensaje y envíalo desde WhatsApp.</p>
+            <button class="quote-assistant-reset" type="button" data-assistant-reset>Empezar otra consulta</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </aside>
+  <script src="/quote-assistant.js" defer></script>
   <script src="/site-navigation.js" defer></script>
   <script src="/photo-carousel.js" defer></script>
   <script src="/hero-carousel.js" defer></script>
