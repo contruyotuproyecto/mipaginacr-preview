@@ -150,6 +150,6 @@
 .service-process-content ol > li strong { display: block; color: #eef8ff; }
 .service-photo-showcase .photo-media::after { inset: 48% 0 0; }
 @media (max-width: 800px) { .service-process-content ol { grid-template-columns: 1fr; gap: 20px; } }
-@media (max-width: 800px) { .service-hero--photo { grid-template-areas: "copy" "art" "lead" "actions"; gap: 24px; } .service-hero--photo .service-hero-art--photo { width: min(100%, 280px); justify-self: center; } .service-hero--photo .service-hero-actions { margin-top: 0; } }
+@media (max-width: 800px) { .service-hero--photo { grid-template-areas: "copy" "lead" "art" "actions"; gap: 24px; } .service-hero--photo .service-hero-art--photo { width: min(100%, 280px); justify-self: center; } .service-hero--photo .service-hero-actions { margin-top: 0; } }
 @media (max-width: 560px) { .service-page::before { inset: -35vmax; opacity: .72; } .service-hero-art--photo { aspect-ratio: 4 / 4.2; } }
 @media (prefers-reduced-motion: reduce) { .service-page::before { animation: none; } .service-steps li, .service-process-content ol > li { transition: border-color .15s ease, box-shadow .15s ease; } .service-steps li:hover, .service-process-content ol > li:hover, .service-steps.is-observed li.is-visible:hover, .service-process-content ol.is-observed > li.is-visible:hover { transform: none; } .service-hero-art--photo img[data-hero-image], .service-hero-art--photo img.hero-transition-layer { transition: none; } }
