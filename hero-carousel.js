@@ -4,11 +4,26 @@
   const template = hero?.querySelector('template[data-hero-slides]');
   if (!hero || !image || !template) return;
 
-  const slides = [
+  const candidates = [
     { src: image.getAttribute('src'), alt: image.alt },
     ...[...template.content.querySelectorAll('img')].map((slide) => ({ src: slide.getAttribute('src'), alt: slide.alt })),
-  ].filter((slide) => slide.src);
+  ];
+  const seen = new Set();
+  const slides = candidates.filter((slide) => {
+    if (!slide.src) return false;
+    const key = new URL(slide.src, document.baseURI).pathname;
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
   if (slides.length < 2) return;
+
+  for (let index = slides.length - 1; index > 0; index -= 1) {
+    const randomIndex = Math.floor(Math.random() * (index + 1));
+    [slides[index], slides[randomIndex]] = [slides[randomIndex], slides[index]];
+  }
+  image.src = slides[0].src;
+  image.alt = slides[0].alt;
 
   const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)');
   const overlay = document.createElement('img');
