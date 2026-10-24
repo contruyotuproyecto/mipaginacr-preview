@@ -156,3 +156,23 @@
 @media (max-width: 800px) { .service-hero--photo { grid-template-areas: "copy" "lead" "art" "actions"; gap: 24px; } .service-hero--photo .service-hero-art--photo { width: min(100%, 600px); justify-self: center; } .service-hero--photo .service-hero-actions { margin-top: 0; } }
 @media (max-width: 560px) { .service-page::before { inset: -35vmax; opacity: .72; } .service-hero-art--photo { aspect-ratio: 4 / 4.2; } }
 @media (prefers-reduced-motion: reduce) { .service-page::before { animation: none; } .service-steps li, .service-process-content ol > li { transition: border-color .15s ease, box-shadow .15s ease; } .service-steps li:hover, .service-process-content ol > li:hover, .service-steps.is-observed li.is-visible:hover, .service-process-content ol.is-observed > li.is-visible:hover { transform: none; } .service-hero-art--photo img[data-hero-image], .service-hero-art--photo img.hero-transition-layer { transition: none; } }
+
+/* Compact editorial layout for the web design service page. */
+.service-offerings > .service-grid { gap: 18px 28px; margin-top: 30px; }
+.service-offerings .service-grid article { min-height: 0; padding: 16px 0 0; border: 0; border-top: 1px solid rgba(166, 207, 246, .28); border-radius: 0; background: none; box-shadow: none; transition: border-color .2s ease; }
+.service-offerings .service-grid article h3 { margin-bottom: 8px; font-size: 18px; }
+.service-offerings .service-grid article p { max-width: 38ch; margin: 0; line-height: 1.55; }
+.service-offerings .service-grid article:hover { transform: none; border-top-color: rgba(129, 213, 255, .55); box-shadow: none; }
+.service-process .service-steps { gap: 18px 28px; margin-top: 28px; }
+.service-process .service-steps li { padding: 16px 0 0; border: 0; border-top: 1px solid rgba(173, 208, 239, .28); border-radius: 0; background: none; box-shadow: none; }
+.service-process .service-steps li::before { margin-bottom: 7px; }
+.service-process .service-steps li:hover { transform: none; border-color: rgba(129, 213, 255, .55); box-shadow: none; }
+.service-process .service-steps.is-observed li.is-visible:hover { transform: translateY(0); }
+@media (max-width: 860px) {
+  .service-offerings > .service-grid { gap: 0; margin-top: 22px; }
+  .service-offerings .service-grid article { padding: 14px 0 13px; }
+  .service-offerings .service-grid article p { max-width: 60ch; }
+  .service-process .service-steps { gap: 0; margin-top: 22px; }
+  .service-process .service-steps li { padding: 14px 0 16px; }
+  .service-process .service-steps li::before { margin-bottom: 6px; }
+}
