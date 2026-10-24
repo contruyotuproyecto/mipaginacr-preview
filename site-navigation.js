@@ -1,3 +1,46 @@
+function restoreRequestedPositionAfterReload() {
+  const navigation = performance.getEntriesByType('navigation')[0];
+  if (navigation?.type !== 'reload') return;
+
+  const canControlRestoration = 'scrollRestoration' in history;
+  const previousRestoration = canControlRestoration ? history.scrollRestoration : null;
+  if (canControlRestoration) history.scrollRestoration = 'manual';
+
+  const restorePosition = () => {
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      let target = null;
+      if (location.hash.length > 1) {
+        try {
+          target = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+        } catch {}
+        if (target && (target.closest('[hidden], [inert]') || target.getClientRects().length === 0)) target = null;
+      }
+
+      const root = document.documentElement;
+      const previousScrollBehavior = root.style.scrollBehavior;
+      root.style.scrollBehavior = 'auto';
+      const scrollPadding = Number.parseFloat(getComputedStyle(root).scrollPaddingTop) || 0;
+      const scrollMargin = target ? Number.parseFloat(getComputedStyle(target).scrollMarginTop) || 0 : 0;
+      const top = target ? Math.max(0, window.scrollY + target.getBoundingClientRect().top - Math.max(scrollPadding, scrollMargin)) : 0;
+      try {
+        window.scrollTo({ top, left: 0, behavior: 'instant' });
+      } catch {
+        window.scrollTo(0, top);
+      }
+
+      requestAnimationFrame(() => {
+        root.style.scrollBehavior = previousScrollBehavior;
+        if (canControlRestoration) history.scrollRestoration = previousRestoration;
+      });
+    }));
+  };
+
+  if (document.readyState === 'complete') restorePosition();
+  else window.addEventListener('load', restorePosition, { once: true });
+}
+
+restoreRequestedPositionAfterReload();
+
 const menuButton = document.querySelector('.menu-toggle');
 const navLinks = document.querySelector('.nav-links');
 
