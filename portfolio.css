@@ -648,6 +648,13 @@
   margin: 30px auto 0;
 }
 
+.photo-album-cta {
+  display: flex;
+  width: fit-content;
+  min-height: 48px;
+  margin: 12px auto 0;
+}
+
 @media (max-width: 760px) {
   .photo-showcase {
     padding-block: 88px;
@@ -660,6 +667,11 @@
   }
 
   .photo-showcase-cta {
+    width: 100%;
+    max-width: 520px;
+  }
+
+  .photo-album-cta {
     width: 100%;
     max-width: 520px;
   }
