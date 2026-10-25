@@ -46,24 +46,17 @@
   <link rel="stylesheet" href="../../desktop-scale.css?v=desktop-90-1">
   <link rel="stylesheet" href="../../quote-assistant.css?v=quote-assistant-ctas-1">
   <link rel="stylesheet" href="../../site-chrome.css">
+  <link rel="stylesheet" href="/site-header.css">
+  <script src="/site-header.js" defer></script>
 </head>
 <body class="blog-page">
   <a class="skip" href="#contenido">Saltar al contenido</a>
-<header class="site-header">
-  <nav class="nav-shell" aria-label="Navegación principal">
-    <a class="brand" href="/#inicio" aria-label="MiPaginaCR.com, ir al inicio"><span class="brand-mark" aria-hidden="true"></span><span>MiPagina<strong>CR</strong><span class="brand-dot">.com</span></span></a>
-    <div class="nav-links" id="nav-links">
-      <a href="/#servicios">Servicios</a>
-      <a href="/diseno-paginas-web-costa-rica/">Páginas web</a>
-      <a href="/fotografia-de-productos-costa-rica/">Servicio de fotografía</a>
-      <a href="/nuestro-album-fotografico/">Álbum fotográfico</a>
-      <a href="/#trabajos">Proyectos</a>
-      <a href="/blog/" aria-current="page">Blog</a>
-    </div>
-    <a class="nav-cta" href="#cotizar" data-quote-assistant-open>Cotizar <span aria-hidden="true">→</span></a>
-    <button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-links"><span></span><span></span></button>
-  </nav>
-</header>
+<header class="mp-header"><div class="mp-header__inner">
+<a class="mp-header__brand" href="/" aria-label="MiPaginaCR.com, ir al inicio"><span class="mp-header__logo" aria-hidden="true"></span><span>MiPagina<strong>CR.com</strong></span></a>
+<button class="mp-header__toggle" type="button" aria-expanded="false" aria-controls="mp-primary-nav" aria-label="Abrir menú"><span></span><span></span></button>
+<nav class="mp-header__nav" id="mp-primary-nav" aria-label="Navegación principal"><a href="/">Inicio</a><a href="/servicios/">Servicios</a><a href="/nuestro-album-fotografico/">Galería</a><a href="/proyectos/">Proyectos y demos</a><a href="/blog/" aria-current="page">Blog</a><a href="/contacto/">Contacto</a></nav>
+<a class="mp-header__cta" href="#cotizar" data-quote-assistant-open>Cotizar <span aria-hidden="true">↗</span></a>
+</div></header>
   <main class="blog-main blog-post" id="contenido">
     <nav class="blog-breadcrumb" aria-label="Ruta de navegación"><a href="../../#inicio">Inicio</a><span aria-hidden="true">/</span><a href="../">Blog</a><span aria-hidden="true">/</span><span aria-current="page">Tipos de página</span></nav>
     <article>
@@ -118,7 +111,11 @@
     <section class="blog-contact-panel" aria-labelledby="blog-contact-title"><div><h2 id="blog-contact-title">¿Cuál estructura le conviene a tu proyecto?</h2><p>Cuéntanos qué vendes y cómo suelen contactarte tus clientes.</p></div><a class="blog-contact-button" href="#cotizar" data-quote-assistant-open>Conversar por WhatsApp <span aria-hidden="true">↗</span></a></section>
     <nav class="blog-post-nav" aria-label="Navegación de artículos"><a href="../">← Volver a todas las publicaciones</a></nav>
   </main>
-  <footer class="blog-footer"><div class="blog-footer-inner"><span>© 2026 MiPaginaCR.com · Hecho en Costa Rica</span><nav class="blog-footer-links" aria-label="Enlaces del pie de página"><a href="../../#inicio">Inicio</a><a href="../">Blog</a><a href="https://wa.me/50660072890" target="_blank" rel="noopener noreferrer">WhatsApp</a></nav></div></footer>
+  <footer class="mp-footer"><div class="mp-footer__inner">
+<div class="mp-footer__about"><a class="mp-header__brand" href="/" aria-label="MiPaginaCR.com, ir al inicio"><span class="mp-header__logo" aria-hidden="true"></span><span>MiPagina<strong>CR.com</strong></span></a><p>Diseño web y contenido visual para negocios.</p></div>
+<nav class="mp-footer__nav" aria-label="Navegación del pie de página"><a href="/">Inicio</a><a href="/servicios/">Servicios</a><a href="/nuestro-album-fotografico/">Galería</a><a href="/proyectos/">Proyectos y demos</a><a href="/blog/" aria-current="page">Blog</a><a href="/contacto/">Contacto</a></nav>
+<div class="mp-footer__contact"><p>Hecho en Costa Rica.</p><a href="https://wa.me/50660072890">WhatsApp: +506 6007-2890</a></div>
+</div></footer>
 <script src="../../blog-ui.js?v=editorial-magazine-1" defer></script>
 <script src="../../quote-assistant.js?v=quote-assistant-ctas-1" defer></script>
 

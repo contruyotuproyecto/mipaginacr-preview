@@ -1,0 +1,36 @@
+.mp-header{position:sticky;top:0;z-index:100;background:rgba(4,17,31,.96);border-bottom:1px solid rgba(101,206,250,.22);backdrop-filter:blur(16px);color:#eaf4ff;font-family:'DM Sans',Arial,sans-serif;line-height:1.25}
+.mp-header *{box-sizing:border-box}
+.mp-header__inner{width:min(calc(100% - 48px),1080px);min-height:78px;margin:auto;display:flex;align-items:center;gap:28px}
+.mp-header__brand{display:inline-flex;align-items:center;gap:10px;white-space:nowrap;text-decoration:none;color:#eaf4ff;font-size:17px;font-weight:700;letter-spacing:-.04em}
+.mp-header__logo{display:block;flex:none;width:44px;height:44px;border-radius:12px;background:#091a2d url('/assets/mi-pagina-cr-logo.svg') center/contain no-repeat;box-shadow:0 4px 18px rgba(2,136,255,.2);transition:transform .22s ease,box-shadow .22s ease}
+.mp-header__brand strong{color:#65cefa}
+.mp-header__brand>span:last-child{transition:color .22s ease}
+.mp-header__brand:is(:hover,:focus-visible){color:#fff}
+.mp-header__brand:is(:hover,:focus-visible) .mp-header__logo{transform:translateY(-2px) scale(1.08);box-shadow:0 0 0 1px rgba(101,206,250,.55),0 6px 26px rgba(2,136,255,.44)}
+.mp-header__nav{display:flex;align-items:center;gap:21px;margin-left:auto}
+.mp-header__nav a{color:#abc1d3;text-decoration:none;font-size:13px;font-weight:700;white-space:nowrap}
+.mp-header__nav a:hover,.mp-header__nav a[aria-current=page]{color:#fff}
+.mp-header__cta{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:46px;padding:10px 17px;border-radius:5px;background:#087be8;color:#fff;text-decoration:none;font-size:14px;font-weight:700;white-space:nowrap}
+.mp-header__cta:hover{background:#159afa}
+.mp-header__toggle{display:none;align-items:center;justify-content:center;flex-direction:column;gap:5px;min-width:44px;min-height:44px;margin-left:auto;border:1px solid #31506a;border-radius:5px;background:transparent;color:#eaf4ff;cursor:pointer}
+.mp-header__toggle span{display:block;width:22px;height:2px;background:currentColor}
+.mp-header :focus-visible{outline:3px solid #65cefa;outline-offset:3px}
+.blog-page .blog-main,.blog-page .blog-main:not(.blog-post){padding-top:46px}
+@media(max-width:1050px){.mp-header__inner{gap:15px}.mp-header__nav{gap:14px}.mp-header__nav a{font-size:12px}}
+@media(max-width:980px){.mp-header__inner{min-height:66px}.mp-header__toggle{display:flex}.mp-header__nav{display:none;position:absolute;top:66px;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;margin:0;padding:10px 24px 18px;background:#04111f;border-bottom:1px solid #31506a;box-shadow:0 18px 30px rgba(0,0,0,.25)}.mp-header__nav.is-open{display:flex}.mp-header__nav a{padding:12px 0;font-size:14px}.mp-header__cta{min-height:44px}}
+@media(max-width:650px){.mp-header__inner{width:calc(100% - 36px);gap:10px}.mp-header__logo{width:38px;height:38px}.mp-header__brand{font-size:15px;gap:7px}.mp-header__cta{font-size:13px;padding:9px 12px}}
+@media(max-width:390px){.mp-header__brand{font-size:13px}.mp-header__logo{width:35px;height:35px}.mp-header__cta{font-size:12px;padding:8px 10px}}
+@media(prefers-reduced-motion:reduce){.mp-header__logo,.mp-header__brand>span:last-child{transition:none}.mp-header__brand:is(:hover,:focus-visible) .mp-header__logo{transform:none}}
+
+.mp-footer{background:#030e1b;border-top:1px solid #31506a;color:#eaf4ff;font-family:'DM Sans',Arial,sans-serif;line-height:1.5}
+.mp-footer *{box-sizing:border-box}
+.mp-footer__inner{width:min(calc(100% - 48px),1080px);margin:auto;display:grid;grid-template-columns:1.15fr 1.15fr .8fr;gap:40px;padding:64px 0 38px}
+.mp-footer__about p,.mp-footer__contact p{color:#abc1d3;margin:16px 0 0}
+.mp-footer__nav{display:grid;grid-template-columns:1fr 1fr;align-content:start;gap:12px 24px}
+.mp-footer a{color:#abc1d3;text-decoration:none}
+.mp-footer .mp-header__brand{color:#eaf4ff}
+.mp-footer__nav a[aria-current=page],.mp-footer a:hover{color:#fff}
+.mp-footer__contact a{display:inline-block;margin-top:12px;color:#65cefa}
+.mp-footer a:focus-visible{outline:3px solid #65cefa;outline-offset:3px}
+@media(max-width:760px){.mp-footer__inner{grid-template-columns:1fr 1fr;gap:30px}.mp-footer__about{grid-column:1/-1}}
+@media(max-width:650px){.mp-footer__inner{width:calc(100% - 36px);grid-template-columns:1fr;gap:28px;padding:48px 0 36px}.mp-footer__about{grid-column:auto}.mp-footer__nav{gap:12px 18px}}
