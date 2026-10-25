@@ -32,24 +32,29 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../blog.css?v=editorial-hub-1">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../blog.css?v=editorial-magazine-2">
   <link rel="stylesheet" href="../interactions.css?v=button-hover-3">
   <link rel="stylesheet" href="../desktop-scale.css?v=desktop-90-1">
   <link rel="stylesheet" href="../quote-assistant.css?v=quote-assistant-ctas-1">
+  <link rel="stylesheet" href="../site-chrome.css">
 </head>
-<body class="blog-page">
-  <a class="blog-skip-link" href="#contenido">Saltar al contenido</a>
-  <header class="blog-topbar">
-    <div class="blog-topbar-inner">
-      <a class="blog-brand" href="../#inicio" aria-label="MiPaginaCR.com, ir al inicio">
-        <span class="blog-brand-mark" aria-hidden="true"></span>
-        <span>MiPagina<strong>CR</strong><span class="blog-brand-dot">.com</span></span>
-      </a>
-      <nav class="blog-topbar-actions" aria-label="Navegación del blog">
-        <a class="blog-topbar-link" href="../#inicio">Inicio</a>
-        <a class="blog-topbar-cta" href="#cotizar" data-quote-assistant-open>Hablemos <span aria-hidden="true">↗</span></a>
-      </nav>
-    </div>
+<body class="blog-page blog-index-page">
+  <a class="skip" href="#contenido">Saltar al contenido</a>
+  <header class="site-header">
+    <nav class="nav-shell" aria-label="Navegación principal">
+      <a class="brand" href="/#inicio" aria-label="MiPaginaCR.com, ir al inicio"><span class="brand-mark" aria-hidden="true"></span><span>MiPagina<strong>CR</strong><span class="brand-dot">.com</span></span></a>
+      <div class="nav-links" id="nav-links">
+        <a href="/#servicios">Servicios</a>
+        <a href="/diseno-paginas-web-costa-rica/">Páginas web</a>
+        <a href="/fotografia-de-productos-costa-rica/">Servicio de fotografía</a>
+        <a href="/nuestro-album-fotografico/">Álbum fotográfico</a>
+        <a href="/#trabajos">Proyectos</a>
+        <a href="/blog/" aria-current="page">Blog</a>
+      </div>
+      <a class="nav-cta" href="#cotizar" data-quote-assistant-open>Cotizar <span aria-hidden="true">→</span></a>
+      <button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-links"><span></span><span></span></button>
+    </nav>
   </header>
 
   <main class="blog-main" id="contenido">
@@ -57,42 +62,56 @@
       <a href="../#inicio">Inicio</a><span aria-hidden="true">/</span><span aria-current="page">Blog</span>
     </nav>
     <header class="blog-index-intro">
-      <h1>Ideas para vender y trabajar mejor en la web.</h1>
-      <p>Artículos sobre páginas web, tiendas en línea e inteligencia artificial para negocios en Costa Rica. Ideas que puedes aplicar y compartir con tu equipo.</p>
+      <h1>Blog de MiPaginaCR</h1>
+      <p>Diseño web, tiendas online y tecnología para negocios en Costa Rica.</p>
     </header>
 
     <div class="blog-controls" data-blog-controls hidden>
       <div class="blog-topic-controls" role="group" aria-label="Filtrar artículos por tema">
-        <span class="blog-controls-label">Explorar por tema</span>
         <div class="blog-topic-buttons">
           <button type="button" data-blog-filter="all" aria-pressed="true">Todos</button>
-          <button type="button" data-blog-filter="web" aria-pressed="false">Páginas web</button>
+          <button type="button" data-blog-filter="web" aria-pressed="false">Diseño web</button>
           <button type="button" data-blog-filter="tiendas" aria-pressed="false">Tiendas online</button>
-          <button type="button" data-blog-filter="ia" aria-pressed="false">IA y búsqueda</button>
+          <button type="button" data-blog-filter="ia" aria-pressed="false">IA y tecnología</button>
         </div>
       </div>
-      <form class="blog-search" role="search" data-blog-search>
-        <label for="blog-search-input">Buscar artículos</label>
-        <input id="blog-search-input" type="search" name="q" autocomplete="off" placeholder="Tema o palabra clave" data-blog-search-input>
-      </form>
     </div>
-    <p class="blog-results-status" data-blog-status role="status" aria-live="polite" hidden></p>
 
-    <section class="blog-featured" aria-labelledby="blog-featured-title" data-blog-featured>
-      <div class="blog-section-heading">
-        <h2 id="blog-featured-title">Lo más reciente</h2>
-        <p>Tres lecturas nuevas para entender los cambios digitales que afectan a los negocios.</p>
-      </div>
+    <section class="blog-featured" aria-label="Artículos destacados" data-blog-featured>
       <div class="blog-featured-grid">
+            <a class="blog-card" data-blog-card data-blog-topic="tiendas" href="como-crear-tienda-online-costa-rica/">
+        <img class="blog-card-image" src="../assets/blog/landing-sitio-tienda.webp" alt="Comerciante revisa ejemplos de una tienda en línea en una computadora portátil y una tableta dentro de su negocio." width="1200" height="800" loading="eager" fetchpriority="high" decoding="async">
+        <span class="blog-card-category">Tiendas virtuales</span>
+        <time class="blog-card-date" datetime="2026-10-21">21 de octubre de 2026</time>
+        <h2>Cómo crear una tienda online en Costa Rica</h2>
+        <p>Antes de escoger plataforma, ordena productos, pagos, entregas y atención para que la tienda responda a cómo vende tu negocio.</p>
+        <span class="blog-card-action">Leer artículo <span aria-hidden="true">→</span></span>
+      </a>
+      <a class="blog-card" data-blog-card data-blog-topic="web" href="de-whatsapp-a-pagina-web/">
+        <img class="blog-card-image" src="../assets/blog/whatsapp-conversacion.webp" alt="Pantalla de WhatsApp abierta en un teléfono inteligente." width="1032" height="580" loading="lazy" decoding="async">
+        <span class="blog-card-category">Presencia digital</span>
+        <time class="blog-card-date" datetime="2026-10-18">18 de octubre de 2026</time>
+        <h2>¿Por qué mi negocio necesita una página web si ya vendo por WhatsApp?</h2>
+        <p>Cómo organizar tu oferta en un enlace propio y mantener WhatsApp como canal de conversación.</p>
+        <span class="blog-card-action">Leer artículo <span aria-hidden="true">→</span></span>
+      </a>
       <a class="blog-card" data-blog-card data-blog-topic="ia" href="gemini-inteligencia-artificial-negocios-2026/">
-        <img class="blog-card-image" src="../assets/blog/gemini-herramientas-pequenas-empresas.webp" alt="Logotipo de Gemini en una pieza blanca sobre un fondo degradado entre rojo, violeta y azul." width="1179" height="665" loading="eager" fetchpriority="high" decoding="async">
+        <img class="blog-card-image" src="../assets/blog/gemini-herramientas-pequenas-empresas.webp" alt="Logotipo de Gemini en una pieza blanca sobre un fondo degradado entre rojo, violeta y azul." width="1179" height="665" loading="lazy" decoding="async">
         <span class="blog-card-category">Inteligencia artificial para negocios</span>
         <time class="blog-card-date" datetime="2026-10-25">25 de octubre de 2026</time>
-        <h3>Gemini anuncia herramientas para pequeñas empresas</h3>
+        <h2>Gemini anuncia herramientas para pequeñas empresas</h2>
         <p>Google anunció funciones de Gemini orientadas a pequeños negocios, desde una página de trabajo dedicada hasta herramientas para crear recursos visuales y analizar datos. Esto es lo confirmado y lo que una empresa costarricense debería revisar antes de incorporarlas.</p>
         <span class="blog-card-action">Leer artículo <span aria-hidden="true">→</span></span>
       </a>
-      <a class="blog-card" data-blog-card data-blog-topic="tiendas" href="ley-comercio-electronico-costa-rica-10946/">
+      </div>
+    </section>
+
+    <section class="blog-archive" aria-labelledby="blog-archive-title" data-blog-archive>
+      <div class="blog-section-heading">
+        <h2 id="blog-archive-title">Últimos artículos</h2>
+      </div>
+      <div class="blog-card-grid">
+            <a class="blog-card" data-blog-card data-blog-topic="tiendas" href="ley-comercio-electronico-costa-rica-10946/">
         <img class="blog-card-image" src="../assets/blog/ley-10946-comercio-electronico.webp" alt="Persona sostiene una tarjeta bancaria mientras compra en línea desde una computadora portátil." width="1179" height="759" loading="lazy" decoding="async">
         <span class="blog-card-category">Comercio electrónico en Costa Rica</span>
         <time class="blog-card-date" datetime="2026-10-25">25 de octubre de 2026</time>
@@ -108,37 +127,12 @@
         <p>Google y ChatGPT pueden mostrar enlaces a páginas públicas cuando resultan pertinentes para una consulta. No existe una fórmula que garantice una recomendación: la base sigue siendo un sitio accesible, contenido útil y datos del negocio que se puedan comprobar.</p>
         <span class="blog-card-action">Leer artículo <span aria-hidden="true">→</span></span>
       </a>
-      </div>
-    </section>
-
-    <section class="blog-archive" aria-labelledby="blog-archive-title" data-blog-archive>
-      <div class="blog-section-heading">
-        <h2 id="blog-archive-title">Más para leer</h2>
-        <p>Publicaciones anteriores, de la más reciente a la más antigua.</p>
-      </div>
-      <div class="blog-card-grid">
-      <a class="blog-card" data-blog-card data-blog-topic="tiendas" href="como-crear-tienda-online-costa-rica/">
-        <img class="blog-card-image" src="../assets/blog/landing-sitio-tienda.webp" alt="Comerciante revisa ejemplos de una tienda en línea en una computadora portátil y una tableta dentro de su negocio." width="1200" height="800" loading="lazy" decoding="async">
-        <span class="blog-card-category">Tiendas virtuales</span>
-        <time class="blog-card-date" datetime="2026-10-21">21 de octubre de 2026</time>
-        <h3>Cómo crear una tienda online en Costa Rica: empezar con una operación clara</h3>
-        <p>Antes de escoger plataforma, ordena productos, pagos, entregas y atención para que la tienda responda a cómo vende tu negocio.</p>
-        <span class="blog-card-action">Leer artículo <span aria-hidden="true">→</span></span>
-      </a>
       <a class="blog-card" data-blog-card data-blog-topic="tiendas" href="cuanto-cuesta-tienda-online-costa-rica/">
         <img class="blog-card-image" src="../assets/blog/una-pagina-web-util.webp" alt="Dueña de un negocio en Costa Rica revisa la página de su tienda en una computadora portátil." width="1200" height="800" loading="lazy" decoding="async">
         <span class="blog-card-category">Tiendas virtuales</span>
         <time class="blog-card-date" datetime="2026-10-21">21 de octubre de 2026</time>
         <h3>Cuánto cuesta crear una tienda online en Costa Rica y de qué depende</h3>
         <p>Compara el costo inicial y recurrente, y prepara una solicitud de cotización con el catálogo y las funciones que realmente necesitas.</p>
-        <span class="blog-card-action">Leer artículo <span aria-hidden="true">→</span></span>
-      </a>
-      <a class="blog-card" data-blog-card data-blog-topic="web" href="de-whatsapp-a-pagina-web/">
-        <img class="blog-card-image" src="../assets/blog/whatsapp-conversacion.webp" alt="Pantalla de WhatsApp abierta en un teléfono inteligente." width="1032" height="580" loading="lazy" decoding="async">
-        <span class="blog-card-category">Presencia digital</span>
-        <time class="blog-card-date" datetime="2026-10-18">18 de octubre de 2026</time>
-        <h3>¿Por qué mi negocio necesita una página web si ya vendo por WhatsApp?</h3>
-        <p>Cómo organizar tu oferta en un enlace propio y mantener WhatsApp como canal de conversación.</p>
         <span class="blog-card-action">Leer artículo <span aria-hidden="true">→</span></span>
       </a>
       <a class="blog-card" data-blog-card data-blog-topic="tiendas" href="comprar-en-linea-seguro/">
@@ -182,10 +176,9 @@
         <span class="blog-card-action">Leer artículo <span aria-hidden="true">→</span></span>
       </a>
       </div>
-      <button class="blog-load-more" type="button" data-blog-load-more hidden>Ver más artículos <span aria-hidden="true">↓</span></button>
     </section>
 
-    <p class="blog-empty" data-blog-empty hidden>No encontramos artículos con esos términos. Prueba otra búsqueda o elige “Todos”.</p>
+    <p class="blog-empty" data-blog-empty hidden>Por ahora no hay artículos en este tema. Elige otra categoría o vuelve a «Todos».</p>
 
     <section class="blog-index-cta" aria-labelledby="blog-index-cta-title">
       <div>
@@ -206,8 +199,9 @@
       </nav>
     </div>
   </footer>
-<script src="../blog-ui.js?v=editorial-hub-1" defer></script>
+<script src="../blog-ui.js?v=editorial-magazine-1" defer></script>
 <script src="../quote-assistant.js?v=quote-assistant-ctas-1" defer></script>
+<script src="../site-navigation.js?v=scroll-refresh-2026-10-24" defer></script>
 
   <div class="quote-assistant-backdrop" data-assistant-backdrop aria-hidden="true" hidden></div>
   <aside class="quote-assistant" id="cotizar" data-quote-assistant hidden>

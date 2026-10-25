@@ -40,22 +40,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css">
-  <link rel="stylesheet" href="/responsive.css?v=exams-title-fit-1">
-  <link rel="stylesheet" href="/depth.css?v=ambient-glow-4">
-  <link rel="stylesheet" href="/quotes.css">
-  <link rel="stylesheet" href="/brand.css">
-  <link rel="stylesheet" href="/portfolio.css?v=projects-anime-3">
-  <link rel="stylesheet" href="/quote-assistant.css">
-  <link rel="stylesheet" href="/ui-simplify.css">
-  <link rel="stylesheet" href="/faq.css">
-  <link rel="stylesheet" href="/blog.css?v=editorial-hub-1">
-  <link rel="stylesheet" href="/interactions.css?v=button-hover-4">
-  <link rel="stylesheet" href="/desktop-scale.css?v=desktop-90-1">
-  <link rel="stylesheet" href="/site-chrome.css">
+    <link rel="stylesheet" href="../../styles.css">
+  <link rel="stylesheet" href="../../blog.css?v=editorial-magazine-2">
+  <link rel="stylesheet" href="../../interactions.css?v=button-hover-3">
+  <link rel="stylesheet" href="../../desktop-scale.css?v=desktop-90-1">
+  <link rel="stylesheet" href="../../quote-assistant.css?v=quote-assistant-ctas-1">
+  <link rel="stylesheet" href="../../site-chrome.css">
 </head>
 <body class="blog-page">
-
   <a class="skip" href="#contenido">Saltar al contenido</a>
 <header class="site-header">
   <nav class="nav-shell" aria-label="Navegación principal">
@@ -66,9 +58,9 @@
       <a href="/fotografia-de-productos-costa-rica/">Servicio de fotografía</a>
       <a href="/nuestro-album-fotografico/">Álbum fotográfico</a>
       <a href="/#trabajos">Proyectos</a>
-      <a href="/blog/">Blog</a>
+      <a href="/blog/" aria-current="page">Blog</a>
     </div>
-    <a class="nav-cta" href="/#cotizar">Cotizar <span aria-hidden="true">→</span></a>
+    <a class="nav-cta" href="#cotizar" data-quote-assistant-open>Cotizar <span aria-hidden="true">→</span></a>
     <button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-links"><span></span><span></span></button>
   </nav>
 </header>
@@ -92,12 +84,17 @@
 <p>Si el agente ordena preguntas frecuentes, debería basarse en información aprobada y pasar las dudas nuevas a una persona. Si prepara una cotización, puede reunir los datos iniciales, pero el precio y el compromiso final necesitan revisión humana. Si resume solicitudes, debe trabajar con lo que la persona ya compartió, sin pedir información innecesaria.</p>
 <h2>Define instrucciones, herramientas y límites</h2>
 <p>La documentación de agentes de OpenAI describe componentes como instrucciones, herramientas y controles; por eso el diseño debe especificar qué puede consultar el agente, qué puede hacer y qué información debe devolver. Un agente con acceso a una herramienta tiene capacidades diferentes de uno que solo redacta una propuesta.</p>
-<p>Empieza con una sola función y los datos que realmente necesita. Decide qué resultado le servirá al equipo, como un resumen o una lista de campos, y en qué momento el agente debe detenerse para pasar la consulta a una persona.</p>
-<p>Antes de conectar acciones, exige revisión humana para cualquier mensaje enviado, registro cambiado o compromiso confirmado. Prueba también solicitudes incompletas, ambiguas y fuera del propósito definido.</p>
+<ul>
+  <li>Limita el trabajo a una función y un conjunto de datos necesarios.</li>
+  <li>Prepara una salida útil para el equipo, como un resumen o una lista de campos.</li>
+  <li>Indica cuándo debe detenerse y pasar la consulta a una persona.</li>
+  <li>Solicita revisión antes de enviar mensajes, cambiar registros o confirmar compromisos.</li>
+  <li>Prueba situaciones incompletas, ambiguas y fuera del alcance.</li>
+</ul>
 <h2>Mantén una persona responsable del resultado</h2>
 <p>La automatización no elimina la responsabilidad de la empresa sobre la respuesta que recibe su cliente. Antes de conectar el agente con tareas que afecten a clientes o registros, acuerda quién revisará los resultados y qué casos pasarán a una persona. Al inicio, revisa una muestra, corrige instrucciones y registra lo que el sistema no puede resolver. Si aparecen errores importantes o datos insuficientes, pausa ese paso y cambia el proceso.</p>
 <p>Evalúa si la herramienta realmente reduce trabajo sin empeorar la experiencia: ¿recopila la información correcta?, ¿el equipo entiende el resumen?, ¿las personas saben cuándo hablarán con alguien? Si no hay una mejora práctica, mantener la atención humana puede ser la solución adecuada.</p>
-<p>Mantén permisos mínimos, resultados revisables y una ruta clara hacia una persona. Amplía el alcance solo cuando las pruebas indiquen que el flujo es confiable.</p>
+<p>Empieza con una tarea pequeña y de bajo impacto, permisos mínimos, resultados revisables y una ruta clara hacia una persona. Amplía el alcance solo cuando las pruebas indiquen que el flujo es confiable.</p>
 <nav class="blog-related" aria-label="Artículos relacionados"><h2>Lecturas relacionadas</h2><ul>
   <li><a href="../una-pagina-web-util/">Cómo planear una página web útil para tu negocio</a></li>
   <li><a href="../whatsapp-para-negocios/">Cómo organizar la atención por WhatsApp</a></li>
@@ -111,15 +108,8 @@
     <section class="blog-contact-panel" aria-labelledby="blog-contact-title"><div><h2 id="blog-contact-title">¿Quieres ordenar un proceso digital?</h2><p>Cuéntanos qué tarea hace tu equipo y qué necesita mejorar.</p></div><a class="blog-contact-button" href="#cotizar" data-quote-assistant-open>Conversar por WhatsApp <span aria-hidden="true">↗</span></a></section>
     <nav class="blog-post-nav" aria-label="Navegación de artículos"><a href="../">← Volver a todas las publicaciones</a></nav>
   </main>
-  <footer class="footer section-shell">
-  <div class="footer-brand"><span class="brand-mark" aria-hidden="true"></span><strong>MiPaginaCR.com</strong><p>Diseño web y contenido visual para negocios.</p></div>
-  <nav class="footer-links" aria-label="Navegación del pie de página">
-    <a href="/#inicio">Volver arriba ↑</a><a href="/#servicios">Servicios y cotización</a><a href="/#trabajos">Trabajos</a><a href="/#fotografia">Fotografía</a>
-    <a href="/diseno-paginas-web-costa-rica/">Páginas web</a><a href="/fotografia-de-productos-costa-rica/">Fotografía de productos</a><a href="/blog/">Blog</a><a href="https://wa.me/50660072890" target="_blank" rel="noopener noreferrer">WhatsApp →</a>
-  </nav>
-  <div class="footer-bottom"><span>© 2026 MiPaginaCR.com</span><span>Hecho en Costa Rica.</span></div>
-</footer>
-<script src="../../blog-ui.js?v=editorial-hub-1" defer></script>
+  <footer class="blog-footer"><div class="blog-footer-inner"><span>© 2026 MiPaginaCR.com · Hecho en Costa Rica</span><nav class="blog-footer-links" aria-label="Enlaces del pie de página"><a href="../../#inicio">Inicio</a><a href="../">Blog</a><a href="https://wa.me/50660072890" target="_blank" rel="noopener noreferrer">WhatsApp</a></nav></div></footer>
+<script src="../../blog-ui.js?v=editorial-magazine-1" defer></script>
 <script src="../../quote-assistant.js?v=quote-assistant-ctas-1" defer></script>
 
   <div class="quote-assistant-backdrop" data-assistant-backdrop aria-hidden="true" hidden></div>
@@ -185,6 +175,6 @@
       </div>
     </section>
   </aside>
-  <script src="/site-navigation.js?v=scroll-refresh-2026-10-24" defer></script>
+  <script src="../../site-navigation.js?v=scroll-refresh-2026-10-24" defer></script>
 </body>
 </html>
