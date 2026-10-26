@@ -10,11 +10,27 @@
     const featured = document.querySelector("[data-blog-featured]");
     const archive = document.querySelector("[data-blog-archive]");
     const cards = [...document.querySelectorAll("[data-blog-card]")];
+    const featuredGrid = featured?.querySelector(".blog-featured-grid");
+    const archiveGrid = archive?.querySelector(".blog-card-grid");
     const filters = [...controls.querySelectorAll("[data-blog-filter]")];
     const empty = document.querySelector("[data-blog-empty]");
     const params = new URLSearchParams(location.search);
     const topics = new Set(filters.map((button) => button.dataset.blogFilter));
     let topic = topics.has(params.get("tema")) ? params.get("tema") : "all";
+
+    if (featuredGrid && archiveGrid) {
+      const orderedCards = cards
+        .map((card, index) => ({
+          card,
+          index,
+          date: card.querySelector("time[datetime]")?.dateTime || "",
+        }))
+        .sort((a, b) => b.date.localeCompare(a.date) || a.index - b.index);
+
+      orderedCards.forEach(({ card }, index) => {
+        (index < 3 ? featuredGrid : archiveGrid).append(card);
+      });
+    }
 
     controls.hidden = false;
     function render() {
