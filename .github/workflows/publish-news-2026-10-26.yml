@@ -3,7 +3,7 @@ name: Publish scheduled editorial articles
 on:
   schedule:
     # GitHub Actions uses UTC. The script enforces each Costa Rica release time.
-    - cron: '*/5 * 26 10 *'
+    - cron: '3-58/5 * 26 10 *'
   workflow_dispatch:
 
 permissions:
