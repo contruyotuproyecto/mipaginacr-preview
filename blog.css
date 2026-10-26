@@ -275,7 +275,7 @@
   max-width: 69ch;
   margin-inline: auto;
   color: #d4e0ed;
-  font-size: 18px;
+  font-size: 19px;
   line-height: 1.75;
 }
 
@@ -430,7 +430,7 @@
   .blog-post-heading h1 { font-size: clamp(38px, 9.5vw, 51px); }
   .blog-post-lead { font-size: 17px; line-height: 1.6; }
   .blog-post-image { margin-bottom: 36px; }
-  .blog-article-body { font-size: 17px; line-height: 1.72; }
+  .blog-article-body { font-size: 19px; line-height: 1.72; }
   .blog-article-body h2 { margin-top: 42px; font-size: 26px; }
   .blog-contact-panel { padding-top: 25px; }
   .blog-footer-inner { width: calc(100% - 36px); align-items: flex-start; flex-direction: column; justify-content: center; padding-block: 18px; }
