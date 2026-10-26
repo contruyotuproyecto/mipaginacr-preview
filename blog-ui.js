@@ -43,13 +43,6 @@
   const body = document.querySelector(".blog-article-body");
   if (!body) return;
 
-  const readTime = document.querySelector("[data-blog-reading-time]");
-  if (readTime) {
-    const wordCount = body.textContent.trim().split(/\s+/).filter(Boolean).length;
-    readTime.textContent = `${Math.max(1, Math.ceil(wordCount / 220))} min de lectura`;
-    readTime.hidden = false;
-  }
-
   const headings = [...body.querySelectorAll(":scope > h2")].filter(
     (heading) => !/^fuentes?(?: oficiales| consultadas)?$/i.test(heading.textContent.trim())
   );
