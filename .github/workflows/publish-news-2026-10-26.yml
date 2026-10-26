@@ -40,7 +40,7 @@ jobs:
         id: release
         env:
           NEWS_RELEASE_KEY: ${{ secrets.NEWS_RELEASE_KEY }}
-          NEWS_VERIFY_ONLY: ${{ github.event_name == 'workflow_dispatch' && inputs.publish_due != true && '1' || '0' }}
+          NEWS_VERIFY_ONLY: ${{ github.event_name == 'workflow_dispatch' && inputs.publish_due != true && inputs.publish_all != true && '1' || '0' }}
           NEWS_PUBLISH_ALL: ${{ github.event_name == 'workflow_dispatch' && inputs.publish_all == true && '1' || '0' }}
         run: |
           python -m pip install --disable-pip-version-check cryptography==46.0.3
