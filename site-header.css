@@ -32,6 +32,10 @@ body.blog-page{overflow-x:clip}
 .mp-footer .mp-header__brand{color:#eaf4ff}
 .mp-footer__nav a[aria-current=page],.mp-footer a:hover{color:#fff}
 .mp-footer__contact a{display:inline-block;margin-top:12px;color:#65cefa}
+.mp-footer__contact .mp-footer__facebook{display:flex;align-items:center;gap:9px;min-height:44px;width:fit-content;color:#abc1d3}
+.mp-footer__facebook svg{display:block;width:13px;height:20px;fill:currentColor;flex:none}
+.mp-footer__contact .mp-footer__facebook:hover{color:#fff}
+
 .mp-footer a:focus-visible{outline:3px solid #65cefa;outline-offset:3px}
 @media(max-width:760px){.mp-footer__inner{grid-template-columns:1fr 1fr;gap:30px}.mp-footer__about{grid-column:1/-1}}
 @media(max-width:650px){.mp-footer__inner{width:calc(100% - 36px);grid-template-columns:1fr;gap:28px;padding:48px 0 36px}.mp-footer__about{grid-column:auto}.mp-footer__nav{gap:12px 18px}}
