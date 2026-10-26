@@ -1,0 +1,18 @@
+/* Image treatment for the three October 2026 articles; existing posts keep their layout. */
+.blog-post-image--editorial img {
+  aspect-ratio: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+.blog-article-figure--portrait {
+  width: min(100%, 420px);
+  margin: 36px auto 42px;
+}
+
+.blog-article-figure--portrait img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}

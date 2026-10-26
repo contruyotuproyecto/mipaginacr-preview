@@ -279,6 +279,22 @@
   line-height: 1.75;
 }
 
+/* Keep article images proportional and within the reading area and viewport. */
+.blog-article-body figure:not(.blog-inline-figure) {
+  max-width: min(100%, 48rem);
+  margin-inline: auto;
+}
+.blog-article-body img {
+  display: block;
+  max-width: 100%;
+  max-height: min(72vh, 680px);
+  max-height: min(72svh, 680px);
+  height: auto;
+  aspect-ratio: auto;
+  object-fit: contain;
+  margin-inline: auto;
+}
+
 .blog-article-body h2 {
   margin: 54px 0 16px;
   color: #f2f7ff;
