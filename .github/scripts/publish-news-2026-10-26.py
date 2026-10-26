@@ -35,11 +35,14 @@ def run(*args: str) -> None:
 def main() -> None:
     now = datetime.now(timezone.utc)
     verify_only = os.environ.get("NEWS_VERIFY_ONLY") == "1"
+    publish_all = os.environ.get("NEWS_PUBLISH_ALL") == "1"
     if now.date().isoformat() != "2026-10-26":
         print("Outside the approved publication day; no change.")
         return
 
-    due = [i for i, hour in enumerate(TIMES_UTC, 1) if now.hour >= hour]
+    due = list(range(1, len(ARTICLE_IDS) + 1)) if publish_all else [
+        i for i, hour in enumerate(TIMES_UTC, 1) if now.hour >= hour
+    ]
     if not due and not verify_only:
         print("No release is due yet.")
         return
