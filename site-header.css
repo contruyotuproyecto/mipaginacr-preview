@@ -1,4 +1,5 @@
 .mp-header{position:sticky;top:0;z-index:100;background:rgba(4,17,31,.96);border-bottom:1px solid rgba(101,206,250,.22);backdrop-filter:blur(16px);color:#eaf4ff;font-family:'DM Sans',Arial,sans-serif;line-height:1.25}
+body.blog-page{overflow-x:clip}
 .mp-header *{box-sizing:border-box}
 .mp-header__inner{width:min(calc(100% - 48px),1080px);min-height:78px;margin:auto;display:flex;align-items:center;gap:28px}
 .mp-header__brand{display:inline-flex;align-items:center;gap:10px;white-space:nowrap;text-decoration:none;color:#eaf4ff;font-size:17px;font-weight:700;letter-spacing:-.04em}
