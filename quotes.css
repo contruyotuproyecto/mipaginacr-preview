@@ -100,11 +100,6 @@
   .quote-card h3 { font-size: 30px; }
 }
 
-@media (min-width: 761px) and (max-width: 900px) {
-  .nav-shell { gap: 12px; }
-  .nav-links { gap: 8px; }
-}
-
 @media (max-width: 900px) {
   .quotes-grid { grid-template-columns: 1fr; }
   .quote-card { min-height: 0; }
@@ -166,6 +161,3 @@
     grid-template-columns: minmax(0, 1fr);
   }
 }
-
-.quote-service-link { display: inline-block; margin-top: 10px; color: #84d8ff; font-size: 13px; font-weight: 700; text-decoration: underline; text-underline-offset: 4px; }
-.quote-service-link:focus-visible { outline: 2px solid #fff; outline-offset: 4px; }

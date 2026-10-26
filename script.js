@@ -1,49 +1,5 @@
 document.documentElement.classList.add('js');
 
-function restoreRequestedPositionAfterReload() {
-  const navigation = performance.getEntriesByType('navigation')[0];
-  if (navigation?.type !== 'reload') return;
-
-  const canControlRestoration = 'scrollRestoration' in history;
-  const previousRestoration = canControlRestoration ? history.scrollRestoration : null;
-  if (canControlRestoration) history.scrollRestoration = 'manual';
-
-  const restorePosition = () => {
-    requestAnimationFrame(() => requestAnimationFrame(() => {
-      let target = null;
-      if (location.hash.length > 1) {
-        try {
-          target = document.getElementById(decodeURIComponent(location.hash.slice(1)));
-        } catch {}
-        if (target && (target.closest('[hidden], [inert]') || target.getClientRects().length === 0)) target = null;
-      }
-
-      const root = document.documentElement;
-      const previousScrollBehavior = root.style.scrollBehavior;
-      root.style.scrollBehavior = 'auto';
-      const scrollPadding = Number.parseFloat(getComputedStyle(root).scrollPaddingTop) || 0;
-      const scrollMargin = target ? Number.parseFloat(getComputedStyle(target).scrollMarginTop) || 0 : 0;
-      const desiredTop = Math.max(scrollPadding, scrollMargin);
-      const top = target ? Math.max(0, window.scrollY + target.getBoundingClientRect().top - desiredTop) : 0;
-      try {
-        window.scrollTo({ top, left: 0, behavior: 'instant' });
-      } catch {
-        window.scrollTo(0, top);
-      }
-
-      requestAnimationFrame(() => {
-        root.style.scrollBehavior = previousScrollBehavior;
-        if (canControlRestoration) history.scrollRestoration = previousRestoration;
-      });
-    }));
-  };
-
-  if (document.readyState === 'complete') restorePosition();
-  else window.addEventListener('load', restorePosition, { once: true });
-}
-
-restoreRequestedPositionAfterReload();
-
 const menuButton = document.querySelector('.menu-toggle');
 const navLinks = document.querySelector('.nav-links');
 
@@ -82,17 +38,7 @@ const preview = document.querySelector('#idea-preview');
 const canvas = document.querySelector('#idea-canvas');
 
 function selectIdea(tab) {
-  const fallback = ideas[tab.dataset.idea] || {};
-  const idea = {
-    url: tab.dataset.previewUrl || fallback.url || '',
-    brand: tab.dataset.previewBrand || fallback.brand || '',
-    kicker: tab.dataset.previewKicker || fallback.kicker || '',
-    title: tab.dataset.previewTitle || fallback.title || '',
-    copy: tab.dataset.previewCopy || fallback.copy || '',
-    button: tab.dataset.previewButton || fallback.button || '',
-    className: tab.dataset.previewClass || fallback.className || 'idea-law'
-  };
-  if (!preview || !canvas) return;
+  const idea = ideas[tab.dataset.idea];
   tabs.forEach(item => {
     const active = item === tab;
     item.classList.toggle('is-active', active);
@@ -104,9 +50,7 @@ function selectIdea(tab) {
   document.querySelector('#preview-url').textContent = idea.url;
   document.querySelector('#preview-brand').textContent = idea.brand;
   document.querySelector('#preview-kicker').textContent = idea.kicker;
-  const previewTitle = document.querySelector('#preview-title');
-  if (tab.hasAttribute('data-preview-title')) previewTitle.textContent = idea.title.replace(/<br\s*\/?\s*>/gi, '\n');
-  else previewTitle.innerHTML = idea.title;
+  document.querySelector('#preview-title').innerHTML = idea.title;
   document.querySelector('#preview-copy').textContent = idea.copy;
   document.querySelector('#preview-button').textContent = idea.button;
 }
@@ -213,3 +157,147 @@ reducedMotion.addEventListener('change', () => {
   clearDepthMotion();
   scheduleDepth();
 });
+
+const photoCarousels = [...document.querySelectorAll('[data-carousel]')].map(media => {
+  const image = media.querySelector('[data-carousel-image]');
+  const template = media.parentElement.querySelector('template[data-carousel-slides]');
+  if (!image || !template) return null;
+
+  const slides = [
+    { src: image.getAttribute('src'), alt: image.alt },
+    ...[...template.content.querySelectorAll('img')].map(slide => ({
+      src: slide.getAttribute('src'),
+      alt: slide.alt
+    }))
+  ].filter(slide => slide.src);
+
+  if (slides.length < 2) return null;
+
+  let index = 0;
+  let timer = 0;
+  let transitionTimer = 0;
+  let isTransitioning = false;
+  let isFocused = false;
+  let inView = !('IntersectionObserver' in window);
+  const loadedSlides = new Map();
+  const transitionImage = document.createElement('img');
+  transitionImage.className = 'photo-transition-layer';
+  transitionImage.alt = '';
+  transitionImage.setAttribute('aria-hidden', 'true');
+  transitionImage.width = image.width;
+  transitionImage.height = image.height;
+  transitionImage.decoding = 'async';
+  media.append(transitionImage);
+
+  function shouldRun() {
+    return inView && !document.hidden && !isFocused && !reducedMotion.matches;
+  }
+
+  function preload(slideIndex) {
+    if (loadedSlides.has(slideIndex)) return loadedSlides.get(slideIndex);
+    const request = new Image();
+    request.decoding = 'async';
+    request.src = slides[slideIndex].src;
+    loadedSlides.set(slideIndex, request);
+    return request;
+  }
+
+  async function showSlide(nextIndex) {
+    if (isTransitioning) return;
+    isTransitioning = true;
+
+    const nextSlideIndex = (nextIndex + slides.length) % slides.length;
+    const slide = slides[nextSlideIndex];
+    const request = preload(nextSlideIndex);
+
+    if (!request.complete) {
+      await new Promise(resolve => {
+        request.addEventListener('load', resolve, { once: true });
+        request.addEventListener('error', resolve, { once: true });
+      });
+    }
+
+    if (!request.naturalWidth || !shouldRun()) {
+      isTransitioning = false;
+      return;
+    }
+
+    transitionImage.src = slide.src;
+    if (typeof transitionImage.decode === 'function') {
+      try {
+        await transitionImage.decode();
+      } catch {
+        isTransitioning = false;
+        return;
+      }
+    }
+
+    if (!shouldRun()) {
+      isTransitioning = false;
+      return;
+    }
+
+    requestAnimationFrame(() => {
+      transitionImage.classList.add('is-visible');
+      image.classList.add('is-fading-out');
+    });
+
+    window.clearTimeout(transitionTimer);
+    transitionTimer = window.setTimeout(() => {
+      index = nextSlideIndex;
+      image.src = slide.src;
+      image.alt = slide.alt;
+      transitionImage.classList.remove('is-visible');
+      image.classList.remove('is-fading-out');
+      isTransitioning = false;
+      preload((index + 1) % slides.length);
+    }, 1150);
+  }
+
+  function stopTimer() {
+    if (!timer) return;
+    window.clearInterval(timer);
+    timer = 0;
+  }
+
+  function syncTimer() {
+    const running = shouldRun();
+    if (running && !timer) timer = window.setInterval(() => showSlide(index + 1), 3000);
+    else if (!running) stopTimer();
+  }
+
+  if (inView) preload((index + 1) % slides.length);
+  media.addEventListener('focusin', () => {
+    isFocused = true;
+    syncTimer();
+  });
+  media.addEventListener('focusout', event => {
+    if (!media.contains(event.relatedTarget)) {
+      isFocused = false;
+      syncTimer();
+    }
+  });
+
+  syncTimer();
+
+  return {
+    media,
+    setInView(value) {
+      inView = value;
+      if (value) preload((index + 1) % slides.length);
+      syncTimer();
+    },
+    syncTimer
+  };
+}).filter(Boolean);
+
+if ('IntersectionObserver' in window && photoCarousels.length) {
+  const carouselByElement = new Map(photoCarousels.map(carousel => [carousel.media, carousel]));
+  const carouselObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => carouselByElement.get(entry.target)?.setInView(entry.isIntersecting));
+  }, { threshold: 0.15 });
+  photoCarousels.forEach(carousel => carouselObserver.observe(carousel.media));
+}
+
+document.addEventListener('visibilitychange', () => photoCarousels.forEach(carousel => carousel.syncTimer()));
+reducedMotion.addEventListener('change', () => photoCarousels.forEach(carousel => carousel.syncTimer()));

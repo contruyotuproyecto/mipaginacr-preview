@@ -37,7 +37,6 @@
   };
   let pageLock = null;
   let closeTimer = 0;
-  let openerForFocus = toggle;
 
   function snapshotStyles(element, properties) {
     return Object.fromEntries(properties.map(property => [property, element.style.getPropertyValue(property)]));
@@ -239,8 +238,7 @@
     renderReview(true);
   }
 
-  function openAssistant(opener = toggle) {
-    openerForFocus = opener;
+  function openAssistant() {
     window.clearTimeout(closeTimer);
     assistant.classList.remove('is-closing');
     lockPage();
@@ -255,13 +253,13 @@
     });
   }
 
-  function startQuote(project = '', opener = toggle) {
+  function startQuote(project = '') {
     answers.fill('');
     details.value = '';
     currentStep = 0;
     if (steps[0].options.includes(project)) answers[0] = project;
     renderQuestion();
-    openAssistant(opener);
+    openAssistant();
   }
 
   function closeAssistant(restoreFocus = true) {
@@ -276,7 +274,7 @@
       backdrop.hidden = true;
       assistant.classList.remove('is-closing');
       unlockPage();
-      if (restoreFocus) (openerForFocus.isConnected ? openerForFocus : toggle).focus({ preventScroll: true });
+      if (restoreFocus) toggle.focus({ preventScroll: true });
     }, 260);
   }
 
@@ -284,12 +282,11 @@
     if (panel.hidden) openAssistant();
     else closeAssistant();
   });
-  backdrop.addEventListener('click', () => closeAssistant());
   document.addEventListener('click', event => {
     const opener = event.target.closest('[data-quote-assistant-open]');
     if (!opener) return;
     event.preventDefault();
-    startQuote(opener.dataset.quoteProject || '', opener);
+    startQuote(opener.dataset.quoteProject || '');
   });
   closeButton.addEventListener('click', () => closeAssistant());
   whatsappLink.addEventListener('click', () => closeAssistant());
@@ -347,6 +344,4 @@
 
   renderQuestion();
   assistant.hidden = false;
-  const requestedService = new URLSearchParams(window.location.search).get('servicio');
-  if (requestedService && steps[0].options.includes(requestedService)) startQuote(requestedService);
 })();
