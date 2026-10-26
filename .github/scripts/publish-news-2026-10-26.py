@@ -34,12 +34,13 @@ def run(*args: str) -> None:
 
 def main() -> None:
     now = datetime.now(timezone.utc)
+    verify_only = os.environ.get("NEWS_VERIFY_ONLY") == "1"
     if now.date().isoformat() != "2026-10-26":
         print("Outside the approved publication day; no change.")
         return
 
     due = [i for i, hour in enumerate(TIMES_UTC, 1) if now.hour >= hour]
-    if not due:
+    if not due and not verify_only:
         print("No release is due yet.")
         return
     if not BUNDLE.exists():
@@ -66,6 +67,9 @@ def main() -> None:
         manifest = json.loads((temp / "manifest.json").read_text(encoding="utf-8"))
         if [entry["slug"] for entry in manifest] != list(ARTICLE_IDS):
             raise RuntimeError("Release manifest mismatch")
+        if verify_only:
+            print("Encrypted release bundle and schedule verified; no article published.")
+            return
 
         changed = False
         for i in due:
