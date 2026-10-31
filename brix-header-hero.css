@@ -171,8 +171,9 @@ body:has(.hero--brix)::after {
   display: block;
   color: #1c1918;
   opacity: 1;
-  visibility: hidden;
-  transform: translateY(50px);
+  visibility: visible;
+  transform: translateY(100%);
+  will-change: transform;
   animation: brix-word 10s .26s cubic-bezier(.25,.46,.45,.94) infinite both;
 }
 .hero--brix .rotator-word:nth-child(2) { animation-delay: 2.76s; }
@@ -183,11 +184,11 @@ body:has(.hero--brix)::after {
   to { transform: translateY(0); }
 }
 @keyframes brix-word {
-  0% { visibility: hidden; transform: translateY(50px); }
-  1% { visibility: visible; transform: translateY(50px); }
-  6%, 22% { visibility: visible; transform: translateY(0); }
-  27% { visibility: visible; transform: translateY(-50px); }
-  28%, 100% { visibility: hidden; transform: translateY(-50px); }
+  0% { visibility: hidden; transform: translateY(100%); }
+  0.01% { visibility: visible; transform: translateY(100%); }
+  6%, 25% { visibility: visible; transform: translateY(0); }
+  31% { visibility: visible; transform: translateY(-100%); }
+  31.01%, 100% { visibility: hidden; transform: translateY(-100%); }
 }
 .hero--brix .hero-copy > p {
   width: min(95%, 970px);
