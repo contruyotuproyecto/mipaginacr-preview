@@ -219,16 +219,15 @@ html:has(.brix-interior){color-scheme:light;background:#f8fafc}
 .brix-projects #destacados .section-heading{margin-bottom:30px}
 .brix-projects #destacados .section-heading h2{font-family:'Brix JetBrains Mono',monospace;font-size:20px;font-weight:400;letter-spacing:.02em}
 @media(max-width:700px){.brix-projects .page-lead:has(.inner-hero-title){padding:0 25px 60px}.brix-projects .page-lead:has(.inner-hero-title)>.eyebrow{top:52px}.brix-projects .page-lead .inner-hero-title{margin-top:100px}.brix-projects #destacados .section-heading h2{font-size:17px}}
-/* Discreet pause control for every rotating interior hero. */
+/* Keep the pause control available to keyboard and assistive-technology users. */
 .brix-interior .page-lead:has(.inner-hero-title),.brix-interior .blog-index-intro:has(.inner-hero-title){position:relative}
-.brix-interior .inner-hero-motion-toggle{position:absolute;left:25px;bottom:18px;display:inline-flex;width:44px;height:44px;align-items:center;justify-content:center;border:1px solid #c5cbce;border-radius:50%;background:#f8fafc;color:#4f5052;cursor:pointer}
-.brix-interior .inner-hero-motion-toggle:hover{color:#24568f;border-color:#24568f}
+.brix-interior .inner-hero-motion-toggle{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);clip-path:inset(50%);white-space:nowrap;border:0}
+.brix-interior .inner-hero-motion-toggle:focus-visible{left:25px;bottom:18px;display:inline-flex;width:44px;height:44px;align-items:center;justify-content:center;overflow:visible;clip:auto;clip-path:none;border:1px solid #24568f;border-radius:50%;background:#f8fafc;color:#24568f;cursor:pointer;outline:3px solid #24568f;outline-offset:4px}
 .brix-interior .inner-hero-motion-icon{display:flex;gap:3px;align-items:center;justify-content:center;width:17px;height:17px}
 .brix-interior .inner-hero-motion-icon::before,.brix-interior .inner-hero-motion-icon::after{content:'';width:3px;height:13px;border-radius:1px;background:currentColor}
 .brix-interior .inner-hero-motion-toggle[aria-pressed=true] .inner-hero-motion-icon::before{width:0;height:0;border-top:8px solid transparent;border-bottom:8px solid transparent;border-left:13px solid currentColor;border-radius:0;background:transparent}
 .brix-interior .inner-hero-motion-toggle[aria-pressed=true] .inner-hero-motion-icon::after{display:none}
 .brix-interior .inner-hero-motion-toggle[aria-pressed=true] .inner-hero-motion-icon{transform:translateX(2px)}
-.brix-interior .inner-hero-motion-toggle:focus-visible{outline:3px solid #24568f;outline-offset:4px}
 @media(prefers-reduced-motion:reduce){.brix-interior .inner-hero-motion-toggle{display:none}}
 
 /* Keep long real titles and their media inside narrow service and editorial grids. */
