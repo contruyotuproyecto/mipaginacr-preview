@@ -1,0 +1,37 @@
+/* Visual skin only. Quote assistant markup, steps, state and WhatsApp handling stay intact. */
+.quote-assistant-panel{border:1px solid #c5cbce;border-radius:12px;background:#f8fafc;color:#1c1918;box-shadow:0 24px 70px #0004;backdrop-filter:none}
+.quote-assistant-backdrop{background:#18181baa}
+.quote-assistant-header{background:#f8fafc;border-color:#c5cbce;padding:18px 20px}
+.quote-assistant-header h2{font-family:'Archivo Black','Arial Black',sans-serif;font-size:17px;font-weight:400;text-transform:uppercase;letter-spacing:-.04em;color:#1c1918}
+.quote-assistant-header p{color:#4f5052;font-family:'Brix JetBrains Mono',monospace;font-size:11px}
+.quote-assistant-close{border-color:#c5cbce;border-radius:50%;background:transparent;color:#1c1918}
+.quote-assistant-close:hover{background:#e4e6e6;color:#1c1918}
+.quote-assistant-content{padding:18px 20px 20px;scrollbar-color:#aab1b5 transparent}
+.quote-assistant-progress{color:#1c1918;font-family:'Brix JetBrains Mono',monospace}
+.quote-assistant-progress-context{color:#4f5052}
+.quote-assistant-progress-track{background:#e4e6e6}
+.quote-assistant-progress-track span{background:#3a6caa}
+.quote-assistant-form legend,.quote-assistant-review h3{color:#1c1918;font-family:Arial,sans-serif;font-size:19px;font-weight:700;letter-spacing:-.025em}
+.quote-assistant-hint,.quote-assistant-review>p{color:#4f5052}
+.quote-assistant-choice{border-color:#c5cbce;border-radius:8px;color:#1c1918;background:#fff}
+.quote-assistant-choice:hover{border-color:#3a6caa;background:#eaf0f8}
+.quote-assistant-choice.is-selected{border-color:#3a6caa;background:#e2e8f0;color:#1c1918}
+.quote-assistant-choice input{accent-color:#3a6caa}
+.quote-assistant-summary-row{border-color:#c5cbce;border-radius:8px;background:#fff}
+.quote-assistant-summary-row dt,.quote-assistant-count{color:#4f5052}
+.quote-assistant-summary-row dd{color:#1c1918}
+.quote-assistant-edit,.quote-assistant-reset{color:#24568f}
+.quote-assistant-edit:hover,.quote-assistant-reset:hover{color:#1c1918;background:#e4e6e6}
+.quote-assistant-review label{color:#1c1918}
+.quote-assistant-review textarea{border-color:#aab1b5;border-radius:8px;color:#1c1918;background:#fff}
+.quote-assistant-review textarea:focus-visible{border-color:#3a6caa;outline-color:#3a6caa}
+.quote-assistant-back{border-color:#aab1b5;color:#1c1918;background:#fff}
+.quote-assistant-back:hover{background:#e4e6e6}
+.quote-assistant-next,.quote-assistant-whatsapp{border-color:#3a6caa;border-radius:8px;background:#3a6caa;color:#fff;box-shadow:none}
+.quote-assistant-next:hover,.quote-assistant-whatsapp:hover{background:#1e426d;color:#fff}
+.quote-assistant-next:disabled{border-color:#c5cbce;background:#e4e6e6;color:#666;box-shadow:none}
+.quote-assistant-review-actions>p{color:#4f5052}
+.brix-interior .quote-assistant-toggle{min-width:48px;width:48px;min-height:48px;padding:0;border-color:#d1d5d8;border-radius:50%;background:#3a6caa;box-shadow:0 4px 15px #1c191844}
+.brix-interior .quote-assistant-toggle span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+.quote-assistant :focus-visible{outline:3px solid #24568f;outline-offset:3px}
+@media(prefers-reduced-motion:reduce){.quote-assistant-panel:not([hidden]){animation:none}.quote-assistant-choice,.quote-assistant-next,.quote-assistant-whatsapp{transition:none}}

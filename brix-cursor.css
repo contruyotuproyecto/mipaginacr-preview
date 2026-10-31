@@ -1,0 +1,8 @@
+/* Original cursor halo that recreates the warm, lagged glow observed on Brix. */
+.brix-cursor-glow{position:fixed;top:0;left:0;z-index:101;width:150px;height:150px;border-radius:50%;background:#edb74d;filter:blur(100px);opacity:0;pointer-events:none;mix-blend-mode:multiply;transform:translate(-50%,-50%);will-change:translate,opacity;transition:opacity .35s ease}
+.brix-cursor-glow.is-active{opacity:.8}
+.brix-cursor-glow::before,.brix-cursor-glow::after{content:'';position:absolute;left:45%;top:45%;border-radius:50%;background:#fff9;filter:blur(3px)}
+.brix-cursor-glow::before{width:34px;height:34px;transform-origin:32px 32px;animation:brix-glow-orbit 3.5s linear infinite}
+.brix-cursor-glow::after{width:25px;height:25px;transform-origin:46px 46px;animation:brix-glow-orbit 4s linear reverse infinite}
+@keyframes brix-glow-orbit{to{transform:rotate(360deg) translateX(16px)}}
+@media(hover:none),(pointer:coarse),(prefers-reduced-motion:reduce){.brix-cursor-glow{display:none}}

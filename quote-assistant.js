@@ -37,6 +37,7 @@
   };
   let pageLock = null;
   let closeTimer = 0;
+  let lastOpener = toggle;
 
   function snapshotStyles(element, properties) {
     return Object.fromEntries(properties.map(property => [property, element.style.getPropertyValue(property)]));
@@ -238,7 +239,8 @@
     renderReview(true);
   }
 
-  function openAssistant() {
+  function openAssistant(opener = toggle) {
+    lastOpener = opener;
     window.clearTimeout(closeTimer);
     assistant.classList.remove('is-closing');
     lockPage();
@@ -253,13 +255,13 @@
     });
   }
 
-  function startQuote(project = '') {
+  function startQuote(project = '', opener = toggle) {
     answers.fill('');
     details.value = '';
     currentStep = 0;
     if (steps[0].options.includes(project)) answers[0] = project;
     renderQuestion();
-    openAssistant();
+    openAssistant(opener);
   }
 
   function closeAssistant(restoreFocus = true) {
@@ -274,7 +276,12 @@
       backdrop.hidden = true;
       assistant.classList.remove('is-closing');
       unlockPage();
-      if (restoreFocus) toggle.focus({ preventScroll: true });
+      if (restoreFocus) {
+        const opener = lastOpener;
+        const visible = opener?.isConnected && opener.getClientRects().length > 0 &&
+          getComputedStyle(opener).visibility !== 'hidden' && !opener.closest('[hidden], [inert]');
+        (visible ? opener : toggle).focus({ preventScroll: true });
+      }
     }, 260);
   }
 
@@ -286,7 +293,7 @@
     const opener = event.target.closest('[data-quote-assistant-open]');
     if (!opener) return;
     event.preventDefault();
-    startQuote(opener.dataset.quoteProject || '');
+    startQuote(opener.dataset.quoteProject || '', opener);
   });
   closeButton.addEventListener('click', () => closeAssistant());
   whatsappLink.addEventListener('click', () => closeAssistant());

@@ -1,0 +1,133 @@
+/* Portada: composición independiente basada en patrones observados en Brix Studio.
+   Contenido, rutas y sistemas de MiPaginaCR permanecen en su fuente actual. */
+body:has(.hero--brix){background:#18181b;color:#f8fafc;font-family:Arial,sans-serif;overflow-x:clip}
+body:has(.hero--brix) main{background:#f8fafc;color:#1c1918}
+body:has(.hero--brix) main .shell{width:calc(100% - 120px);max-width:1320px}
+body:has(.hero--brix) main .photo-feature.shell,
+body:has(.hero--brix) main .closing.shell{width:100%;max-width:none}
+body:has(.hero--brix) main :is(h2,h3){font-family:'Archivo Black','Arial Black',sans-serif;font-weight:400;text-transform:uppercase;letter-spacing:-.055em;line-height:1}
+body:has(.hero--brix) main .eyebrow{font-family:'Brix JetBrains Mono',monospace;color:inherit;letter-spacing:.05em;font-weight:400;font-size:13px}
+body:has(.hero--brix) main .section-heading{display:block;margin:0}
+body:has(.hero--brix) main .section-heading .eyebrow{margin:0 0 20px}
+body:has(.hero--brix) main .section-heading h2{max-width:none;margin:0;font-size:clamp(3.5rem,8vw,8rem)}
+body:has(.hero--brix) main .button-outline{min-height:48px;background:#3a6caa;border:0;border-radius:10px;padding:12px 20px;color:#fff;font-weight:700;text-decoration:none}
+body:has(.hero--brix) main .button-outline:hover{background:#facc15;color:#1c1918}
+body:has(.hero--brix) main .text-link{border-color:currentColor}
+body:has(.hero--brix) .intro-band{background:#f8fafc;color:#1c1918;border:0}
+body:has(.hero--brix) .intro-grid{padding-block:115px;gap:11%}
+body:has(.hero--brix) .intro-grid h2{max-width:12ch;font-size:clamp(2.7rem,5vw,5rem)}
+body:has(.hero--brix) .intro-grid p{color:#292524;font-family:'Brix JetBrains Mono',monospace;font-size:clamp(1rem,1.4vw,1.35rem);line-height:1.5}
+/* ProjectsHome: large images, staggered two-column desktop flow. */
+body:has(.hero--brix) .work-feature{background:#f8fafc;color:#1c1918;padding:80px 0 180px}
+body:has(.hero--brix) .work-feature .section-heading{margin-bottom:70px}
+body:has(.hero--brix) .work-feature .section-heading>p:last-child{max-width:none;color:#4f5052;font-family:'Brix JetBrains Mono',monospace;margin:20px 0 0}
+body:has(.hero--brix) .work-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(50px,8vw,176px);align-items:start}
+body:has(.hero--brix) .work-grid a{border:0;padding:0;transform:none;color:#1c1918}
+body:has(.hero--brix) .work-grid a:nth-child(even){margin-top:200px}
+body:has(.hero--brix) .work-media{height:auto;aspect-ratio:auto;margin:0 0 25px;border-radius:10px;background:#e4e6e6;box-shadow:none;overflow:hidden}
+body:has(.hero--brix) .work-grid img{display:block;height:auto;object-fit:contain;background:#e4e6e6;clip-path:inset(var(--project-clip,40%) round 10px);will-change:clip-path;transition:none}
+@supports(animation-timeline:view()){
+ body:has(.hero--brix) .work-grid img{animation:brix-project-reveal linear both;animation-timeline:view();animation-range:entry 0% cover 50%}
+}
+@keyframes brix-project-reveal{from{clip-path:inset(40% round 10px)}to{clip-path:inset(0% round 10px)}}
+body:has(.hero--brix) .work-grid a.is-revealed img{--project-clip:0%}
+body:has(.hero--brix) .work-grid a:is(:hover,:focus-visible) img{transform:none;filter:none}
+body:has(.hero--brix) .work-grid strong{font-family:'Brix JetBrains Mono',monospace;font-size:20px;font-weight:400;text-transform:uppercase;letter-spacing:.06em;color:#1c1918}
+body:has(.hero--brix) .work-grid a>span:last-child{font-family:'Brix JetBrains Mono',monospace;font-size:14px;color:#4f5052}
+body:has(.hero--brix) .all-projects-link{margin:45px 0 0}
+/* CardsStack: true sticky layers; the anchors retain the existing destinations. */
+body:has(.hero--brix) #servicios{position:relative;width:100%;max-width:none;padding:200px max(60px,calc((100vw - 1320px)/2)) 220px;background:linear-gradient(to bottom,#f8fafc 0,#18181b 200px,#18181b 100%);color:#f8fafc}
+body:has(.hero--brix) #servicios .section-heading{text-align:center;position:static;margin-bottom:310px}
+body:has(.hero--brix) #servicios .section-heading h2{font-size:clamp(3rem,6.5vw,7rem)}
+body:has(.hero--brix) #servicios .section-heading .text-link{display:inline-block;margin-top:22px;color:#f8fafc}
+body:has(.hero--brix) .service-list{border:0;position:relative;display:flex;flex-direction:column;gap:40vh}
+body:has(.hero--brix) .service-list>a{position:sticky;top:140px;z-index:calc(var(--stack-index,0) + 1);display:grid;grid-template-columns:70px minmax(170px,32%) minmax(0,1fr) 30px;gap:30px;align-items:center;height:400px;min-height:0;margin:0;padding:46px 48px;border:0;border-radius:12px;background:#f8fafc;color:#1c1918;box-shadow:0 2px 40px #0002;text-decoration:none;transform:translateY(calc((var(--stack-index,0))*20px))}
+body:has(.hero--brix) .service-list>a:nth-child(2){--stack-index:1}
+body:has(.hero--brix) .service-list>a:nth-child(3){--stack-index:2}
+body:has(.hero--brix) .service-list>a:hover{background:#fff}
+body:has(.hero--brix) .service-list>a>span{align-self:start;color:#3a6caa;font-family:'Brix JetBrains Mono',monospace;font-size:16px}
+body:has(.hero--brix) .service-list>a>img{width:100%;height:100%;max-height:300px;object-fit:cover;border-radius:8px;background:#e4e6e6}
+body:has(.hero--brix) .service-list>a:nth-child(2)>img{object-fit:contain}
+@media(min-width:701px){body:has(.hero--brix) .service-list>a:nth-child(2)>img{height:auto}}
+body:has(.hero--brix) .service-list h3{margin:0 0 18px;font-size:clamp(2rem,3vw,4rem)}
+body:has(.hero--brix) .service-list p{color:#292524;font-size:clamp(1rem,1.2vw,1.3rem);line-height:1.5}
+body:has(.hero--brix) .service-list b{font-size:27px;color:#1c1918}
+/* Content without a Brix analogue remains real, but follows the same dark section rhythm. */
+body:has(.hero--brix) .photo-feature{width:100%;max-width:none;padding:180px max(60px,calc((100vw - 1320px)/2));background:#18181b;color:#f8fafc;grid-template-columns:1fr 1fr;gap:9%}
+body:has(.hero--brix) .photo-feature-image{height:620px;border-radius:10px}
+body:has(.hero--brix) .photo-feature h2{font-size:clamp(3rem,5.5vw,7rem);max-width:none}
+body:has(.hero--brix) .photo-feature p:not(.eyebrow){color:#e2e8f0;font-family:'Brix JetBrains Mono',monospace;font-size:clamp(1rem,1.2vw,1.2rem);line-height:1.5}
+body:has(.hero--brix) .blog-preview{background:#18181b;color:#f8fafc;border:0;padding:130px 60px 180px}
+body:has(.hero--brix) .blog-preview-inner{max-width:1320px}
+body:has(.hero--brix) .blog-preview-heading{align-items:start;margin-bottom:65px}
+body:has(.hero--brix) .blog-preview-heading h2{color:#f8fafc;font-size:clamp(3rem,5.6vw,7rem)}
+body:has(.hero--brix) .blog-preview-heading h2 span{color:#f8fafc}
+body:has(.hero--brix) .blog-preview-heading>p{color:#e2e8f0;font-family:'Brix JetBrains Mono',monospace;font-size:16px}
+body:has(.hero--brix) .blog-preview-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:60px 9%;border:0}
+body:has(.hero--brix) .blog-teaser,body:has(.hero--brix) .blog-teaser+.blog-teaser{padding:0;border:0;color:#f8fafc}
+body:has(.hero--brix) .blog-teaser-story{display:flex;flex-direction:column-reverse;gap:20px;margin:22px 0}
+body:has(.hero--brix) .blog-teaser-story img{width:100%;height:clamp(260px,28vw,390px);border:0;border-radius:10px;object-fit:cover;clip-path:inset(var(--project-clip,0%) round 10px)}
+body:has(.hero--brix) .blog-teaser h3{color:#f8fafc;font-family:'Brix JetBrains Mono',monospace;font-size:clamp(1.1rem,1.5vw,1.4rem);letter-spacing:0;line-height:1.3;text-transform:none}
+body:has(.hero--brix) .blog-teaser-category,body:has(.hero--brix) .blog-teaser-action,body:has(.hero--brix) .blog-preview-all{color:#f8fafc;font-family:'Brix JetBrains Mono',monospace}
+body:has(.hero--brix) .blog-teaser-date,body:has(.hero--brix) .blog-teaser p{color:#bfc4c9}
+body:has(.hero--brix) .blog-preview-all{margin-top:60px;text-decoration:underline}
+body:has(.hero--brix) .closing{width:100%;max-width:none;padding:190px max(60px,calc((100vw - 1320px)/2));background:#f8fafc;color:#1c1918;border:0}
+body:has(.hero--brix) .closing h2{max-width:13ch;font-size:clamp(3.5rem,8vw,8rem)}
+body:has(.hero--brix) .closing>p:not(.eyebrow){color:#292524;font-family:'Brix JetBrains Mono',monospace}
+body:has(.hero--brix) .closing .button-primary{border-radius:10px;background:#3a6caa}
+body:has(.hero--brix) .mp-footer{background:#18181b;color:#f8fafc;border:0}
+body:has(.hero--brix) .mp-footer__inner{width:calc(100% - 120px);max-width:1320px;grid-template-columns:1.3fr 1fr;gap:90px;padding:150px 0 80px}
+body:has(.hero--brix) .mp-footer__about{grid-column:2;grid-row:1}
+body:has(.hero--brix) .mp-footer__about p{color:#e2e8f0;font-size:clamp(2rem,3vw,3rem);line-height:1.2}
+body:has(.hero--brix) .mp-footer__nav{grid-column:1;grid-row:1;grid-template-columns:1fr 1fr;gap:15px 30px;align-self:start}
+body:has(.hero--brix) .mp-footer__nav a{font-size:18px}
+body:has(.hero--brix) .mp-footer__contact{grid-column:1/-1;display:flex;gap:20px 45px;align-items:center;border-top:1px solid #4f5052;padding-top:35px}
+body:has(.hero--brix) .mp-footer__contact p{margin:0}
+body:has(.hero--brix) .mp-footer__contact a{margin:0;color:#f8fafc}
+@media(max-width:927px){
+ body:has(.hero--brix) main .shell{width:calc(100% - 50px)}
+ body:has(.hero--brix) .intro-grid{padding-block:90px}
+ body:has(.hero--brix) .work-feature{padding:80px 0 130px}
+ body:has(.hero--brix) .work-grid{gap:55px}
+ body:has(.hero--brix) .work-grid a:nth-child(even){margin-top:150px}
+ body:has(.hero--brix) #servicios{padding:150px 25px 180px}
+ body:has(.hero--brix) .service-list>a{grid-template-columns:42px 28% 1fr 24px;gap:20px;padding:35px;height:360px}
+ body:has(.hero--brix) .photo-feature{padding:140px 25px;gap:6%}
+ body:has(.hero--brix) .photo-feature-image{height:500px}
+ body:has(.hero--brix) .blog-preview{padding:120px 25px}
+ body:has(.hero--brix) .closing{padding:140px 25px}
+ body:has(.hero--brix) .mp-footer__inner{width:calc(100% - 50px)}
+}
+@media(max-width:700px){
+ body:has(.hero--brix) .intro-grid{display:block;padding-block:85px}
+ body:has(.hero--brix) .intro-grid h2{margin-bottom:25px}
+ body:has(.hero--brix) .work-feature .section-heading{margin-bottom:50px}
+ body:has(.hero--brix) .work-grid{display:block}
+ body:has(.hero--brix) .work-grid a,body:has(.hero--brix) .work-grid a:nth-child(even){margin:0 0 90px}
+ body:has(.hero--brix) #servicios{padding:130px 25px 150px}
+ body:has(.hero--brix) #servicios .section-heading{margin-bottom:260px}
+ body:has(.hero--brix) .service-list>a{top:92px;display:flex;flex-direction:column;align-items:flex-start;gap:15px;height:min(490px,70vh);min-height:430px;padding:25px 22px;transform:translateY(calc(var(--stack-index,0)*14px))}
+ body:has(.hero--brix) .service-list>a>span{align-self:auto}
+ body:has(.hero--brix) .service-list>a>img{width:100%;height:140px;flex:none}
+ body:has(.hero--brix) .service-list h3{font-size:clamp(2rem,8vw,3.2rem)}
+ body:has(.hero--brix) .service-list p{font-size:1rem}
+ body:has(.hero--brix) .service-list b{position:absolute;right:24px;top:20px}
+ body:has(.hero--brix) .photo-feature{display:flex;flex-direction:column;align-items:stretch;padding:100px 25px;gap:40px}
+ body:has(.hero--brix) .photo-feature-image{order:2;height:480px}
+ body:has(.hero--brix) .photo-feature>div:last-child{order:1}
+ body:has(.hero--brix) .blog-preview{padding:100px 25px}
+ body:has(.hero--brix) .blog-preview-heading{display:block}
+ body:has(.hero--brix) .blog-preview-heading>p{margin:25px 0 0}
+ body:has(.hero--brix) .blog-preview-grid{display:block}
+ body:has(.hero--brix) .blog-teaser{margin-bottom:75px}
+ body:has(.hero--brix) .blog-teaser-story img{height:300px}
+ body:has(.hero--brix) .closing{padding:130px 25px}
+ body:has(.hero--brix) .closing h2{font-size:clamp(2.75rem,10vw,4rem)}
+ body:has(.hero--brix) .mp-footer__inner{display:flex;flex-direction:column;gap:45px;padding:110px 0 50px}
+ body:has(.hero--brix) .mp-footer__nav{order:1}
+ body:has(.hero--brix) .mp-footer__about{order:2}
+ body:has(.hero--brix) .mp-footer__contact{order:3;display:block}
+ body:has(.hero--brix) .mp-footer__contact a{margin-top:15px}
+}
+@media(max-width:390px){body:has(.hero--brix) .service-list>a{height:450px;min-height:450px}}
+@media(prefers-reduced-motion:reduce){body:has(.hero--brix) .work-grid img{animation:none;clip-path:inset(0% round 10px);will-change:auto}body:has(.hero--brix) .service-list{gap:20px}body:has(.hero--brix) .service-list>a{position:relative;top:auto;transform:none}body:has(.hero--brix) #servicios .section-heading{position:static;margin-bottom:45px}}

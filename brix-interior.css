@@ -1,0 +1,249 @@
+/* Interior pages: Brix's light canvas, monumental headings, open grids and dark breaks.
+   Content, routes, metadata and interactive scripts remain in their original fragments. */
+html:has(.brix-interior){color-scheme:light;background:#f8fafc}
+@media(min-width:1051px){html:has(.brix-interior){zoom:1}}
+.brix-interior{--ink:#1c1918;--muted:#4f5052;--base:#f8fafc;--surface:#e4e6e6;--deep:#18181b;--line:#c5cbce;--cyan:#3a6caa;--blue:#3a6caa;background:#f8fafc;color:#1c1918;overflow-x:clip}
+.brix-interior main{background:#f8fafc;color:#1c1918}
+.brix-interior .shell{width:calc(100% - 120px);max-width:1320px}
+.brix-interior main :is(h1,h2,h3){font-family:'Archivo Black','Arial Black',sans-serif;font-weight:400;line-height:1.04;letter-spacing:-.055em;text-transform:uppercase;color:inherit}
+.brix-interior main h1{font-size:clamp(3.7rem,7.5vw,8rem);max-width:12ch}
+.brix-interior main h2{font-size:clamp(2.8rem,5.4vw,6rem)}
+.brix-interior main h3{font-size:clamp(1.8rem,3vw,3.5rem)}
+.brix-interior main .eyebrow{color:#4f5052;font-family:'Brix JetBrains Mono',monospace;letter-spacing:.08em;font-size:13px;font-weight:400}
+.brix-interior main p,.brix-interior main li{color:#292524}
+.brix-interior main :is(.page-lead>p:not(.eyebrow),.section-heading>p:last-child){font-family:'Brix JetBrains Mono',monospace;font-size:clamp(1rem,1.35vw,1.3rem);line-height:1.5;color:#292524}
+.brix-interior .page-lead{padding-block:130px 140px}
+.brix-interior .page-lead h1{margin:0 0 30px}
+.brix-interior .page-lead .actions{margin-top:36px}
+.brix-interior main .button{border-radius:10px;min-height:48px;padding:12px 20px;font-size:17px}
+.brix-interior main .button-primary{background:#3a6caa;color:#fff}
+.brix-interior main .button-primary:hover{background:#facc15;color:#1c1918}
+.brix-interior main .button-outline{background:transparent;border:1px solid #3a6caa;color:#1c1918}
+.brix-interior main .button-outline:hover{background:#e4e6e6}
+.brix-interior main .text-link{color:inherit;border-color:currentColor}
+.brix-interior main :is(a,button,summary):focus-visible{outline:3px solid #3a6caa;outline-offset:4px}
+.brix-interior .section-heading{display:block;margin-bottom:55px}
+.brix-interior .section-heading .eyebrow{margin:0 0 20px}
+.brix-interior .section-heading h2{max-width:16ch}
+/* ProjectsHome / Project: staggered image-led directory. */
+.brix-interior .project-directory{padding-bottom:180px}
+.brix-interior .project-directory+.project-directory{padding-top:160px;border-color:#c5cbce}
+.brix-interior .project-directory-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:130px 9%}
+.brix-interior .project-entry{border:0;padding:0;color:#1c1918}
+.brix-interior .project-entry:nth-child(even){transform:translateY(170px)}
+.brix-interior .project-entry-visual{height:auto;aspect-ratio:auto;border-radius:10px;background:#e4e6e6;margin-bottom:28px;transition:box-shadow .25s ease}
+.brix-interior .project-entry-visual img{display:block;height:auto;object-fit:contain;clip-path:inset(var(--interior-clip,0%) round 10px)}
+.brix-interior .project-entry:is(:hover,:focus-visible) .project-entry-visual{box-shadow:0 16px 32px rgba(0,0,0,.15)}
+.brix-interior .project-entry:is(:hover,:focus-visible) .project-entry-visual img{transform:none}
+.brix-interior .project-entry-copy h3{font-family:'Brix JetBrains Mono',monospace;font-size:clamp(1.1rem,1.6vw,1.4rem);letter-spacing:0;font-weight:400}
+.brix-interior .project-entry-copy p:not(.eyebrow){color:#4f5052;line-height:1.5}
+.brix-interior .project-entry-copy .text-link{display:inline-block;font-family:'Brix JetBrains Mono',monospace;margin-top:10px}
+/* CardsStack-inspired service rhythm without altering detail page structure. */
+.brix-interior .service-detail-list{border-color:#c5cbce;padding-bottom:170px}
+.brix-interior .service-detail-list article{grid-template-columns:1fr 44%;gap:8%;padding-block:130px;border-color:#c5cbce}
+.brix-interior .service-detail-list article:nth-child(even)>img{grid-column:1;grid-row:1}
+.brix-interior .service-detail-list article:nth-child(even)>div{grid-column:2;grid-row:1}
+.brix-interior .service-detail-list img{height:clamp(350px,35vw,540px);border-radius:10px;object-fit:cover}
+.brix-interior .service-detail-list h2{max-width:14ch}
+.brix-interior .service-detail-list :is(p,li){color:#292524;font-size:clamp(1rem,1.3vw,1.25rem);line-height:1.55}
+.brix-interior .detail-no{font-family:'Brix JetBrains Mono',monospace;color:#3a6caa}
+.brix-interior .web-process{border-color:#c5cbce}
+.brix-interior .web-process-visual{border-radius:10px;background:#e4e6e6}
+.brix-interior .web-process li{border-color:#c5cbce}
+.brix-interior .web-process li strong{color:#1c1918}
+.brix-interior .split-story{gap:8%}
+.brix-interior .split-story img{border-radius:10px}
+.brix-interior .contact-explain{border-color:#c5cbce;gap:10%;padding-block:130px 190px}
+.brix-interior .contact-explain h2{font-size:clamp(2.3rem,4vw,4rem)}
+.brix-interior .contact-explain :is(li,p){font-size:1.1rem;line-height:1.6}
+.brix-interior .closing{width:100%;max-width:none;padding:170px max(60px,calc((100vw - 1320px)/2));border:0;background:#18181b;color:#f8fafc}
+.brix-interior .closing :is(h2,p){color:#f8fafc}
+.brix-interior .closing h2{max-width:14ch}
+/* Gallery: image wall, no decoration competing with the real photos. */
+.brix-interior .gallery-wrap{padding-bottom:160px}
+.brix-interior .gallery-grid{gap:12px}
+.brix-interior .gallery-item{border-radius:8px;background:#e4e6e6}
+.brix-interior .gallery-filters button{border-color:#aab1b5;color:#1c1918;min-height:44px}
+.brix-interior .gallery-filters button[aria-pressed=true],.brix-interior .gallery-filters button:hover{background:#3a6caa;border-color:#3a6caa;color:#fff}
+.brix-interior .gallery-more{border-color:#3a6caa;color:#1c1918}
+/* Blog index keeps its existing selector and all articles. */
+.brix-interior .blog-main{width:calc(100% - 120px);max-width:1320px;padding-block:55px 160px;color:#1c1918}
+.brix-interior .blog-breadcrumb,.brix-interior .blog-breadcrumb a{color:#4f5052}
+.brix-interior .blog-index-intro{max-width:1100px;padding:65px 0 100px}
+.brix-interior .blog-index-intro h1{max-width:12ch;font-size:clamp(3.8rem,8vw,8rem)}
+.brix-interior .blog-index-intro>p:last-child{color:#292524;font-family:'Brix JetBrains Mono',monospace;font-size:clamp(1rem,1.3vw,1.3rem)}
+.brix-interior .blog-controls{border-color:#c5cbce}
+.brix-interior .blog-topic-buttons button{color:#1c1918;border-color:#aab1b5}
+.brix-interior .blog-featured-grid{gap:45px}
+.brix-interior .blog-card{color:#1c1918;background:transparent;border:0}
+.brix-interior .blog-card-image{border-radius:10px;object-fit:cover}
+.brix-interior .blog-featured-grid .blog-card:first-child{background:#18181b;color:#f8fafc;border-radius:10px;overflow:hidden}
+.brix-interior .blog-featured-grid .blog-card:first-child :is(h2,p,.blog-card-category,.blog-card-date,.blog-card-action){color:#f8fafc}
+.brix-interior .blog-card :is(h2,h3){font-family:'Brix JetBrains Mono',monospace;font-size:clamp(1.15rem,1.7vw,1.5rem);letter-spacing:0;line-height:1.3;text-transform:none;color:#1c1918}
+.brix-interior .blog-card p,.brix-interior .blog-card-date{color:#4f5052}
+.brix-interior .blog-card-category,.brix-interior .blog-card-action{color:#3a6caa}
+.brix-interior .blog-archive .blog-card-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:75px 9%}
+.brix-interior .blog-archive .blog-section-heading{border-color:#c5cbce}
+.brix-interior .blog-index-cta{background:#18181b;color:#f8fafc;border-radius:10px}
+.brix-interior .blog-index-cta :is(h2,p){color:#f8fafc}
+.brix-interior .blog-index-cta a{background:#3a6caa}
+/* Articles stay readable: body images retain their natural aspect ratio. */
+.brix-interior .blog-post{max-width:1000px}
+.brix-interior .blog-post-heading h1{max-width:16ch;font-size:clamp(3.1rem,6vw,6rem)}
+.brix-interior .blog-post-date,.brix-interior .blog-post-lead{color:#4f5052}
+.brix-interior .blog-post-image img{height:auto;max-width:100%;border-radius:10px}
+.brix-interior .blog-article-body{max-width:800px;color:#292524}
+.brix-interior .blog-article-body :is(p,li){color:#292524}
+.brix-interior .blog-article-body h2{font-family:Arial,sans-serif;font-weight:800;text-transform:none;letter-spacing:-.035em;font-size:clamp(1.8rem,3vw,2.7rem)}
+.brix-interior .blog-article-body h3{font-family:Arial,sans-serif;font-weight:800;text-transform:none;letter-spacing:-.025em;font-size:clamp(1.4rem,2vw,2rem)}
+.brix-interior .blog-article-body a,.brix-interior .blog-post-nav a{color:#24568f}
+.brix-interior .blog-toc a{color:#24568f}
+.brix-interior .blog-toc a:is(:hover,:focus-visible){color:#1c1918;text-decoration:underline}
+.brix-interior .blog-article-figure figcaption{color:#4f5052}
+.brix-interior .blog-article-body img{max-width:100%;height:auto}
+.brix-interior .blog-contact-panel{background:#18181b;color:#f8fafc;border-radius:10px}
+.brix-interior .blog-contact-panel :is(h2,p){color:#f8fafc}
+/* Shared footer: Brix's reversed balance, all MiPaginaCR links retained. */
+.brix-interior .mp-footer{background:#18181b;color:#f8fafc;border:0}
+.brix-interior .mp-footer__inner{width:calc(100% - 120px);max-width:1320px;grid-template-columns:1.3fr 1fr;gap:90px;padding:150px 0 80px}
+.brix-interior .mp-footer__about{grid-column:2;grid-row:1}
+.brix-interior .mp-footer__about p{color:#e2e8f0;font-size:clamp(2rem,3vw,3rem);line-height:1.2}
+.brix-interior .mp-footer__nav{grid-column:1;grid-row:1;grid-template-columns:1fr 1fr;gap:15px 30px;align-self:start}
+.brix-interior .mp-footer__nav a{font-size:18px}
+.brix-interior .mp-footer__contact{grid-column:1/-1;display:flex;gap:20px 45px;align-items:center;border-top:1px solid #4f5052;padding-top:35px}
+.brix-interior .mp-footer__contact p{margin:0}
+.brix-interior .mp-footer__contact a{margin:0;color:#f8fafc}
+@media(max-width:927px){
+ .brix-interior .shell,.brix-interior .blog-main{width:calc(100% - 50px)}
+ .brix-interior .page-lead{padding-block:95px 105px}
+ .brix-interior .project-directory-grid{gap:90px 7%}
+ .brix-interior .project-entry:nth-child(even){transform:translateY(110px)}
+ .brix-interior .service-detail-list article{padding-block:90px}
+ .brix-interior .closing{padding:140px 25px}
+ .brix-interior .mp-footer__inner{width:calc(100% - 50px)}
+}
+@media(max-width:700px){
+ .brix-interior main h1{font-size:clamp(2.65rem,10vw,4.5rem)}
+ .brix-interior main h2{font-size:clamp(2.35rem,9vw,4rem)}
+ .brix-interior .page-lead{padding-block:75px 85px}
+ .brix-interior .page-lead .actions{align-items:stretch}
+ .brix-interior .page-lead .actions .button{width:100%}
+ .brix-interior .project-directory{padding-bottom:90px}
+ .brix-interior .project-directory+.project-directory{padding-top:90px}
+ .brix-interior .project-directory-grid{display:block}
+ .brix-interior .project-entry,.brix-interior .project-entry:nth-child(even){transform:none;margin-bottom:90px}
+ .brix-interior .service-detail-list{padding-bottom:90px}
+ .brix-interior .service-detail-list article{display:flex;flex-direction:column;align-items:stretch;gap:30px;padding-block:75px}
+ .brix-interior .service-detail-list article:nth-child(even)>img,.brix-interior .service-detail-list article:nth-child(even)>div{grid-column:auto;grid-row:auto}
+ .brix-interior .service-detail-list img{height:300px}
+ .brix-interior .contact-explain{display:block;padding-block:80px 110px}
+ .brix-interior .contact-explain>div+div{margin-top:65px}
+ .brix-interior .closing{padding:110px 25px}
+ .brix-interior .gallery-wrap{padding-bottom:100px}
+ .brix-interior .blog-main{padding-block:35px 110px}
+ .brix-interior .blog-index-intro{padding:55px 0 80px}
+ .brix-interior .blog-featured-grid,.brix-interior .blog-archive .blog-card-grid{display:block}
+ .brix-interior .blog-card{margin-bottom:55px}
+ .brix-interior .blog-post-heading h1{font-size:clamp(2.45rem,9vw,4rem)}
+ .brix-interior .mp-footer__inner{display:flex;flex-direction:column;gap:45px;padding:110px 0 50px}
+ .brix-interior .mp-footer__nav{order:1}
+ .brix-interior .mp-footer__about{order:2}
+ .brix-interior .mp-footer__contact{order:3;display:block}
+ .brix-interior .mp-footer__contact a{margin-top:15px}
+}
+@media(prefers-reduced-motion:reduce){.brix-interior .project-entry-visual{transition:none}.brix-interior .project-entry-visual img{transition:none;clip-path:none}}
+/* Same two-line, centered hero composition used on the approved home page. */
+.brix-interior .page-lead:has(.inner-hero-title){width:100%;max-width:none;min-height:690px;height:90vh;display:flex;flex-direction:column;align-items:center;padding:0 60px;background:#f8fafc;text-align:center}
+.brix-interior .page-lead:has(.inner-hero-title)>.eyebrow{position:absolute;left:60px;top:calc(clamp(4rem,16vh,10rem) - 48px);margin:0}
+.brix-interior .page-lead .inner-hero-title,
+.brix-interior .blog-index-intro .inner-hero-title{position:relative;width:100%;max-width:1200px;margin:clamp(4rem,16vh,10rem) auto 0;font-family:'Archivo Black','Arial Black',sans-serif;font-size:clamp(2.5rem,calc(8.5vw + 1rem),10rem);font-weight:400;line-height:1;letter-spacing:-.055em;text-align:center;text-transform:uppercase;text-wrap:nowrap;color:#1c1918}
+.brix-interior .inner-hero-original{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.brix-interior .inner-hero-title .hero-title-static-wrapper{display:flex;justify-content:center;transform:scaleX(1.05);transform-origin:center}
+.brix-interior .inner-hero-title .hero-title-static{display:block;opacity:1;transform:translateY(50px);animation:brix-hero-in .6s .2s cubic-bezier(.25,.46,.45,.94) both}
+.brix-interior .inner-hero-title .rotator-wrapper{position:relative;display:block;height:1em;overflow:hidden}
+.brix-interior .inner-hero-title .rotator-word{position:absolute;inset:0;display:block;color:#1c1918;opacity:1;visibility:hidden;transform:translateY(50px);animation:brix-word 10s .26s cubic-bezier(.25,.46,.45,.94) infinite both}
+.brix-interior .inner-hero-title .rotator-word:nth-child(2){animation-delay:2.76s}
+.brix-interior .inner-hero-title .rotator-word:nth-child(3){animation-delay:5.26s}
+.brix-interior .inner-hero-title .rotator-word:nth-child(4){animation-delay:7.76s}
+.brix-interior .page-lead:has(.inner-hero-title)>p:not(.eyebrow),
+.brix-interior .blog-index-intro:has(.inner-hero-title)>p:last-child{width:min(95%,970px);max-width:none;margin:clamp(2rem,10vh,14rem) auto 0;color:#292524;font-family:'Brix JetBrains Mono',monospace;font-size:clamp(1rem,.8vw + .875rem,1.375rem);line-height:1.4;text-align:center}
+.brix-interior .page-lead:has(.inner-hero-title) .actions{justify-content:center;margin-top:24px}
+.brix-interior .blog-index-intro:has(.inner-hero-title){width:100%;max-width:none;min-height:690px;height:90vh;display:flex;flex-direction:column;align-items:center;padding:0;text-align:center}
+.brix-interior .blog-main:has(.blog-index-intro .inner-hero-title){padding-top:0}
+.brix-interior .blog-main:has(.blog-index-intro .inner-hero-title)>.blog-breadcrumb{position:absolute;top:123px}
+.brix-interior .blog-index-intro .inner-hero-title{margin-top:clamp(4rem,16vh,10rem)}
+.brix-interior .blog-index-intro:has(.inner-hero-title)>p:last-child{margin-top:clamp(2rem,10vh,14rem)}
+/* Article headlines use the same centered entry, while retaining the complete title. */
+.brix-interior .blog-post-heading{text-align:center;padding:85px 0 110px}
+.brix-interior .blog-post-heading h1{max-width:14ch;margin-inline:auto}
+.brix-interior .blog-post-heading .blog-post-date{justify-content:center}
+@media(max-width:927px){
+ .brix-interior .page-lead:has(.inner-hero-title){height:90vh;min-height:650px;padding-inline:25px}
+ .brix-interior .page-lead:has(.inner-hero-title)>.eyebrow{left:25px}
+ .brix-interior .page-lead .inner-hero-title,.brix-interior .blog-index-intro .inner-hero-title{margin-top:clamp(4rem,16vh,10rem)}
+ .brix-interior .page-lead:has(.inner-hero-title)>p:not(.eyebrow),.brix-interior .blog-index-intro:has(.inner-hero-title)>p:last-child{margin-top:clamp(2rem,16vh,14rem)}
+}
+@media(max-width:500px){
+ .brix-interior .page-lead .inner-hero-title,.brix-interior .blog-index-intro .inner-hero-title{font-size:clamp(2.4rem,calc(8.5vw + 1rem),3.2rem);letter-spacing:-.06em}
+ .brix-interior .inner-hero-title .hero-title-static-wrapper{transform:scaleX(1)}
+ .brix-interior .page-lead:has(.inner-hero-title)>p:not(.eyebrow),.brix-interior .blog-index-intro:has(.inner-hero-title)>p:last-child{width:100%;font-size:1rem}
+ .brix-interior .page-lead:has(.inner-hero-title) .actions{width:100%;margin-top:31px}
+ .brix-interior .page-lead:has(.inner-hero-title) .actions .button{width:auto}
+ .brix-interior .blog-main:has(.blog-index-intro .inner-hero-title)>.blog-breadcrumb{top:84px}
+ .brix-interior .blog-post-heading{padding:65px 0 85px}
+}
+@media(max-width:370px){.brix-interior .page-lead .inner-hero-title,.brix-interior .blog-index-intro .inner-hero-title{font-size:2.3rem}}
+@media(prefers-reduced-motion:reduce){.brix-interior .inner-hero-title .hero-title-static{animation:none;opacity:1;transform:none}.brix-interior .inner-hero-title .rotator-word{animation:none;opacity:0;visibility:hidden;transform:none}.brix-interior .inner-hero-title .rotator-word:first-child{opacity:1;visibility:visible}}
+/* /proyectos/: Brix /projecten scroll-bound light-to-dark passage. */
+.brix-projects{background:#f8fafc}
+.brix-projects main{--projects-bg:#f8fafc;--projects-ink:#1c1918;--projects-muted:#4f5052;background:var(--projects-bg);color:var(--projects-ink);border-radius:0 0 65px 65px;overflow:clip}
+.brix-projects .project-directory,.brix-projects .project-directory+.project-directory{background:transparent;border-color:color-mix(in srgb,var(--projects-ink) 25%,transparent)}
+.brix-projects .project-directory :is(h2,h3,p,a,.eyebrow,.text-link),
+.brix-projects .project-entry,.brix-projects .project-entry-copy p:not(.eyebrow){color:var(--projects-ink)}
+.brix-projects .project-entry-copy p:not(.eyebrow),.brix-projects .project-entry-copy .eyebrow{opacity:.78}
+.brix-projects .project-directory .section-heading{margin-bottom:100px}
+.brix-projects .project-directory-grid{row-gap:180px}
+.brix-projects .closing{background:#18181b}
+.brix-projects .mp-footer{background:#f8fafc;color:#1c1918}
+.brix-projects .mp-footer .mp-header__brand,.brix-projects .mp-footer a,.brix-projects .mp-footer__about p,.brix-projects .mp-footer__contact p,.brix-projects .mp-footer__contact a{color:#1c1918}
+.brix-projects .mp-footer .mp-header__brand strong{color:inherit}
+.brix-projects .mp-footer__contact{border-color:#c5cbce}
+@media(max-width:700px){.brix-projects main{border-radius:0 0 35px 35px}.brix-projects .project-directory .section-heading{margin-bottom:60px}}
+@media(prefers-reduced-motion:reduce){.brix-projects main{--projects-bg:#18181b;--projects-ink:#f8fafc;--projects-muted:#c5cbce}.brix-projects .page-lead{background:#f8fafc;color:#1c1918}}
+/* The reference /projecten uses a compact, single-word centered entry before its first image. */
+.brix-projects .page-lead:has(.inner-hero-title){height:auto;min-height:0;padding:0 60px 65px}
+.brix-projects .page-lead:has(.inner-hero-title)>.eyebrow{top:72px}
+.brix-projects .page-lead .inner-hero-title{margin-top:120px}
+.brix-projects .page-lead:has(.inner-hero-title)>p:not(.eyebrow){margin-top:28px}
+.brix-projects .page-lead:has(.inner-hero-title) .actions{margin-top:22px}
+.brix-projects #destacados .section-heading{margin-bottom:30px}
+.brix-projects #destacados .section-heading h2{font-family:'Brix JetBrains Mono',monospace;font-size:20px;font-weight:400;letter-spacing:.02em}
+@media(max-width:700px){.brix-projects .page-lead:has(.inner-hero-title){padding:0 25px 60px}.brix-projects .page-lead:has(.inner-hero-title)>.eyebrow{top:52px}.brix-projects .page-lead .inner-hero-title{margin-top:100px}.brix-projects #destacados .section-heading h2{font-size:17px}}
+/* Discreet pause control for every rotating interior hero. */
+.brix-interior .page-lead:has(.inner-hero-title),.brix-interior .blog-index-intro:has(.inner-hero-title){position:relative}
+.brix-interior .inner-hero-motion-toggle{position:absolute;left:25px;bottom:18px;display:inline-flex;width:44px;height:44px;align-items:center;justify-content:center;border:1px solid #c5cbce;border-radius:50%;background:#f8fafc;color:#4f5052;cursor:pointer}
+.brix-interior .inner-hero-motion-toggle:hover{color:#24568f;border-color:#24568f}
+.brix-interior .inner-hero-motion-icon{display:flex;gap:3px;align-items:center;justify-content:center;width:17px;height:17px}
+.brix-interior .inner-hero-motion-icon::before,.brix-interior .inner-hero-motion-icon::after{content:'';width:3px;height:13px;border-radius:1px;background:currentColor}
+.brix-interior .inner-hero-motion-toggle[aria-pressed=true] .inner-hero-motion-icon::before{width:0;height:0;border-top:8px solid transparent;border-bottom:8px solid transparent;border-left:13px solid currentColor;border-radius:0;background:transparent}
+.brix-interior .inner-hero-motion-toggle[aria-pressed=true] .inner-hero-motion-icon::after{display:none}
+.brix-interior .inner-hero-motion-toggle[aria-pressed=true] .inner-hero-motion-icon{transform:translateX(2px)}
+.brix-interior .inner-hero-motion-toggle:focus-visible{outline:3px solid #24568f;outline-offset:4px}
+@media(prefers-reduced-motion:reduce){.brix-interior .inner-hero-motion-toggle{display:none}}
+
+/* Keep long real titles and their media inside narrow service and editorial grids. */
+@media (min-width:701px) and (max-width:927px){
+ .brix-interior .service-detail-list article{grid-template-columns:minmax(0,1fr) 44%}
+ .brix-interior .service-detail-list h2{font-size:clamp(2.2rem,4.5vw,3.2rem)}
+}
+@media (max-width:700px){
+ .brix-interior .blog-index-cta{padding:40px 22px}
+ .brix-interior .blog-index-cta>div{min-width:0;max-width:100%}
+ .brix-interior .blog-index-cta h2{font-size:clamp(1.65rem,8.5vw,2.3rem);overflow-wrap:anywhere}
+}
+@media (max-width:370px){
+ .brix-interior .service-detail-list h2{font-size:1.9rem}
+ .brix-interior .closing h2{font-size:1.7rem}
+ .brix-interior .blog-index-cta{padding:32px 16px}
+ .brix-interior .blog-index-cta h2{font-size:1.65rem}
+}
