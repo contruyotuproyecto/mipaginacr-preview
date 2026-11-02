@@ -89,8 +89,10 @@ html:has(.brix-interior){color-scheme:light;background:#f8fafc}
 .brix-interior .blog-index-cta :is(h2,p){color:#f8fafc}
 .brix-interior .blog-index-cta a{background:#3a6caa}
 /* Articles stay readable: body images retain their natural aspect ratio. */
-.brix-interior .blog-post{max-width:1000px}
-.brix-interior .blog-post-heading h1{max-width:16ch;font-size:clamp(3.1rem,6vw,6rem)}
+.brix-interior .blog-main.blog-post>article{width:100%;max-width:1000px;margin-inline:auto}
+.brix-interior .blog-main.blog-post .blog-post-heading{max-width:1000px;margin:24px auto;padding:0;text-align:center}
+.brix-interior .blog-main.blog-post .blog-post-heading h1{max-width:1000px;margin-inline:auto;font-size:clamp(3.5rem,4.5vw,4rem);line-height:1.04;text-wrap:balance}
+.brix-interior .blog-main.blog-post .blog-post-heading .blog-post-date{justify-content:center}
 .brix-interior .blog-post-date,.brix-interior .blog-post-lead{color:#4f5052}
 .brix-interior .blog-post-image img{height:auto;max-width:100%;border-radius:10px}
 .brix-interior .blog-article-body{max-width:800px;color:#292524}
@@ -146,7 +148,6 @@ html:has(.brix-interior){color-scheme:light;background:#f8fafc}
  .brix-interior .blog-index-intro h1{font-size:clamp(2.3rem,11.5vw,3.8rem)}
  .brix-interior .blog-featured-grid,.brix-interior .blog-archive .blog-card-grid{display:block}
  .brix-interior .blog-card{margin-bottom:55px}
- .brix-interior .blog-post-heading h1{font-size:clamp(2.45rem,9vw,4rem)}
  .brix-interior .mp-footer__inner{display:flex;flex-direction:column;gap:45px;padding:110px 0 50px}
  .brix-interior .mp-footer__nav{order:1}
  .brix-interior .mp-footer__about{order:2}
@@ -175,11 +176,8 @@ html:has(.brix-interior){color-scheme:light;background:#f8fafc}
 .brix-interior .blog-main:has(.blog-index-intro .inner-hero-title)>.blog-breadcrumb{position:absolute;top:123px}
 .brix-interior .blog-index-intro .inner-hero-title{margin-top:clamp(4rem,16vh,10rem)}
 .brix-interior .blog-index-intro:has(.inner-hero-title)>p:last-child{margin-top:clamp(2rem,10vh,14rem)}
-/* Article headlines use the same centered entry, while retaining the complete title. */
-.brix-interior .blog-post-heading{text-align:center;padding:85px 0 110px}
-.brix-interior .blog-post-heading h1{max-width:14ch;margin-inline:auto}
-.brix-interior .blog-post-heading .blog-post-date{justify-content:center}
 @media(max-width:927px){
+ .brix-interior .blog-main.blog-post .blog-post-heading h1{font-size:clamp(2.375rem,5.5vw,3.5rem)}
  .brix-interior .page-lead:has(.inner-hero-title){height:90vh;min-height:650px;padding-inline:25px}
  .brix-interior .page-lead:has(.inner-hero-title)>.eyebrow{left:25px}
  .brix-interior .page-lead .inner-hero-title,.brix-interior .blog-index-intro .inner-hero-title{margin-top:clamp(4rem,16vh,10rem)}
@@ -192,9 +190,13 @@ html:has(.brix-interior){color-scheme:light;background:#f8fafc}
  .brix-interior .page-lead:has(.inner-hero-title) .actions{width:100%;margin-top:31px}
  .brix-interior .page-lead:has(.inner-hero-title) .actions .button{width:auto}
  .brix-interior .blog-main:has(.blog-index-intro .inner-hero-title)>.blog-breadcrumb{top:84px}
- .brix-interior .blog-post-heading{padding:65px 0 85px}
+ .brix-interior .blog-main.blog-post .blog-post-heading{margin:24px auto 20px}
+ .brix-interior .blog-main.blog-post .blog-post-heading h1{font-size:clamp(1.875rem,calc(5.2vw + .8rem),2.375rem)}
 }
-@media(max-width:370px){.brix-interior .page-lead .inner-hero-title,.brix-interior .blog-index-intro .inner-hero-title{font-size:2.3rem}}
+@media(max-width:370px){
+ .brix-interior .page-lead .inner-hero-title,.brix-interior .blog-index-intro .inner-hero-title{font-size:2.3rem}
+ .brix-interior .blog-main.blog-post .blog-post-heading h1{width:calc(100% + 16px);margin-inline:-8px}
+}
 @media(prefers-reduced-motion:reduce){.brix-interior .inner-hero-title .hero-title-static{animation:none;opacity:1;transform:none}.brix-interior .inner-hero-title .rotator-word{animation:none;opacity:0;visibility:hidden;transform:none}.brix-interior .inner-hero-title .rotator-word:first-child{opacity:1;visibility:visible}}
 /* /proyectos/: Brix /projecten scroll-bound light-to-dark passage. */
 .brix-projects{background:#f8fafc}
