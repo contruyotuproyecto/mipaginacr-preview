@@ -228,11 +228,6 @@
   padding-top: 32px;
 }
 
-.blog-post-heading {
-  max-width: 790px;
-  margin: 48px auto 34px;
-}
-
 .blog-post-date {
   margin: 0 0 12px;
   color: #91a9c2;
@@ -445,7 +440,6 @@
   .blog-preview-heading h2 { font-size: clamp(38px, 10vw, 52px); }
   .blog-main,
   .blog-post { width: calc(100% - 36px); }
-  .blog-post-heading { margin: 36px 0 28px; }
   .blog-post-heading h1 { font-size: clamp(38px, 9.5vw, 51px); }
   .blog-post-lead { font-size: 17px; line-height: 1.6; }
   .blog-post-image { margin-bottom: 36px; }
