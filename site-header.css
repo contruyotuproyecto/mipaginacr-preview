@@ -3,7 +3,7 @@ body.blog-page{overflow-x:clip}
 .mp-header *{box-sizing:border-box}
 .mp-header__inner{width:min(calc(100% - 48px),1080px);min-height:78px;margin:auto;display:flex;align-items:center;gap:28px}
 .mp-header__brand{display:inline-flex;align-items:center;gap:10px;white-space:nowrap;text-decoration:none;color:#eaf4ff;font-size:17px;font-weight:700;letter-spacing:-.04em}
-.mp-header__logo{display:block;flex:none;width:44px;height:44px;border-radius:12px;background:#091a2d url('/assets/mi-pagina-cr-logo.svg') center/contain no-repeat;box-shadow:0 4px 18px rgba(2,136,255,.2);transition:transform .22s ease,box-shadow .22s ease}
+.mp-header__logo{display:block;flex:none;width:44px;height:44px;border-radius:12px;background:#041123 url('/assets/mi-pagina-cr-icono.png') center/contain no-repeat;box-shadow:0 4px 18px rgba(2,136,255,.2);transition:transform .22s ease,box-shadow .22s ease}
 .mp-header__brand strong{color:#65cefa}
 .mp-header__brand>span:last-child{transition:color .22s ease}
 .mp-header__brand:is(:hover,:focus-visible){color:#fff}
@@ -29,7 +29,8 @@ body.blog-page{overflow-x:clip}
 .mp-footer__about p,.mp-footer__contact p{color:#abc1d3;margin:16px 0 0}
 .mp-footer__nav{display:grid;grid-template-columns:1fr 1fr;align-content:start;gap:12px 24px}
 .mp-footer a{color:#abc1d3;text-decoration:none}
-.mp-footer .mp-header__brand{color:#eaf4ff}
+.mp-footer__brand{display:inline-block;max-width:100%}
+.mp-footer__logo{display:block;width:200px;max-width:100%;height:auto;border-radius:8px}
 .mp-footer__nav a[aria-current=page],.mp-footer a:hover{color:#fff}
 .mp-footer__contact a{display:inline-block;margin-top:12px;color:#65cefa}
 .mp-footer__contact .mp-footer__social{display:flex;align-items:center;gap:9px;min-height:44px;width:fit-content;color:#abc1d3}

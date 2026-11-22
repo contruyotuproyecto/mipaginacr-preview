@@ -57,7 +57,6 @@ body:has(.hero--brix)::after {
   width: 40px;
   height: 40px;
   border-radius: 6px;
-  background: url('/assets/mi-pagina-cr-logo.svg') center/contain no-repeat;
   box-shadow: none;
 }
 .mp-header--home .mp-header__brand:is(:hover,:focus-visible) .mp-header__logo {
