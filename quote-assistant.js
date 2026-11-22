@@ -351,4 +351,9 @@
 
   renderQuestion();
   assistant.hidden = false;
+
+  const onContactPage = /^\/contacto\/?$/.test(window.location.pathname);
+  if (onContactPage && new URLSearchParams(window.location.search).get('cotizar') === '1') {
+    openAssistant(document.getElementById('cotizar') || toggle);
+  }
 })();
