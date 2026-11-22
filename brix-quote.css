@@ -33,5 +33,6 @@
 .quote-assistant-review-actions>p{color:#4f5052}
 .brix-interior .quote-assistant-toggle{min-width:48px;width:48px;min-height:48px;padding:0;border-color:#d1d5d8;border-radius:50%;background:#3a6caa;box-shadow:0 4px 15px #1c191844}
 .brix-interior .quote-assistant-toggle span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
-.quote-assistant :focus-visible{outline:3px solid #24568f;outline-offset:3px}
+.quote-assistant :is(button,a,input,textarea):focus-visible{outline:3px solid #24568f;outline-offset:3px}
+.quote-assistant :is([data-assistant-question],[data-assistant-review-heading]):focus{outline:none}
 @media(prefers-reduced-motion:reduce){.quote-assistant-panel:not([hidden]){animation:none}.quote-assistant-choice,.quote-assistant-next,.quote-assistant-whatsapp{transition:none}}
